@@ -1,6 +1,6 @@
 # Welcome to Complete Fire Red Upgrade Expansion Version!
 This fork is made by Tha Code Mining hub to add many corresponding decomps , other fork and our own additions to CFRU , everything here can be used with credits to respective code makers.
-##### This is CFRU expansion project and not affiliated to the og CFRU, it is going to be levels higher than CFRU. It is adviced to read the wiki [here](https://github.com/Shiny-Miner/CFRU-expansion/wiki) before touching anything read this as well [Guidelines before using](https://github.com/Shiny-Miner/CFRU-expansion/wiki/Must-read-before-you-start-working!).
+##### This is CFRU expansion project and not affiliated to the og CFRU, it is going to be levels higher than CFRU. It is adviced to read the wiki [here](https://github.com/Shiny-Miner/CFRU-expansion/wiki) before touching anything.
 #### The new features (after CFRU dev branch):
 - Fixed bugs with dev branch (shiny odds , daycare nidoran breeding)
 - All known bugs fixed (Update April 2025!)
@@ -37,25 +37,17 @@ This fork is made by Tha Code Mining hub to add many corresponding decomps , oth
 -- EV-IV machine
 -- PokeVial
 -- Hisui Rock
--- Portable PC
 - Terastallization
 - Stellar type
 - Nature coloured stats
 - IV rankings in summary
-- BW SUMMARY SCREEN
-- Mid battle evolutions
-- New difficulty mode support: Normal(Vanilla), Easy, Hard, Expert
-- Added an Egg Hatcher script. (Custom by Zake)
-- Sandbox mode
-- Open World Trainers!
-- Basic berry system
 - And much more!
 
 ##### Current count:
 - Moves : 991
 - Pokedex : 1025
 - Species : 1439
-- Items : 798
+- Items : 797
 - Abilities : 288 (254 abilties and 34 Duplicate abilities)
 
 ##### Introduction to the maintainers
@@ -85,6 +77,3 @@ Join us on discord: https://discord.com/invite/axNX3rhR9K
 - Please don't try to use leon rombase on it as it already contains items + more
 - Added convienience for compiling, now run a_makepy.bat to make the project (it executes "python scripts//make.py") and run b_cleanpy.bat to clean repo (it runs python scripts//clean.py)
 - Do not talk to Fat guy and Lady in pallet town unless if you're trying to test following pokemon code.
-- The Mid battle evolutions work almost fine but there is a slight error for bulbasaur evolving to ivysaur:
-Going to fight button messes the graphics (it only fixes when you switch pokemon in battle, happens only for bulbasaur)
- 

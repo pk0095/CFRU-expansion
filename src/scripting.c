@@ -4,24 +4,18 @@
 #include "../include/fieldmap.h"
 #include "../include/field_message_box.h"
 #include "../include/field_weather.h"
-#include "../include/decompress.h"
 #include "../include/gpu_regs.h"
 #include "../include/item_icon.h"
 #include "../include/item_menu.h"
 #include "../include/list_menu.h"
-#include "../include/malloc.h"
 #include "../include/map_name_popup.h"
 #include "../include/menu.h"
 #include "../include/m4a.h"
 #include "../include/naming_screen.h"
-#include "../include/new_game.h"
-#include "../include/new_menu_helpers.h"
 #include "../include/overworld.h"
-#include "../include/palette.h"
 #include "../include/pokemon_summary_screen.h"
 #include "../include/pokemon_storage_system.h"
 #include "../include/region_map.h"
-#include "../include/save.h"
 #include "../include/script.h"
 #include "../include/script_menu.h"
 #include "../include/sound.h"
@@ -38,11 +32,8 @@
 #include "../include/constants/pokemon.h"
 #include "../include/constants/songs.h"
 
-#include "../include/gba/m4a_internal.h"
-
 #include "../include/new/battle_strings.h"
 #include "../include/new/build_pokemon.h"
-#include "../include/new/bw_summary_screen.h"
 #include "../include/new/catching.h"
 #include "../include/new/damage_calc.h"
 #include "../include/new/dns.h"
@@ -50,7 +41,6 @@
 #include "../include/new/item.h"
 #include "../include/new/learn_move.h"
 #include "../include/new_menu_helpers.h"
-#include "../include/new/mid_battle_evo.h"
 #include "../include/new/multi.h"
 #include "../include/new/overworld.h"
 #include "../include/new/pokemon_storage_system.h"
@@ -90,7 +80,6 @@ tables to edit:
 
 extern u8 AddPalRef(u8 Type, u16 PalTag);
 extern u8 BuildFrontierParty(struct Pokemon* party, u16 trainerNum, bool8 firstTrainer, bool8 ForPlayer, u8 side);
-void ClearMiniBox(void);
 
 extern const struct SwarmData gSwarmTable[];
 extern const species_t gSkyBattleBannedSpeciesList[];
@@ -2276,7 +2265,7 @@ extern const u8 gText_EnterNumber[];
 static const struct NamingScreenTemplate sChooseNumberNamingScreenTemplate =
 {
 	.copyExistingString = 0,
-	.maxChars = 5, //Max 9999 - should be preloaded
+	.maxChars = 4, //Max 9999 - should be preloaded
 	.iconFunction = 0,
 	.addGenderIcon = 0,
 	.initialPage = 1,
@@ -3129,36 +3118,6 @@ struct WindowTemplate template =
     .baseBlock = 0x100
 };
 
-#ifdef NEW_MINI_NAME_BOX
-extern const u8 gMiniBoxTiles[];
-extern const u16 gMiniBoxPal[];
-
-static const u8 sMiniBoxTextColors[] = {
-    TEXT_COLOR_TRANSPARENT,  // Fundo
-    TEXT_COLOR_DARK_GREY,        // Texto
-    TEXT_COLOR_LIGHT_GREY     // Sombra
-};
-
-void MiniBoxOpen(void)
-{
-	ClearMiniBox();
-    sSafariZoneStatsWindowId = AddWindow(&template);
-
-    if (sSafariZoneStatsWindowId == 0xFF)
-        return;
-
-    LoadPalette(gMiniBoxPal, BG_PLTT_ID(15), 16 * sizeof(u16));
-    BlitBitmapToWindow(sSafariZoneStatsWindowId, gMiniBoxTiles, 0, 0, 72, 16);
-
-    if (gLoadPointer == NULL)
-        return;
-
-    StringExpandPlaceholders(gStringVar4, gLoadPointer);
-	AddTextPrinterParameterized3(sSafariZoneStatsWindowId, FONT_NORMAL, 4, 2, sMiniBoxTextColors, TEXT_SPEED_FF, gStringVar4);
-    PutWindowTilemap(sSafariZoneStatsWindowId);
-    CopyWindowToVram(sSafariZoneStatsWindowId, 2);
-}
-#else
 void MiniBoxOpen(void)
 {
     sSafariZoneStatsWindowId = AddWindow(&template);
@@ -3176,7 +3135,7 @@ void MiniBoxOpen(void)
     AddTextPrinterParameterized(sSafariZoneStatsWindowId, 2, gStringVar4, 4, 3, 255, NULL);
     CopyWindowToVram(sSafariZoneStatsWindowId, 2);
 }
-#endif
+
 void ClearMiniBox(void)
 {
 	sSafariZoneStatsWindowId = AddWindow(&template);
@@ -3219,151 +3178,5 @@ void Nuzlock_PokemonEraser(void)
     {
         CompactPartySlots();
         CalculatePlayerPartyCount();
-    }
-}
-
-enum
-{
-    WIN_INTRO_TEXTBOX,
-    WIN_INTRO_BOYGIRL,
-    WIN_INTRO_YESNO,
-    WIN_INTRO_NAMES,
-    NUM_INTRO_WINDOWS,
-};
-
-struct OakSpeechResources
-{
-    void *oakSpeechBackgroundTiles;
-    void *trainerPicTilemap;
-    void *pikachuIntroTilemap;
-    void *unused1;
-    u16 hasPlayerBeenNamed;
-    u16 currentPage;
-    u16 windowIds[NUM_INTRO_WINDOWS];
-    u8 textColor[3];
-    u8 textSpeed;
-    u8 unused2[0x1800];
-    u8 bg2TilemapBuffer[0x400];
-    u8 bg1TilemapBuffer[0x800];
-};
-
-#define gMonFrontPicTable ((const struct CompressedSpriteSheet*) *((u32*) 0x8000128))
-#define tNidoranFSpriteId           data[4]
-
-void CreateOakIntroPokemonSprite(u8 taskId)
-{
-    u8 spriteId;
-
-    DecompressPicFromTable(&gMonFrontPicTable[OAK_INTRO_SPECIES], MonSpritesGfxManager_GetSpritePtr(0), OAK_INTRO_SPECIES);
-    LoadCompressedSpritePaletteUsingHeap(&gMonPaletteTable[OAK_INTRO_SPECIES]);
-    SetMultiuseSpriteTemplateToPokemon(OAK_INTRO_SPECIES, 0);
-    spriteId = CreateSprite(gMultiuseSpriteTemplate, 96, 96, 1);
-    gSprites[spriteId].callback = SpriteCallbackDummy;
-    gSprites[spriteId].oam.priority = 1;
-    gSprites[spriteId].invisible = TRUE;
-    gTasks[taskId].tNidoranFSpriteId = spriteId;
-}
-
-#define OakSpeechPrintMessage(str, speed) ({                                                                                                                 \
-    DrawDialogueFrame(WIN_INTRO_TEXTBOX, FALSE);                                                                                                             \
-    if (str != gStringVar4)                                                                                                                                  \
-    {                                                                                                                                                        \
-        StringExpandPlaceholders(gStringVar4, str);                                                                                                          \
-        AddTextPrinterParameterized2(WIN_INTRO_TEXTBOX, FONT_MALE, gStringVar4, speed, NULL, 2, TEXT_COLOR_WHITE, 3); \
-    }                                                                                                                                                        \
-    else                                                                                                                                                     \
-    {                                                                                                                                                        \
-        AddTextPrinterParameterized2(WIN_INTRO_TEXTBOX, FONT_MALE, str, speed, NULL, 2, TEXT_COLOR_WHITE, 3);         \
-    }                                                                                                                                                        \
-    CopyWindowToVram(WIN_INTRO_TEXTBOX, 3);                                                                                                       \
-})
-
-#define tTimer 	data[3]
-extern const u8 gOakSpeech_Text_IsInhabitedFarAndWide[];
-extern const struct OakSpeechResources *sOakSpeechResources;
-void Task_OakSpeech_IsInhabitedFarAndWide(u8 taskId)
-{
-    if (IsCryFinished())
-    {
-        if (gTasks[taskId].tTimer >= 96)
-            gTasks[taskId].func = Task_OakSpeech_IStudyPokemon;
-    }
-    if (gTasks[taskId].tTimer < 0x4000)
-    {
-        gTasks[taskId].tTimer++;
-        if (gTasks[taskId].tTimer == 32)
-        {
-            OakSpeechPrintMessage(gOakSpeech_Text_IsInhabitedFarAndWide, sOakSpeechResources->textSpeed);
-            PlayCry1(OAK_INTRO_SPECIES, 0);
-        }
-    }
-}
-
-#define tSceneNum              data[0]
-#define tState                 data[1]
-#define tHasCreatedBlankSprite data[5]
-#define tSlashSpriteId         data[6]
-#define SAVE_NORMAL 0
-#define SAVE_STATUS_EMPTY    0
-#define SAVE_STATUS_INVALID  2
-
-void SetTitleScreenScene_Cry(s16 *data)
-{
-    switch (tState)
-    {
-    case 0:
-        if (!gPaletteFade->active)
-        {
-            PlayCry1(CRY_SPECIES, 0);
-            DeactivateSlashSprite(tSlashSpriteId);
-            data[2] = 0;
-            tState++;
-        }
-        break;
-    case 1:
-        if (data[2] < 90)
-            data[2]++;
-        else if (!IsSlashSpriteDeactivated(tSlashSpriteId))
-        {
-            BeginNormalPaletteFade((PALETTES_ALL & ~(1 << 0x1C) & ~(1 << 0x1D) & ~(1 << 0x1E) & ~(1 << 0x1F)), 0, 0, 16, RGB_WHITE);
-            SignalEndTitleScreenPaletteSomethingTask();
-            FadeOutBGM(4);
-            tState++;
-        }
-        break;
-    case 2:
-        if (!gPaletteFade->active)
-        {
-            SeedRngAndSetTrainerId();
-            SetSaveBlocksPointers();
-            ResetMenuAndMonGlobals();
-            Save_ResetSaveCounters();
-            LoadGameSave(SAVE_NORMAL);
-            if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_INVALID)
-                Sav2_ClearSetDefault();
-            SetPokemonCryStereo(gSaveBlock2->optionsSound);
-            InitHeap(gHeap, HEAP_SIZE);
-            SetMainCallback2(CB2_InitMainMenu);
-            DestroyTask(FindTaskIdByFunc(Task_TitleScreenMain));
-        }
-        break;
-    }
-}
-
-// To change/set Pokemon's IVs manually
-void SetCustomMonIVs(void)
-{
-    u16 *ivs = &Var8006; // Till Var800B
-    u8 partyIndex = VarGet(Var8005);
-    struct Pokemon *mon = &gPlayerParty[partyIndex];
-
-    for (u8 i = 0; i < NUM_STATS; ++i)
-    {
-        u16 *currIv = &ivs[i];
-        u16 monIv = GetMonData(mon, MON_DATA_HP_IV + i, NULL);
-
-        // Only change if var is not 32
-		const u16 ivValue = (*currIv < 32) ? *currIv : monIv;
-		SetMonData(mon, MON_DATA_HP_IV + i, &ivValue);
     }
 }

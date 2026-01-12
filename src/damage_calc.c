@@ -1510,6 +1510,12 @@ static void ModulateDmgByType(u8 multiplier, const u16 move, const u8 moveType, 
 	if (move == MOVE_FREEZEDRY && defType == TYPE_WATER) //Always Super-Effective, even in Inverse Battles
 		multiplier = TYPE_MUL_SUPER_EFFECTIVE;
 
+	if (move == MOVE_OVERCHARGE && defType == TYPE_GROUND)
+		multiplier = TYPE_MUL_SUPER_EFFECTIVE;
+	
+	if (move == MOVE_ACIDRUST && defType == TYPE_STEEL)
+		multiplier = TYPE_MUL_SUPER_EFFECTIVE;
+
 	if (moveType == TYPE_FIRE && gNewBS->tarShotBits & gBitTable[bankDef]) //Fire always Super-Effective if covered in tar
 		multiplier = TYPE_MUL_SUPER_EFFECTIVE;
 
@@ -2693,6 +2699,13 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 				attack *= 2;
 			break;
 
+		case ABILITY_PUREAURA:
+        // 2x Special Attack (Special Huge Power)
+            if (!IsScaleMonsBattle()
+            || !IsSpeciesAffectedByScalemons(data->atkSpecies))
+            spAttack *= 2;
+            break;
+
 		case ABILITY_FLOWERGIFT:
 		//1.5x Boost
 			if (WEATHER_HAS_EFFECT && (gBattleWeather & WEATHER_SUN_ANY)
@@ -3326,7 +3339,7 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 
 		case ABILITY_IMMUNITY:
 		//0.5x Decrement
-			if (data->moveType == TYPE_GHOST && SpeciesHasPurifyingSalt(GetProperAbilityPopUpSpecies(bankDef)))
+			if (data->moveType == TYPE_GHOST && SpeciesHasPurifyingSalt(SPECIES(bankDef)))
 				damage /= 2;
 			break;
 

@@ -761,8 +761,6 @@ bool8 __attribute__((long_call)) PokemonItemUseNoEffect(struct Pokemon *mon, u16
 u8 __attribute__((long_call)) GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit);
 u16 __attribute__((long_call)) GetEvolutionTargetSpeciesOld(struct Pokemon *mon, u8 type, u16 evolutionItem);
 void __attribute__((long_call)) AdjustFriendship(struct Pokemon *mon, u8 event);
-void __attribute__((long_call)) Task_OakSpeech_IStudyPokemon(u8 taskId);
-u8 __attribute__((long_call)) *MonSpritesGfxManager_GetSpritePtr(u8 spriteNum);
 
 /*
 void ZeroMonData(struct Pokemon *mon);

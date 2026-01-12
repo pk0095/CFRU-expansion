@@ -3,7 +3,6 @@
 #include "../global.h"
 #include "../battle.h"
 #include "../../src/defines.h"
-#include "dynamax.h"
 
 /**
  * \file multi.h
@@ -25,6 +24,7 @@
  void SetControllerToPlayerPartner(void);
 
  #ifdef OPEN_WORLD_TRAINERS
+
 extern const u8 gOpenWorldLevelRanges[NUM_BADGE_OPTIONS][2];
 
 #endif

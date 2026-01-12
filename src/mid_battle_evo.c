@@ -36,7 +36,6 @@ static void CB2_SetUpReshowBattleScreenAfterEvolution(void);
 static void Task_EvolutionScene(u8 taskId);
 void CopyPlayerPartyMonToBattleData(u8 battlerId, u8 partyIndex, bool8 resetStats);
 static void EvolutionScene(struct Pokemon* mon, u16 postEvoSpecies, bool8 canStopEvo, u8 partyId);
-u16 TryGetFemaleGenderedSpecies(u16 species, u32 personality);
 
 struct EvoInfo
 {
@@ -204,9 +203,6 @@ static void EvolutionScene(struct Pokemon* mon, u16 postEvoSpecies, bool8 canSto
     currSpecies = GetMonData(mon, MON_DATA_SPECIES, NULL);
     trainerId = GetMonData(mon, MON_DATA_OT_ID, NULL);
     personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-
-    currSpecies = TryGetFemaleGenderedSpecies(currSpecies, personality);
-
     DecompressPicFromTable(&gMonFrontPicTable[currSpecies],
                              gMonSpritesGfxPtr->sprites[B_POSITION_OPPONENT_LEFT],
                              currSpecies);
@@ -220,8 +216,6 @@ static void EvolutionScene(struct Pokemon* mon, u16 postEvoSpecies, bool8 canSto
     gSprites[id].callback = SpriteCallbackDummy_2;
     gSprites[id].oam.paletteNum = 1;
     gSprites[id].invisible = TRUE;
-
-    postEvoSpecies = TryGetFemaleGenderedSpecies(postEvoSpecies, personality);
 
     // postEvo sprite
     DecompressPicFromTable(&gMonFrontPicTable[postEvoSpecies],
@@ -782,42 +776,4 @@ void CopyPlayerPartyMonToBattleData(u8 battlerId, u8 partyIndex, bool8 resetStat
     UpdateSentPokesToOpponentValue(battlerId);
     ClearTemporarySpeciesSpriteData(battlerId, FALSE);
 }
-
-u16 TryGetFemaleGenderedSpecies(u16 species, u32 personality)
-{
-	if (GetGenderFromSpeciesAndPersonality(species, personality) == MON_FEMALE)
-	{
-		switch (species) {
-			case SPECIES_HIPPOPOTAS:
-				species = SPECIES_HIPPOPOTAS_F;
-				break;
-			case SPECIES_HIPPOWDON:
-				species = SPECIES_HIPPOWDON_F;
-				break;
-			case SPECIES_UNFEZANT:
-				species = SPECIES_UNFEZANT_F;
-				break;
-			case SPECIES_FRILLISH:
-				species = SPECIES_FRILLISH_F;
-				break;
-			case SPECIES_JELLICENT:
-				species = SPECIES_JELLICENT_F;
-				break;
-			case SPECIES_PYROAR:
-				species = SPECIES_PYROAR_FEMALE;
-				break;
-		}
-	}
-	else if (species == SPECIES_XERNEAS && !gMain.inBattle)
-		species = SPECIES_XERNEAS_NATURAL;
-	
-	return species;
-}
-#else
-void CopyPlayerPartyMonToBattleData(unusedArg u8 battlerId, unusedArg u8 partyIndex, unusedArg bool8 resetStats)
-{}
-
-void Cb2_InitBattleTurn_False(void)
-{}
-
 #endif

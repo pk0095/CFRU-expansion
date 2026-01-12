@@ -1669,3 +1669,66 @@ User electrifies\nits body and drops\nonto the target.\nTake damage if fail.
 
 #org @DESC_PSYCHICNOISE
 Foe is prevented\nfrom recovering HP\nfor two turns.
+
+#org @DESC_MAELSTROM
+The foe is hit\nwith a fast, vicious\nwhirlpool. May cause\nconfusion.
+
+#org @DESC_AQUAFANG
+The user bites the\nfoe with aquatic\nfangs. May Flinch.
+
+#org @DESC_SKYDASH
+The user smashes into\nthe target at high\nspeed. This move\nalways goes first.
+
+#org @DESC_MOURNFULGAZE
+A scary stare that\nlowers the foe's\nSp. Atk stat. It\nalways goes first.
+
+#org @DESC_SAPPYSEED
+The user scatters\nseeds to attack,\ndraining the target's\nHP every turn.
+
+#org @DESC_ZIPPYZAP
+The user bursts with\nelectricity, going\nfirst and always\nresulting in a\ncritical hit.
+
+#org @DESC_FREEZYFROST
+The user attacks\nwith a large crystal\nthat removes all stat\nchanges on the field.
+
+#org @DESC_SPARKLYSWIRL
+The user attacks\nwith a whirlwind that\nheals status problems\non the user's party.
+
+#org @DESC_BOUNCYBUBBLE
+The user attacks\nwith water bubbles\nthat drains half the\ndamage it inflicted.
+
+#org @DESC_FLOATYFALL
+The user floats\nin the air, and then\ndives at a steep angle \nto attack the target.\nThis may also make \nthe target flinch.
+
+#org @DESC_BUZZYBUZZ
+The user shoots\na jolt of electricity\nto attack the target.\nThis also leaves the\ntarget with paralysis.
+
+#org @DESC_GLITZYGLOW
+The user attacks \nthe foe with psychic \nforce. A wall of light \nis put up that weakens \nopposing Special \nMoves.
+
+#org @DESC_SIZZLYSLIDE
+The user cloaks\nitself in fire and\ncharges at the target.\nThis also leaves the\ntarget with a burn.
+
+#org @DESC_BADDYBAD
+The user acts bad \nand attacks the \ntarget. A wall of light \nis put up that weakens \nopposing Physical \nMoves.
+
+#org @DESC_SPLISHYSPLASH
+The user charges\na wave with electricity\nand hits the target\nwith the wave. This\nmay also leave the\ntarget with paralysis.
+
+#org @DESC_SHADOWSTORM
+A shadowy aura\nis used to whip\nup a vicious tornado.
+
+#org @DESC_OVERCHARGE
+Causes an electrical\ndischarge. It is\nalso super effective \non ground type.
+
+#org @DESC_ACIDRUST
+A powerful acid\nsubstance. It is\nalso super effective \non steel type.
+
+#org @DESC_SOULBURN
+A cursed flame that\nburns the foe's soul.\nDeals extra damage to\nstatused targets.
+
+#org @DESC_STATICWING
+The user slams the\nfoe. It may leave\nthe foe paralyzed.
+
+#org @DESC_PHANTOMVOID
+Inflicts damage and\nhas a 10[5B] chance of\nput target to sleep.

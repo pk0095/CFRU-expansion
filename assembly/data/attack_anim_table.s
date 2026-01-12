@@ -1038,6 +1038,28 @@ gMoveAnimations:
 .word ANIM_TEMPERFLARE
 .word ANIM_SUPERCELLSLAM
 .word ANIM_PSYCHICNOISE
+@;Custom Moves
+.word ANIM_MAELSTROM
+.word ANIM_AQUAFANG
+.word ANIM_SKYDASH
+.word ANIM_MOURNFULGAZE
+.word ANIM_SAPPYSEED
+.word ANIM_ZIPPYZAP
+.word ANIM_FREEZYFROST
+.word ANIM_SPARKLINGSWIRL
+.word ANIM_BOUNCYBUBBLE
+.word ANIM_FLOATYFALL
+.word ANIM_BUZZYBUZZ
+.word ANIM_GLITZYGLOW
+.word ANIM_SIZZLYSLIDE
+.word ANIM_BADDYBAD
+.word ANIM_SPLISHYSPLASH
+.word ANIM_SHADOWSTORM
+.word ANIM_OVERCHARGE
+.word ANIM_ACIDRUST
+.word ANIM_SOULBURN
+.word ANIM_STATICWING
+.word ANIM_PHANTOMVOID
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
@@ -30030,9 +30052,9 @@ ANIM_SPINOUT:
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
+@Credits to 
 ANIM_TERABLAST:
 	goto ANIM_AURASPHERE
-	endanimation
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
@@ -31064,6 +31086,132 @@ PSYCHIC_NOISE_WAVE:
 	launchtemplate 0x83E3CD0 TEMPLATE_TARGET | 2, 0x6 0x10 0x0 0x0 0x0 0x1e 0x0
 	pause 0x2
 	return
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_MAELSTROM:
+    goto 0x81CFB3A
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_AQUAFANG:
+    goto ANIM_FISHIOUS_REND
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_SKYDASH:
+    goto 0x81CCC39
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_MOURNFULGAZE:
+    goto 0x81D1BA0
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_SAPPYSEED:
+    goto ANIM_FRENZYPLANT
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_ZIPPYZAP:
+    goto 0x81CCD79
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_FREEZYFROST:
+    goto ANIM_FROSTBREATH
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_SPARKLINGSWIRL:
+    goto ANIM_FLEURCANNON
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_BOUNCYBUBBLE:
+    goto 0x81C9D13
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_FLOATYFALL:
+    goto ANIM_ACROBATICS
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_BUZZYBUZZ:
+    goto ANIM_DISCHARGE
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_GLITZYGLOW:
+    goto ANIM_LUMINACRASH
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_SIZZLYSLIDE:
+    goto ANIM_FLAREBLITZ
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_BADDYBAD:
+    goto ANIM_PUNISHMENT
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_SPLISHYSPLASH:
+    goto 0x81CFA01
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_SHADOWSTORM:
+    goto ANIM_HURRICANE
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_OVERCHARGE:
+    goto ANIM_RISING_VOLTAGE
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_ACIDRUST:
+    goto 0x81CF308
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_SOULBURN:
+    goto ANIM_INFERNAL_PARADE
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_STATICWING:
+    goto ANIM_WINGATTACK
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_PHANTOMVOID:
+    goto ANIM_DARKVOID
+    endanimation
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool

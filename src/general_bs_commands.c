@@ -36,7 +36,6 @@
 #include "../include/new/stat_buffs.h"
 #include "../include/new/switching.h"
 #include "../include/new/set_z_effect.h"
-#include "../include/new/trainer_sliding.h"
 #include "../include/new/util.h"
 #include "../include/new/terastallization.h"
 
@@ -870,22 +869,8 @@ void atk0C_datahpupdate(void)
 			}
 
 			gHitMarker &= ~(HITMARKER_NON_ATTACK_DMG);
-            EmitSetMonData(0, REQUEST_HP_BATTLE, 0, 2, &gBattleMons[gActiveBattler].hp);
-            MarkBufferBankForExecution(gActiveBattler);
-
-            if (SIDE(gActiveBattler) == B_SIDE_OPPONENT && gBattleMoveDamage > 0)
-            {
-                u8 pos = GetBattlerPosition(gActiveBattler);
-                u16 trainerId = (IsTwoOpponentBattle() && pos == B_POSITION_OPPONENT_RIGHT)
-                                        ? gTrainerBattleOpponent_B : gTrainerBattleOpponent_A;
-
-                if (ShouldDoTrainerSlide(gActiveBattler, trainerId, TRAINER_SLIDE_FIRST_HURT))
-                {
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_TrainerSlideMsgRet;
-                    return;
-                }
-            }
+			EmitSetMonData(0, REQUEST_HP_BATTLE, 0, 2, &gBattleMons[gActiveBattler].hp);
+			MarkBufferBankForExecution(gActiveBattler);
 		}
 	}
 	else
@@ -4117,7 +4102,6 @@ void atkB0_trysetspikes(void)
 	u8 stringcase = 0xFF;
 
 	switch (gCurrentMove) {
-		case MOVE_STONEAXE:
 		case MOVE_STEALTHROCK:
 		case MOVE_G_MAX_STONESURGE_P:
 		case MOVE_G_MAX_STONESURGE_S:
@@ -4569,6 +4553,7 @@ void atkBE_rapidspinfree(void)
 			gBattleMons[bankAtk].status2 &= ~(STATUS2_WRAPPED);
 			gNewBS->brokeFreeMessage &= ~(gBitTable[bankAtk]);
 			gNewBS->sandblastCentiferno[bankAtk] = 0;
+			gNewBS->SaltcureTimers[bankAtk] = 0;
 			gBankTarget = gBattleStruct->wrappedBy[bankAtk];
 
 			PREPARE_MOVE_BUFFER(gBattleTextBuff1, gBattleStruct->wrappedMove[bankAtk]);

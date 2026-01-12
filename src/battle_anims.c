@@ -6597,14 +6597,6 @@ u16 GetBattlerYDeltaFromSpriteId(u8 spriteId)
 	return MAX_SPRITES;
 }
 
-static u32 GetMonPicSpriteSize(u16 species, bool8 isBackPic)
-{
-    u8 coords = isBackPic ? gMonBackPicCoords[species].coords : gMonFrontPicCoords[species].coords;
-    u32 width = (coords >> 4) + 1;
-    u32 height = (coords & 0xF) + 1;
-
-    return width * height * TILE_SIZE_4BPP;
-}
 
 //Transform Effect//
 void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
@@ -6627,13 +6619,14 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 		otId = GetMonData(monAtk, MON_DATA_OT_ID, NULL);
 
 		HandleLoadSpecialPokePic_DontHandleDeoxys(&gMonFrontPicTable[targetSpecies], gMonSpritesGfxPtr->sprites[position], targetSpecies, personality);
-        src = gMonSpritesGfxPtr->sprites[position];
-        dst = (void *)(VRAM + 0x10000 + gSprites[gBattlerSpriteIds[bankAtk]].oam.tileNum * 32);
-        DmaCopy32(3, src, dst, GetMonPicSpriteSize(targetSpecies, FALSE));
+		src = gMonSpritesGfxPtr->sprites[position];
+		dst = (void *)(VRAM + 0x10000 + gSprites[gBattlerSpriteIds[bankAtk]].oam.tileNum * 32);
+		DmaCopy32(3, src, dst, 0x800);
 		paletteOffset = 0x100 + bankAtk * 16;
 		lzPaletteData = GetMonSpritePalFromSpeciesAndPersonality(targetSpecies, otId, personality);
 		LZDecompressWram(lzPaletteData, gDecompressionBuffer);
 		LoadPalette(gDecompressionBuffer, paletteOffset, 32);
+		FadeBankPaletteForTera(bankAtk, paletteOffset);
 		TryFadeBankPaletteForDynamax(bankAtk, paletteOffset);
 		gSprites[gBattlerSpriteIds[bankAtk]].pos1.y = GetBattlerSpriteDefault_Y(bankAtk);
 		StartSpriteAnim(&gSprites[gBattlerSpriteIds[bankAtk]], gBattleMonForms[bankAtk]);
@@ -6660,9 +6653,9 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 			spriteSheet = &gMonFrontPicTable[targetSpecies];
 
 		HandleLoadSpecialPokePic_DontHandleDeoxys(spriteSheet, gMonSpritesGfxPtr->sprites[position], targetSpecies, personality);
-        src = gMonSpritesGfxPtr->sprites[position];
-        dst = (void *)(VRAM + 0x10000 + gSprites[gBattlerSpriteIds[bankAtk]].oam.tileNum * 32);
-        DmaCopy32(3, src, dst, GetMonPicSpriteSize(targetSpecies, SIDE(bankAtk) == B_SIDE_PLAYER));
+		src = gMonSpritesGfxPtr->sprites[position];
+		dst = (void *)(VRAM + 0x10000 + gSprites[gBattlerSpriteIds[bankAtk]].oam.tileNum * 32);
+		DmaCopy32(3, src, dst, 0x800);
 		paletteOffset = 0x100 + bankAtk * 16;
 
 		if (targetSpecies == SPECIES_CASTFORM)
@@ -6675,7 +6668,7 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 			LZDecompressWram(lzPaletteData, gDecompressionBuffer);
 			LoadPalette(gDecompressionBuffer, paletteOffset, 32);
 		}
-
+		FadeBankPaletteForTera(bankAtk, paletteOffset);
 		TryFadeBankPaletteForDynamax(bankAtk, paletteOffset);
 		gSprites[gBattlerSpriteIds[bankAtk]].pos1.y = GetBattlerSpriteDefault_Y(bankAtk);
 		StartSpriteAnim(&gSprites[gBattlerSpriteIds[bankAtk]], gBattleMonForms[bankAtk]);
@@ -6686,6 +6679,7 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 		paletteOffset = 0x100 + bankAtk * 16;
 		LoadPalette(gBattleStruct->castformPalette[gBattleSpritesDataPtr->animationData->animArg], paletteOffset, 32);
 		gBattleMonForms[bankAtk] = gBattleSpritesDataPtr->animationData->animArg;
+		FadeBankPaletteForTera(bankAtk, paletteOffset);
 		TryFadeBankPaletteForDynamax(bankAtk, paletteOffset);
 		gSprites[gBattlerSpriteIds[bankAtk]].pos1.y = GetBattlerSpriteDefault_Y(bankAtk);
 	}
@@ -6699,10 +6693,10 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 		position = GetBattlerPosition(bankAtk);
 		monDef = GetBankPartyData(bankDef);
 		targetSpecies = GetMonData(monDef, MON_DATA_SPECIES, NULL);
-
+		
 		if (IsGigantamaxSpecies(targetSpecies))
 			targetSpecies = GetGigantamaxBaseForm(targetSpecies);
-
+		
 		targetSpecies = TryFixDynamaxTransformSpecies(bankAtk, targetSpecies);
 		otId = GetMonData(GetBankPartyData(bankAtk)/*monDef*/, MON_DATA_OT_ID, NULL); //Must use monAtk, otherwise will be shiny now, and not on screen reload
 
@@ -6712,9 +6706,9 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 			spriteSheet = &gMonFrontPicTable[targetSpecies];
 
 		HandleLoadSpecialPokePic_DontHandleDeoxys(spriteSheet, gMonSpritesGfxPtr->sprites[position], targetSpecies, gTransformedPersonalities[bankAtk]);
-        src = gMonSpritesGfxPtr->sprites[position];
-        dst = (void *)(VRAM + 0x10000 + gSprites[gBattlerSpriteIds[bankAtk]].oam.tileNum * 32);
-        DmaCopy32(3, src, dst, GetMonPicSpriteSize(targetSpecies, SIDE(bankAtk) == B_SIDE_PLAYER));
+		src = gMonSpritesGfxPtr->sprites[position];
+		dst = (void *)(VRAM + 0x10000 + gSprites[gBattlerSpriteIds[bankAtk]].oam.tileNum * 32);
+		DmaCopy32(3, src, dst, 0x800);
 		paletteOffset = 0x100 + bankAtk * 16;
 		lzPaletteData = GetMonSpritePalFromSpeciesAndPersonality(targetSpecies, otId, gTransformedPersonalities[bankAtk]);
 		LZDecompressWram(lzPaletteData, gDecompressionBuffer);
@@ -6725,7 +6719,7 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 			LZDecompressWram(lzPaletteData, gBattleStruct->castformPalette[0]);
 			LoadPalette(gBattleStruct->castformPalette[0] + gBattleMonForms[bankDef] * 16, paletteOffset, 32);
 		}
-
+		FadeBankPaletteForTera(bankAtk, paletteOffset);
 		TryFadeBankPaletteForDynamax(bankAtk, paletteOffset);
 		gBattleSpritesDataPtr->bankData[bankAtk].transformSpecies = targetSpecies;
 		gBattleMonForms[bankAtk] = gBattleMonForms[bankDef];
@@ -6733,6 +6727,7 @@ void HandleSpeciesGfxDataChange(u8 bankAtk, u8 bankDef, u8 transformType)
 		StartSpriteAnim(&gSprites[gBattlerSpriteIds[bankAtk]], gBattleMonForms[bankAtk]);
 	}
 }
+
 
 //Move Animations & Special Animations//
 void DoMoveAnim(u16 move)

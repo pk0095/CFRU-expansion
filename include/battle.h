@@ -12,7 +12,6 @@
 #include "battle_ai_switch_items.h"
 #include "battle_gfx_sfx_util.h"
 #include "link.h"
-#include "../src/config.h"
 
 /*
     Banks are a name given to what could be called a 'battlerId' or 'monControllerId'.
@@ -277,21 +276,17 @@ struct TrainerMonItemCustomMoves
     u16 iv;
     u16 lvl;
     u16 species;
-		u8 	ability; //0 = Hidden, 1 = Ability_1, 2 = Ability_2, 3 = Random Ability 1 & 2, 4 = Random Any Ability
-		u8 	nature;
-		u8 	ivSpread[6];
-		u8 	evSpread[6];
     u16 heldItem;
     u16 moves[4];
-	u16 teraType;
+	u8 teraType;
 };
 
 union TrainerMonPtr
 {
-    const struct TrainerMonNoItemDefaultMoves* NoItemDefaultMoves;
-    const struct TrainerMonNoItemCustomMoves* NoItemCustomMoves;
-    const struct TrainerMonItemDefaultMoves* ItemDefaultMoves;
-    const struct TrainerMonItemCustomMoves* ItemCustomMoves;
+    struct TrainerMonNoItemDefaultMoves* NoItemDefaultMoves;
+    struct TrainerMonNoItemCustomMoves* NoItemCustomMoves;
+    struct TrainerMonItemDefaultMoves* ItemDefaultMoves;
+    struct TrainerMonItemCustomMoves* ItemCustomMoves;
 };
 
 struct Trainer
@@ -312,11 +307,10 @@ struct Trainer
 #define PARTY_FLAG_CUSTOM_MOVES     0x1
 #define PARTY_FLAG_HAS_ITEM         0x2
 
-#ifdef EXPAND_TRAINERS
-extern const struct TrainerMoney gTrainerMoneyTable[];
-#endif
-
-#define TRAINER_ENCOUNTER_MUSIC(trainer)((gTrainers[trainer].encounterMusic))
+/*
+extern const struct Trainer gTrainers[];
+*/
+#define TRAINER_ENCOUNTER_MUSIC(trainer)((gTrainers[trainer].encounterMusic_gender & 0x7F))
 
 struct UnknownFlags
 {
@@ -813,6 +807,7 @@ struct NewBattleStruct
 	u16 tookAbilityFrom[MAX_BATTLERS_COUNT]; //Helps display the correct Ability when one has been passed around
 	u8 GlaiveRushTimers[MAX_BATTLERS_COUNT];
 	u8 rageFistCounter[MAX_BATTLERS_COUNT];
+	u8 SaltcureTimers[MAX_BATTLERS_COUNT];
 	u8 CudChewCounter[MAX_BATTLERS_COUNT];
 	u8 ElectroCounter[MAX_BATTLERS_COUNT];
 	u8 quarkDriveActivated[MAX_BATTLERS_COUNT];
@@ -904,7 +899,6 @@ struct NewBattleStruct
 	bool8 criticalCapture : 1;
 	bool8 criticalCaptureSuccess : 1;
 	bool8 trainerSlideLowHpMsgDone : 1;
-	bool8 trainerSlideFirstHurtMsgDone : 1;
 	bool8 TeleportBit : 1;
 	bool8 restartEndTurnSwitching : 1;
 	bool8 skipCertainSwitchInAbilities : 1;
@@ -1601,7 +1595,6 @@ extern u8 gUnusedFirstBattleVar2;
 extern u16 gSideStatuses[2];
 extern struct SideTimer gSideTimers[2];
 extern u32 gStatuses3[MAX_BATTLERS_COUNT];
-extern u32 gStatuses4[MAX_BATTLERS_COUNT];
 extern struct DisableStruct gDisableStructs[MAX_BATTLERS_COUNT];
 extern u16 gPauseCounterBattle;
 extern u16 gPaydayMoney;

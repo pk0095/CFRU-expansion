@@ -26,8 +26,8 @@
 #include "../include/new/move_tables.h"
 #include "../include/new/set_z_effect.h"
 #include "../include/new/stat_buffs.h"
-#include "../include/new/terastallization.h"
 #include "../include/new/util.h"
+#include "../include/new/terastallization.h"
 
 /*
 dynamax.c
@@ -509,35 +509,21 @@ static item_t FindBankDynamaxBand(u8 bank)
 
 bool8 DynamaxEnabled(u8 bank)
 {
-        if (gBattleTypeFlags & BATTLE_TYPE_DYNAMAX)
-        {
-                if (GetBattlerSide(bank) == B_SIDE_PLAYER)
-                {
-                        if (CanMegaEvolve(bank, FALSE) || CanMegaEvolve(bank, TRUE) || HasMegaSymbol(bank))
-                                return FALSE;
-
-                        if (IsZCrystal(ITEM(bank)))
-                                return FALSE;
-                }
-
-                if (IsTerastallized(bank)
-                || gNewBS->teraData.chosen[bank]
-                || gNewBS->teraData.done[SIDE(bank)][gBattlerPartyIndexes[bank]])
-                        return FALSE;
-
-                if (FindBankDynamaxBand(bank) == ITEM_NONE)
-                {
-                        #ifdef DEBUG_DYNAMAX
-                                return TRUE;
-                        #else
-                                return FALSE;
+	if (gBattleTypeFlags & BATTLE_TYPE_DYNAMAX)
+	{
+		if (FindBankDynamaxBand(bank) == ITEM_NONE)
+		{
+			#ifdef DEBUG_DYNAMAX
+				return TRUE;
+			#else
+				return FALSE;
 			#endif
 		}
 
-                return TRUE;
-        }
+		return TRUE;
+	}
 
-        return FALSE;
+	return FALSE;
 }
 
 bool8 HasBankDynamaxedAlready(u8 bank)
@@ -810,25 +796,18 @@ bool8 IsGMaxMove(u16 move)
 
 void TryFadeBankPaletteForDynamax(u8 bank, u16 paletteOffset)
 {
-	// Add Tera check here
-    if (IsTerastallized(bank))
-    {
-        FadeBankPaletteForTera(bank, paletteOffset);
-        return;
-    }
-
-    if (IsDynamaxed(bank)
-    || (IsRaidBattle() && bank == BANK_RAID_BOSS && !IsBannedDynamaxBaseSpecies(SPECIES(BANK_RAID_BOSS)))) //So it stays lit up when you try to catch it
-    {
-        #ifdef NATIONAL_DEX_CALYREX
-        if (SpeciesToNationalPokedexNum(SPECIES(bank)) == NATIONAL_DEX_CALYREX)
-            BlendPalette(paletteOffset, 16, 4, RGB(0, 5, 31)); //Dynamax Blue
-        else
-        #endif
-		     BlendPalette(paletteOffset, 16, 4, RGB(31, 0, 12)); //Dynamax Pinkish-Red
+	if (IsDynamaxed(bank)
+	|| (IsRaidBattle() && bank == BANK_RAID_BOSS && !IsBannedDynamaxBaseSpecies(SPECIES(BANK_RAID_BOSS)))) //So it stays lit up when you try to catch it
+	{
+		#ifdef NATIONAL_DEX_CALYREX
+		if (SpeciesToNationalPokedexNum(SPECIES(bank)) == NATIONAL_DEX_CALYREX)
+			BlendPalette(paletteOffset, 16, 4, RGB(0, 5, 31)); //Dynamax Blue
+		else
+		#endif
+			BlendPalette(paletteOffset, 16, 4, RGB(31, 0, 12)); //Dynamax Pinkish-Red
 
 		CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
-    }
+	}
 }
 
 extern const struct UCoords8 sBattlerCoords[][4];

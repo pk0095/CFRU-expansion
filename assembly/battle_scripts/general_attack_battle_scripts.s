@@ -568,11 +568,24 @@ BS_024_LowerTargetEvsn1:
 
 .global BS_025_Haze
 BS_025_Haze:
+    jumpifmove MOVE_FREEZYFROST FreezyFrostBS
 	attackcanceler
 	attackstring
 	ppreduce
 	attackanimation
 	waitanimation
+	normalisebuffs
+	printstring 0xF9
+	waitmessage DELAY_1SECOND
+	goto BS_MOVE_END
+
+FreezyFrostBS:
+	tryactivateprotean
+	attackcanceler
+	accuracycheck BS_MOVE_MISSED 0x0 
+	call STANDARD_DAMAGE
+	prefaintmoveendeffects 0x0
+	faintpokemonaftermove
 	normalisebuffs
 	printstring 0xF9
 	waitmessage DELAY_1SECOND
@@ -970,11 +983,24 @@ BS_034_PayDay:
 
 .global BS_035_LightScreen
 BS_035_LightScreen:
+    jumpifmove MOVE_GLITZYGLOW GlitzyGlowBS
 	attackcanceler
 	attackstring
 	ppreduce
 	setlightscreen
 	goto ReflectBS
+
+GlitzyGlowBS:
+	tryactivateprotean
+	attackcanceler
+	accuracycheck BS_MOVE_MISSED 0x0 
+	call STANDARD_DAMAGE
+	prefaintmoveendeffects 0x0
+	faintpokemonaftermove
+	setlightscreen
+	printfromtable gReflectLightScreenStringIds
+	waitmessage DELAY_1SECOND
+	goto BS_MOVE_END
 	
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -1068,37 +1094,8 @@ BS_041_DragonRage:
 
 .global BS_042_TrapAndDamage
 BS_042_TrapAndDamage:
-	jumpifmove MOVE_SALTCURE SaltCureBS
 	setmoveeffect MOVE_EFFECT_WRAP
 	goto BS_STANDARD_HIT
-
-SaltCureBS:
-    call STANDARD_DAMAGE
-	faintpokemon BANK_TARGET FALSE NULL
-	jumpiffaintedmon BANK_TARGET, TRUE, BS_EffectSaltCure_End
-	applysaltcure BANK_TARGET
-	setword BATTLE_STRING_LOADER sText_TargetIsBeingSaltCured
-	printstring 0x184
-	waitmessage DELAY_1SECOND
-BS_EffectSaltCure_End:
-	goto BS_MOVE_END
-
-.global BattleScript_SaltCureExtraDamage
-BattleScript_SaltCureExtraDamage:
-	playanimation BANK_TARGET, B_ANIM_SALT_CURE_DAMAGE, NULL
-	waitanimation
-	call BattleScript_HurtTarget_NoString
-	setword BATTLE_STRING_LOADER sText_TargetIsHurtBySaltCure
-	printstring 0x184
-	waitmessage DELAY_1SECOND
-	end2
-
-BattleScript_HurtTarget_NoString:
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_NON_ATTACK_DMG
-	healthbarupdate BANK_TARGET
-	datahpupdate BANK_TARGET
-	faintpokemon BANK_TARGET FALSE NULL
-	return
 	
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -1438,6 +1435,7 @@ BS_064_LowerTargetEvsn2:
 
 .global BS_065_Reflect
 BS_065_Reflect:
+    jumpifmove MOVE_BADDYBAD BaddyBadBS
 	attackcanceler
 	jumpifmove MOVE_AURORAVEIL AuroraVeilBS
 	attackstring
@@ -1447,6 +1445,18 @@ BS_065_Reflect:
 ReflectBS:
 	attackanimation
 	waitanimation
+	printfromtable gReflectLightScreenStringIds
+	waitmessage DELAY_1SECOND
+	goto BS_MOVE_END
+
+BaddyBadBS:
+	tryactivateprotean
+	attackcanceler
+	accuracycheck BS_MOVE_MISSED 0x0 
+	call STANDARD_DAMAGE
+	prefaintmoveendeffects 0x0
+	faintpokemonaftermove
+	setreflect
 	printfromtable gReflectLightScreenStringIds
 	waitmessage DELAY_1SECOND
 	goto BS_MOVE_END
@@ -2167,6 +2177,8 @@ BS_101_FalseSwipe:
 .global BattleScript_SapSipperAromatherapy
 .global BS_102_HealBell
 BS_102_HealBell:
+    jumpifmove MOVE_SPARKLYSWIRL SparklySwirlBS
+	jumpifmove MOVE_SPARKLINGARIA SparklySwirlBS
 	attackcanceler
 	attackstring
 	ppreduce
@@ -2212,6 +2224,18 @@ BattleScript_SapSipperAromatherapy:
 	call BattleScript_AbilityPopUpRevert
 SapSipperReturnBS:
 	return
+
+SparklySwirlBS: 
+	tryactivateprotean
+	attackcanceler
+	accuracycheck BS_MOVE_MISSED 0x0 
+	call STANDARD_DAMAGE
+	prefaintmoveendeffects 0x0
+	faintpokemonaftermove
+	healpartystatus
+	printfromtable 0x83FE5E4
+	waitmessage DELAY_1SECOND
+	goto BattleScript_PartyHealEnd
 
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -3376,38 +3400,8 @@ BS_149_Gust:
 
 .global BS_150_Splinters @;Was Stomp
 BS_150_Splinters:
-	jumpifmove MOVE_STONEAXE StoneAxe_BS
-	jumpifmove MOVE_CEASELESSEDGE Ceaceless_BS
 	setmoveeffect MOVE_EFFECT_SPLINTERS
 	goto BS_STANDARD_HIT
-
-StoneAxe_BS:
-	attackcanceler
-	call STANDARD_DAMAGE
-	playanimation BANK_TARGET ANIM_STEALTHROCK2 0x0
-	waitanimation
-	setspikes StoneAxeFailed
-	printstring 0x184
-	waitmessage DELAY_1SECOND
-	prefaintmoveendeffects 0x0
-	faintpokemonaftermove
-	goto BS_MOVE_END
-
-StoneAxeFailed:
-	setword BATTLE_STRING_LOADER ButFailedString
-	printstring 0x184
-	waitmessage DELAY_1SECOND
-	goto BS_MOVE_FAINT
-
-Ceaceless_BS:
-	attackcanceler
-	call STANDARD_DAMAGE
-	playanimation BANK_TARGET ANIM_SPIKES2 0x0
-	waitanimation
-	setspikes StoneAxeFailed
-	printstring 0x184
-	waitmessage DELAY_1SECOND
-	goto BS_MOVE_FAINT
 
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -5587,9 +5581,27 @@ BS_213_StatSwapSplitters:
 
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-.global BS_214_Blank
-BS_214_Blank:
-	goto BS_STANDARD_HIT
+.global BS_214_SappySeed
+BS_214_SappySeed:
+	tryactivateprotean
+	jumpifsecondarystatus BANK_TARGET STATUS2_SUBSTITUTE BS_STANDARD_HIT
+	jumpiftype BANK_TARGET TYPE_GRASS BS_STANDARD_HIT
+	attackcanceler
+	accuracycheck BS_MOVE_MISSED 0x0 
+	call STANDARD_DAMAGE
+	jumpiffainted BANK_TARGET BS_MOVE_FAINT
+	jumpifmovehadnoeffect BS_MOVE_FAINT
+	attackcanceler
+	jumpifbehindsubstitute BANK_TARGET FAILED_PRE
+	attackstring
+	ppreduce
+	accuracycheck SetLeechSeedBSSappy 0x0
+	
+SetLeechSeedBSSappy:
+	setleechseed
+	printfromtable 0x83FE558
+	waitmessage DELAY_1SECOND
+	goto BS_MOVE_END
 
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -5690,6 +5702,7 @@ BS_223_RelicSong:
 	jumpifability BANK_ATTACKER ABILITY_SHEERFORCE BS_MOVE_END
 	jumpifnoviablemonsleft BANK_TARGET BS_MOVE_END
 	jumpifmove MOVE_WICKEDTORQUE BS_MOVE_END
+	jumpifmove MOVE_PHANTOMVOID BS_MOVE_END
 	jumpifspecies BANK_ATTACKER SPECIES_MELOETTA TransformToPirouetteBS
 	jumpifspecies BANK_ATTACKER SPECIES_MELOETTA_PIROUETTE TransformToAriaBS
 	goto BS_MOVE_END

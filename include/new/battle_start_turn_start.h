@@ -1,6 +1,3 @@
-#include "../../src/Tables/trainer_defines.h"
-#include "../constants/opponents.h"
-
 #pragma once
 
 /**
@@ -44,14 +41,3 @@ enum TotemBoostType
 	TOTEM_MULTI_BOOST,
 	TOTEM_OMNIBOOST,
 };
-
-// Give any ability to any mon
-#define CUSTOM_ABILITYTABLE_TERMIN {SPECIES_NONE, ABILITY_NONE}
-
-struct TrainerCustomAbility
-{
-    u16 species;
-    u8  ability;
-};
-
-extern const struct TrainerCustomAbility gCustomTrainerAbilityTable[TRAINERS_COUNT][PARTY_SIZE];

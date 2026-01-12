@@ -311,21 +311,3 @@ Exp. Share turned on.
 
 #org @gText_Exp_Share_Off
 Exp. Share turned off.
-
-#org @gText_PortablePCPrompt
-What do you want to do?
-
-#org @gText_OpenPCBox
-Access Pokémon Box
-
-#org @gText_HealPokemon
-Heal your Pokémon
-
-#org @gText_HealedPCParty
-Your Pokémon's health has been\nfully restored.
-
-#org @gText_PCUnavailable
-You can't access the Portable PC\nright now.
-
-#org @gText_WelcomeToHOF
-Welcome to the HALL OF FAME!\n Game Mode:

@@ -1722,8 +1722,6 @@ void RestoreFollowerAfterBattle(void)
 		FlagClear(FLAG_FOLLOWER_WAS_SURFING);
 		CreateFollowerMonObject();
 		ShowFollower();
-		gEventObjects[gFollowerState.objId].localId = 30;
 		gFollowerState.inProgress = TRUE;
-		gEventObjects[gFollowerState.objId].active = TRUE;
 	}
 }

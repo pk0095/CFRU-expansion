@@ -14,6 +14,12 @@
 //#define DEBUG_AI_CHOICES //Removes the frame-based randomness of the AI's decisions
 //#define DEBUG_TERASTAL //Terastallization can be used in any battle without a Tera Orb
 
+/*===== EV-IV Screen =====*/
+#define FLAG_STAT_EDITOR_UNLOCKED 0x1203
+
+/*===== Custom code for Pokemon Amethyst =====*/
+//#define NEW_BATTLE_BACKGROUNDS //When set, battle backgrounds and intro animations will be dynamically replaced by those defined in src/Tables/battle_background_tables.c 
+
 /*===== General Vars =====*/
 #define VAR_TERRAIN 0x5000 //Set to a terrain type for a battle to begin with the given terrain
 #define VAR_TOTEM 0x5001 //to var + 3 (0x5004)
@@ -121,8 +127,8 @@ enum //These vars need to be one after the other (hence the enum)
 #define EXPANDED_MOVE_TUTORS //Comment this out if you want to keep 16 move tutors and the ultimate elemental moves being exclusive to Kantonian starters
 #define NUM_TMS 120	//keep this defined even if EXPANDED_TMSHMS is not!!
 #define NUM_HMS 8	//keep this defined even if EXPANDED_TMSHMS is not!!
-#define NUM_MOVE_TUTORS 152 //keep this defined even if EXPANDED_MOVE_TUTORS is not!! If using DPE, set to 128.
-#define LAST_TOTAL_TUTOR_NUM 161 //Should be equal to (NUM_MOVE_TUTORS - 1) + 9. Must be set to an actual integer or the compilation will not work.
+#define NUM_MOVE_TUTORS 171 //keep this defined even if EXPANDED_MOVE_TUTORS is not!! If using DPE, set to 128.
+#define LAST_TOTAL_TUTOR_NUM 180 //Should be equal to (NUM_MOVE_TUTORS - 1) + 9. Must be set to an actual integer or the compilation will not work.
 //#define TMS_BEFORE_HMS  //Uncomment this if you want the HMs to appear after the TMs in your bag
 #define DELETABLE_HMS //Uncomment this if you want HMs to be deletable without the Move Deleter
 #define REUSABLE_TMS	//if defined, don't forget to give all TMs a Mystery byte of 1!
@@ -159,7 +165,6 @@ enum //These vars need to be one after the other (hence the enum)
 #define MB_ROCK_CLIMB_WALL 0xA5 //The tile behaviour byte that can be climbed up using Rock Climb
 #define MB_HEADBUTT_TREE 0xA6 //The tile behaviour byte for starting a wild encounter by headbutting a tree
 //#define MB_UNDERGROUND_MINING 0xA7 //the tile behaviour byte for underground mining (CAUTION: Needs you to define your maps in include/constants/maps.h)
-#define MB_LAVA 0xA8 //The Tile behaviour for Lava Surf. (Surfing on Lava using fire type mons)
 
 #define MAP_PLAYER_HOME ((4 << 8) | 0) //The map bank and map number of the player's home
 
@@ -190,9 +195,9 @@ enum //These vars need to be one after the other (hence the enum)
 
 /*=====Safari Zone Options=====*/
 #define EXPAND_SAFARI_BALLS	//Hold up to 0xFFFF safari balls
-#define SAFARI_ZONE_MAX_STEPS 600	//Number of safari zone steps the player has
-#define SAFARI_ZONE_BALL_START 30	//Number of safari balls the player starts with
-#define MAX_SAFARI_BALLS 30		//Total safari balls player can get (maximum is 0xFFFF or 0xFF if EXPAND_SAFARI_BALLS is defined or not)
+#define SAFARI_ZONE_MAX_STEPS 900	//Number of safari zone steps the player has
+#define SAFARI_ZONE_BALL_START 50	//Number of safari balls the player starts with
+#define MAX_SAFARI_BALLS 50		//Total safari balls player can get (maximum is 0xFFFF or 0xFF if EXPAND_SAFARI_BALLS is defined or not)
 
 /*=====Randomizer Options=====*/
 #define FLAG_POKEMON_RANDOMIZER 0x940 //Setting randomizes Pokemon species that are created.
@@ -201,7 +206,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define NUM_SPECIES_RANDOMIZER NUM_SPECIES //The final number of Pokemon (+ 1) of species that can appear in the randomizer. Change to NUM_SPECIES for Gen 8
 
 /*===== Pre-existing Offsets =====*/
-//#define EXISTING_FOSSIL_IMAGE_TABLE_ADDRESS 0x81a4600 //Uncomment this if you've already inserted a fossil image table
+#define EXISTING_FOSSIL_IMAGE_TABLE_ADDRESS 0x81a4600 //Uncomment this if you've already inserted a fossil image table
 //#define EXISTING_OW_TABLE_ADDRESS 0x81a2000 //Uncomment if you don't want new overworld NPC tables to be generated. DON'T TOUCH IF YOU DON'T KNOW EXACTLY WHAT THIS IS FOR!
 
 /*===== Other General Options =====*/
@@ -228,7 +233,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define SAVE_BLOCK_EXPANSION //Commenting this requires you to also manually remove Save Expansion Hooks found in hooks. It will also break several features. DO NOT COMMENT OUT!
 #define SELECT_FROM_PC //Comment this out to remove select-from-pc hack
 //#define SET_HEALING_PLACE_HACK  //Uncomment this if you want custom map/bank whiteout respawn locations
-//#define FOSSIL_IMAGE_HACK   //Uncommenting includes JPANs fossil image hack (see EXISTING_FOSSIL_IMAGE_TABLE_ADDRESS)
+#define FOSSIL_IMAGE_HACK   //Uncommenting includes JPANs fossil image hack (see EXISTING_FOSSIL_IMAGE_TABLE_ADDRESS)
 #define EVO_HOLD_ITEM_REMOVAL //Comment this out if you want leveling up/hold item evolution (eg. sneasel) to remove the item (like normal)
 #define EXPAND_MOVESETS //Comment this out if you're using the Dynamic Pokemon Expansion repo to expand the movesets
 #define FATHER_PASSES_TMS //Uncomment this out if you want TMs the father knows to be passed through breeding
@@ -261,45 +266,45 @@ enum //These vars need to be one after the other (hence the enum)
 #define ONLY_CHECK_ITEM_FOR_HM_USAGE //Allows HMs to be used if the HM is the Bag, and as long as there is a Pokemon in the party that can learn the HM
 //#define FADE_NPCS_IN_FOG //Blends the NPC palettes in foggy weather to create the illusion that they're under the fog. Breaks FR Pokemon Tower healing zone
 #define FRIENDSHIP_HEART_ON_SUMMARY_SCREEN //Creates a heart sprite on the summary screen if the current Pokemon has max Friendship (position requires adjusting)
-//#define INSTANT_TEXT // Enable Instant Text. Some Hack Authors might want this disabled because of the effects instant text has on pacing
+#define INSTANT_TEXT // Enable Instant Text. Some Hack Authors might want this disabled because of the effects instant text has on pacing
 #define AUTOSCROLL_TEXT_BY_HOLDING_R //Text will scroll automatically by holding R.
 #define DEXNAV_POKEMON_MOVE_IN_CAVES_WATER //DexNav phenomenon move around a couple times on water and in caves before the battle starts (like in ORAS)
 #define SYNCHRONIZE_GIFT_POKEMON //Gift Pokemon can have their natures manipulated with synchronize
 
 /*===== Misc Battle Effect Options =====*/
-//#define OLD_BURN_DAMAGE //Uncomment this line if you want burn damage to do 1/8 of max health instead of 1/16
-//#define OLD_PARALYSIS_SPD_DROP //Uncomment this line if you want paralysis to lower Spd down to 1/4 instead of 1/2
-//#define OLD_CONFUSION_CHANCE //Uncomment this line if you want the chance that confusion will stop your attack to 50% instead of 33%
+#define OLD_BURN_DAMAGE //Uncomment this line if you want burn damage to do 1/8 of max health instead of 1/16
+#define OLD_PARALYSIS_SPD_DROP //Uncomment this line if you want paralysis to lower Spd down to 1/4 instead of 1/2
+#define OLD_CONFUSION_CHANCE //Uncomment this line if you want the chance that confusion will stop your attack to 50% instead of 33%
 //#define INFINITE_WEATHER //Uncomment this line if you want weather abilities to last for infinite turns
 //#define INFINITE_TERRAIN //Uncomment this line if you want terrain abilities to last for infinite turns
-//#define NO_SHEER_COLD_NERF //Uncomment this line to remove all Gen 7 Sheer Cold nerfs
+#define NO_SHEER_COLD_NERF //Uncomment this line to remove all Gen 7 Sheer Cold nerfs
 //#define OLD_MOVE_SPLIT //Uncomment this line to use the Physical/Special split based on move types. Status moves are still set with the split byte.
 //#define OLD_CONFUSION_HEAL_BERRIES //Uncomment this line for berries like Figy and Wiki Berry to restore only 1/8 max HP when HP is below 1/2
-//#define GEN_7_CONFUSION_HEAL_BERRIES //Uncomment this line for berries like Figy and Wiki Berry to restore 1/2 max HP (Gen 8 is 1/3) when HP is below 1/4
-//#define PLA_HELD_ORIGIN_ORBS //Dialga and Palkia change into their Origin forms when they hold their respective orbs
+#define GEN_7_CONFUSION_HEAL_BERRIES //Uncomment this line for berries like Figy and Wiki Berry to restore 1/2 max HP (Gen 8 is 1/3) when HP is below 1/4
+#define PLA_HELD_ORIGIN_ORBS //Dialga and Palkia change into their Origin forms when they hold their respective orbs
 
 /*===== Ability Options =====*/
-//#define OLD_GALE_WINGS //Uncomment this line if you want Gale Wings to activate regardless of the user's HP
-//#define OLD_PRANKSTER //Uncomment this line if you want Prankster to be able to affect Dark-Types
+#define OLD_GALE_WINGS //Uncomment this line if you want Gale Wings to activate regardless of the user's HP
+#define OLD_PRANKSTER //Uncomment this line if you want Prankster to be able to affect Dark-Types
 
 /*===== Damage Calculation Options =====*/
-//#define OLD_CRIT_DAMAGE //Uncomment this line if you want Critical hits to do 2x damage, and 3x with Sniper
+#define OLD_CRIT_DAMAGE //Uncomment this line if you want Critical hits to do 2x damage, and 3x with Sniper
 //#define CRIT_CHANCE_GEN_6 //Uncomment this line if you want the Gen 6 crit chance
 //#define CRIT_CHANCE_GEN_2_TO_5 //Uncomment this line if you want the Gens 2-5 crit chance
 //Uncommenting both of the above two lines will default in the Gen 6 crit chance
 #define BADGE_BOOSTS //Uncomment this line to allow Badges to give stat boosts
-//#define OLD_ATE_BOOST //Uncomment this line to make 'ate' abilities give a 1.3 boost instead of 1.2
-//#define OLD_GEM_BOOST //Uncomment this line to make Gems give a 1.5 boost instead of 1.3
-//#define OLD_TERRAIN_BOOST //Uncomment this line to make Terrains give a 1.5 boost instead of 1.3
-//#define OLD_EXPLOSION_BOOST //Uncomment this line to make Exploding moves halve the target's defense
+#define OLD_ATE_BOOST //Uncomment this line to make 'ate' abilities give a 1.3 boost instead of 1.2
+#define OLD_GEM_BOOST //Uncomment this line to make Gems give a 1.5 boost instead of 1.3
+#define OLD_TERRAIN_BOOST //Uncomment this line to make Terrains give a 1.5 boost instead of 1.3
+#define OLD_EXPLOSION_BOOST //Uncomment this line to make Exploding moves halve the target's defense
 //#define OLD_HIDDEN_POWER_BP //Uncomment this line for Hidden Power to have its Base Power calculated from the Pokemon's IVs
-//#define PORTAL_POWER //Uncomment this line to enable Hoopa-Unbound's special ability in Pokemon Unbound, Portal Power (reduces power of non-contact moves by 25%)
-//#define OLD_SOUL_DEW_EFFECT //Uncomment this line if you want the Soul Dew to double Latios + Latias' Sp. Atk & Sp. Def
-//#define OLD_PARENTAL_BOND_DAMAGE //Uncomment this line to make the second hit of Parental Bond do 50% of the original damage instead of 25%
-#define GEN_6_POWER_NERFS //Comment out for moves that had powers nerfed in Gen 6 to retain their original base powers.
-#define GEN_7_POWER_NERFS //Comment out for Sucker Punch to retain its original base power.
+#define PORTAL_POWER //Uncomment this line to enable Hoopa-Unbound's special ability in Pokemon Unbound, Portal Power (reduces power of non-contact moves by 25%)
+#define OLD_SOUL_DEW_EFFECT //Uncomment this line if you want the Soul Dew to double Latios + Latias' Sp. Atk & Sp. Def
+#define OLD_PARENTAL_BOND_DAMAGE //Uncomment this line to make the second hit of Parental Bond do 50% of the original damage instead of 25%
+//#define GEN_6_POWER_NERFS //Comment out for moves that had powers nerfed in Gen 6 to retain their original base powers.
+//#define GEN_7_POWER_NERFS //Comment out for Sucker Punch to retain its original base power.
 #define BUFFED_LEECH_LIFE //Comment out for Leech Life to retain its original base power.
-#define DARK_VOID_ACC_NERF //Comment out for Dark Void to retain its original accuracy.
+//#define DARK_VOID_ACC_NERF //Comment out for Dark Void to retain its original accuracy.
 
 /*===== Capturing Pokemon Options =====*/
 //#define NO_HARDER_WILD_DOUBLES //In Gen 5, Pokemon encountered in double wild battles were harder to catch (based on how many species are owned). Uncomment this line to remove the catch rate decrement.
@@ -316,13 +321,13 @@ enum //These vars need to be one after the other (hence the enum)
 
 /*===== Other Battle Options =====*/
 //#define NO_GHOST_BATTLES //Uncomment this line to disable the Ghost battle feature from Pokemon Tower in Lavender town
-//#define GEN4_PLUS_SELECTION_SCREEN //Uncommenting this line does not give you the Gen 4+ selection screen, it only adds features that supports it
+#define GEN4_PLUS_SELECTION_SCREEN //Uncommenting this line does not give you the Gen 4+ selection screen, it only adds features that supports it
 //#define OBEDIENCE_CHECK_FOR_PLAYER_ORIGINAL_POKEMON //Uncommenting line line will open up the possibility that the Player's Pokemon can disobey them (not just traded mons)
 #define WILD_ALWAYS_SMART //Uncomment this line if you want all Wild Pokemon to act smartly
-//#define HAIL_IN_BATTLE //Uncommenting this line enables the Hail weather effect in battle when the OW weather is set to WEATHER_STEADY_SNOW (0x7)
-//#define FOG_IN_BATTLE //Uncommenting this line enables the Fog weather effect in battle. Don't uncomment this line without uncommenting one of the lines below!
+#define HAIL_IN_BATTLE //Uncommenting this line enables the Hail weather effect in battle when the OW weather is set to WEATHER_STEADY_SNOW (0x7)
+#define FOG_IN_BATTLE //Uncommenting this line enables the Fog weather effect in battle. Don't uncomment this line without uncommenting one of the lines below!
 //#define FOG_IN_BATTLE_1 //Uncommenting this line enables the Fog weather effect when the OW weather is set to WEATHER_FOG_1 (0x6)
-//#define FOG_IN_BATTLE_2 //Uncommenting this line enables the Fog weather effect when the OW weather is set to WEATHER_FOG_2 (0x9)
+#define FOG_IN_BATTLE_2 //Uncommenting this line enables the Fog weather effect when the OW weather is set to WEATHER_FOG_2 (0x9)
 //#define FOG_IN_BATTLE_3 //Uncommenting this line enables the Fog weather effect when the OW weather is set to WEATHER_FOG_3 (0xA)
 #define HIDE_HEALTHBOXES_DURING_ANIMS //Commenting this line prevents the health boxes from being hidden during move animations and some special animations.
 //#define DONT_HIDE_HEALTHBOXES_ATTACKER_STATUS_MOVES //Uncommenting this line doesn't hide the healthboxes when the attacker is using a status move that targets itself (Gen 4).
@@ -339,7 +344,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define TAKE_WILD_MON_ITEM_ON_CAPTURE //Items held by Wild Pokemon when caught can be placed in the bag at the player's request
 //#define PAYDAY_MONEY_CAP //Pay Day and G-Max Gold Rush should cap at $99999 per battle
 #define QUICK_CLAW_PROCING_ALWAYS_ALLOWS_FLEEING //Fleeing from wild battles will never fail the turn a Quick Claw activates
-#define FROSTBITE //Replaces the Freeze status condition with the Frostbite status condition from PLA
+//#define FROSTBITE //Replaces the Freeze status condition with the Frostbite status condition from PLA
 
 //Save stuff
 #define VAR_R_BUTTON_MODE 0x5150
@@ -351,7 +356,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define SIDEWAY_STAIRS_IMPLEMENTED //Uncomment if you're using Sideway Stairs patch.
 #define FLAG_FOLLOWER_POKEMON 0x4BD //0x4BD is an unused flag.
 #define MAX_POKEVIAL_USES 3  // Maximum uses before recharge
-#define VAR_POKEVIAL_USES 0x5155 // Use a free variable ID to track uses
+#define VAR_POKEVIAL_USES 0x501A // Use a free variable ID to track uses
 //#define REMOVE_CRITICAL_HITS //Uncomment this to remove critical hits.
 #define MULTIPLE_PREMIER_BALLS_AT_ONCE //Comment out if you don't want the player received a Premier ball for every 10 Poke Balls purchased (only 1 no matter how many over 10 balls the player buys)
 #define ENABLE_MULTIPLE_PURCHASE_REWARDS // Premium Quantity based rewards with a custom item : reward : quantity system (check src/item.c for table). Remeber the above line will not be useful now!
@@ -361,31 +366,16 @@ enum //These vars need to be one after the other (hence the enum)
 #define FLAG_KEPT_LEVEL_CAP_ON 0xA04 // For level caps, to be used with FLAG_HARD_LEVEL_CAP
 #define FLAG_HARD_LEVEL_CAP 0xA05 // Enables level caps
 #define FLAG_NUZLOCKE 0xA06 //If set nuzlock mode will be turned on
-#define VAR_WILD_BATTLE_COUNT 0x5156 //Counts number of wild battles, if >1 then NO_CATCHING is enabled.
+#define VAR_WILD_BATTLE_COUNT 0x5155 //Counts number of wild battles, if >1 then NO_CATCHING is enabled.
 #define FLAG_VISITED_AREA_START 0x1300 //Flag that is set in a nuzlocke for every visited area (Helpful in tracking)
 #define FLAG_FOLLOWER_WAS_SURFING 0xA07 //Flag that sets when following pokemon starts surfing to restore it after a warp is used!
 #define TERASTAL_FEATURE //Comment this line to remove Terastallization
-#define FLAG_TERA_BATTLE 0xA08 // Set this flag before a trainerbattle command to enable Terastallization
-//#define SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN // Comment this out if you want only the Tera Icon to be displayed on summary screen
+#define FLAG_TERA_BATTLE 0xA08 //Works like an half tera orb
+#define SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN //If you just want to show the tera type icon on the summary screen, uncomment this one
 #define FLAG_EXPLAINED_MINING_RULES 0xA09 //If set, the player will not be shown the mining rules second time when using the mining feature
-//#define BW_SUMMARY_SCREEN // Implements the BW summary screen
-//#define NATURE_COLORS_ON_SUMMARY_SCREEN //will implement nature coloured stats and IV ranking in summary (Don't uncomment if you're using BW Summary Screen)
-//#define MID_BATTLE_EVO //Comment this line to remove Mid-Battle Evolution.
-//#define SKIP_INTRO_CONTROLS_GUIDE //Uncomment this line to remove the intro constrols guide.
-#define FLAG_SPAWN_INVISIBLE 0xA0A //This feature allows us to spawn the player object as invisible after a warp, which can be useful for cutscenes, etc. Note that the camera will still be centered on the player.
-#define FLAG_PORTABLE_PC 0xA0B //Flag to Enable/Disable Pocket PC.
-#define VAR_GAME_DIFFICULTY 0x5157 //Var to store the game difficulty level. If 0 difficulty is normal(vanilla), if 1 its easy, if 2 its Hard, if 3 its Expert. ShouldGiveTrainerMonMaxFriendship and ShouldGiveTrainerMonMaxEVs need to be set at your choice in build_pokemon.c
-#define CRY_SPECIES SPECIES_CHARIZARD //The species that will be used for the cry in the titlescreen. Currently its 0x6 (Charizard).
-#define OAK_INTRO_SPECIES SPECIES_NIDORAN_F //The species that appears in Oak's intro(New Game).
-//#define OPEN_WORLD_TRAINERS // Custom Trainers and teams based on party levels (Not area based, making game open world). CAUTION: NOT TO USE WQITH EXPAND_TRAINERS
-//Also, using OPEN_WORLD_TRAINERS, you would need to edit gGeneralTrainerSpreads in build_pokemon.c
-#define SHOW_MEGAS_IN_HOF // Uncomment if you want mega and primal to be shown in hall of fame.
-#define FLAG_STAT_EDITOR_UNLOCKED 0xA0C
-#define NEW_BATTLE_BACKGROUNDS //When set, battle backgrounds and intro animations will be dynamically replaced by those defined in src/Tables/battle_background_tables.c 
-#define FLAG_SANDBOX_MODE 0xA0D // Use it only when you know what it does, lol.
-#define VAR_DEBUG_MENU_SET_CUSTOM_VAR 0x5158 // The var that stores the value used for set custom var option in debug menu.
-#define VAR_DEBUG_MENU_SET_CUSTOM_VAR_VALUE 0x5159 // The var that stores the value used for set custom var option in debug menu.
-//#define NEW_MINI_NAME_BOX //New box frame for Mini Name Box
+#define BW_SUMMARY_SCREEN // Implements the BW summary screen
+#define NATURE_COLORS_ON_SUMMARY_SCREEN //will implement nature coloured stats and IV ranking in summary (Don't uncomment if you're using BW Summary Screen)
+#define MID_BATTLE_EVO //Comment this line to remove Mid-Battle Evolution.
 
 /* DexNav Options */
 //See "include/new/dexnav_config.h"
@@ -400,6 +390,3 @@ enum //These vars need to be one after the other (hence the enum)
 
 /* Palette Swapper*/
 #define PALETTE_SWAPPER
-
-/* Trainer Data */
-#define EXPAND_TRAINERS // Makes trainers editable, well useless if OPEN_WORLD_TRAINERS is being used.

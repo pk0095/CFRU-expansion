@@ -20,7 +20,6 @@
 #include "../include/new/multi.h"
 #include "../include/new/set_z_effect.h"
 #include "../include/new/text.h"
-#include "../include/new/util.h"
 
 /*
 battle_strings.c
@@ -34,9 +33,6 @@ extern const u8 gStatusConditionString_DisableProblem[];
 extern const u8 gStatusConditionString_EncoreProblem[];
 extern const u8 gStatusConditionString_MentalState[];
 extern const u8 gStatusConditionString_TauntProblem[];
-extern u8* gMaleFrontierNamesTable[];
-extern u8* gFemaleFrontierNamesTable[];
-
 
 const u8 * const gStatusConditionStringsTable[11][2] =
 {
@@ -60,7 +56,7 @@ const u8 * const gStatusConditionStringsTable[11][2] =
 //This file's functions:
 static void FixTheCapitalizationInDisplayedString(void);
 #ifdef OPEN_WORLD_TRAINERS
-static const u8* GetOpenWorldTrainerName(bool8 female);
+static u8* GetOpenWorldTrainerName(bool8 female);
 #endif
 static const u8* GetTrainerClassName(u8 class, u8* text);
 
@@ -688,9 +684,9 @@ u32 BattleStringExpandPlaceholders(const u8* src, u8* dst)
 					u8 class = gTrainers[gTrainerBattleOpponent_A].trainerClass;
 					class += 0; //So no unusued variable is displayed
 					#ifdef OPEN_WORLD_TRAINERS
-						if (gTrainerBattleOpponent_A < DYNAMIC_TRAINER_LIMIT && class != CLASS_RIVAL && class != CLASS_RIVAL_2)
+						if (gTrainerBattleOpponent_A < DYNAMIC_TRAINER_LIMIT && class != CLASS_TEAM_ROCKET)
 						{
-							toCpy = gTrainers[gTrainerBattleOpponent_A].trainerName;
+							toCpy = GetOpenWorldTrainerName(gTrainers[gTrainerBattleOpponent_A].gender);
 							break;
 						}
 					#endif
@@ -704,6 +700,7 @@ u32 BattleStringExpandPlaceholders(const u8* src, u8* dst)
 							toCpy = GetExpandedPlaceholder(ExpandPlaceholder_RivalName);
 						else
 					#endif
+
 					toCpy = gTrainers[gTrainerBattleOpponent_A].trainerName;
 				}
 				break;
@@ -824,6 +821,7 @@ u32 BattleStringExpandPlaceholders(const u8* src, u8* dst)
 				else
 					toCpy = GetTrainerClassName(gTrainers[VarGet(VAR_SECOND_OPPONENT)].trainerClass, text);
 
+
 				if (toCpy[3] == 0x8 || toCpy[3] == 0x9) //Expanded Trainer Class Names
 					toCpy = T1_READ_PTR(toCpy);
 
@@ -845,7 +843,7 @@ u32 BattleStringExpandPlaceholders(const u8* src, u8* dst)
 					u8 class = gTrainers[VarGet(VAR_SECOND_OPPONENT)].trainerClass;
 					class += 0;
 					#ifdef OPEN_WORLD_TRAINERS
-						if (VarGet(VAR_SECOND_OPPONENT) < DYNAMIC_TRAINER_LIMIT && class != CLASS_RIVAL && class != CLASS_RIVAL_2)
+						if (VarGet(VAR_SECOND_OPPONENT) < DYNAMIC_TRAINER_LIMIT && class != CLASS_TEAM_ROCKET)
 						{
 							toCpy = GetOpenWorldTrainerName(gTrainers[VarGet(VAR_SECOND_OPPONENT)].gender);
 							break;
@@ -861,7 +859,7 @@ u32 BattleStringExpandPlaceholders(const u8* src, u8* dst)
 							toCpy = GetExpandedPlaceholder(ExpandPlaceholder_RivalName);
 						else
 					#endif
-				
+
 					toCpy = gTrainers[VarGet(VAR_SECOND_OPPONENT)].trainerName;
 				}
 				break;
@@ -1107,7 +1105,7 @@ void EmitPrintSelectionString(u8 bufferId, u16 stringID)
 }
 
 #ifdef OPEN_WORLD_TRAINERS
-static const u8* GetOpenWorldTrainerName(bool8 female)
+static u8* GetOpenWorldTrainerName(bool8 female)
 {
 	u8 nameId = gSpecialVar_LastTalked * MathMax(1, gSaveBlock1->location.mapGroup) * MathMax(1, gSaveBlock1->location.mapNum);
 

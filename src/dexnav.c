@@ -57,7 +57,6 @@
 #include "../include/new/overworld.h"
 #include "../include/new/wild_encounter.h"
 #include "../include/new/util.h"
-#include "../include/new/terastallization.h"
 
 /*
 dexnav.c

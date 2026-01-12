@@ -34,7 +34,8 @@ defines.h
 
 #ifdef OPEN_WORLD_TRAINERS
 
+#define NUM_BADGE_OPTIONS 8 + 2
 #define NUM_MONS_PER_BADGE 10
-#define DYNAMIC_TRAINER_LIMIT 742
+#define DYNAMIC_TRAINER_LIMIT 0x59
 
 #endif

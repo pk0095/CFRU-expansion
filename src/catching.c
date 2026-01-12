@@ -22,7 +22,7 @@
 #include "../include/new/util.h"
 #include "../include/new/mega.h"
 #include "../include/new/pokemon_storage_system.h"
-#include "../include/new/terastallization.h"
+#include "../include/constants/items.h"
 
 /*
 catching.c
@@ -612,19 +612,19 @@ u8 GiveMonToPlayer(struct Pokemon* mon) //Hook in
 	u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
 	u8 type1 = gBaseStats[species].type1;
 	u8 type2 = gBaseStats[species].type2;
-	u8 randomValue = Random() % 100;
 
-	// 2% chance to get a random teraType
-	if (randomValue < 2)
-		mon->teraType = GetRandomTeraType();
-
-	// Otherwise, get a random one from the original typing
+	if (type1 == type2 || type2 == TYPE_MYSTERY || type2 == TYPE_BLANK)
+		mon->teraType = type1;
 	else
 	{
-		if (type1 == type2 || type2 == TYPE_MYSTERY || type2 == TYPE_BLANK)
+		u8 roll = Random() % 100;
+
+		if (roll < 49)
 			mon->teraType = type1;
+		else if (roll < 98) // 49 + 49
+			mon->teraType = type2;
 		else
-			mon->teraType = (Random() & 1) ? type1 : type2;				
+			mon->teraType = Random() % NUMBER_OF_MON_TYPES; // 2% chance random type
 	}
 
 	u8 freeSlot = GetFreeSlotInPartyForMon();

@@ -2460,25 +2460,3 @@ gSpeciesInfo = 0x8254784 | 1 ;
 GetAbilityBySpecies = 0x8040d38 | 1;
 GetPartyIdFromBattlePartyId = 0x8128030 | 1;
 DecompressPicFromTable = 0x800ec8c | 1;
-
-/*Cry intro species*/
-Task_OakSpeech_IStudyPokemon = 0x812fb4c | 1;
-gOakSpeech_Text_IsInhabitedFarAndWide = 0x81c5d12;
-sOakSpeechResources = 0x203b108;
-Task_OakSpeech_IStudyPokemon = 0x812fb4c | 1;
-DeactivateSlashSprite = 0x8079a88 | 1;
-IsSlashSpriteDeactivated = 0x8079aa8 | 1;
-SignalEndTitleScreenPaletteSomethingTask = 0x8079528 | 1;
-SeedRngAndSetTrainerId = 0x8000564 | 1;
-SetSaveBlocksPointers = 0x804c058 | 1;
-ResetMenuAndMonGlobals = 0x8054a28 | 1;
-Save_ResetSaveCounters = 0x80d9750 | 1;
-LoadGameSave = 0x80da4fc | 1;
-Sav2_ClearSetDefault = 0x8054a18 | 1;
-InitHeap = 0x8002b80 | 1;
-gHeap = 0x2000000;
-CB2_InitMainMenu = 0x800c300 | 1;
-Task_TitleScreenMain = 0x8078c24 | 1;
-MonSpritesGfxManager_GetSpritePtr = 0x8044e00 | 1;
-GetBattlerForBattleScript = 0x8016e24 | 1;
-gStatuses4 = 0x2022b54;

@@ -887,6 +887,7 @@ void DoBattleFieldEffect(void)
 			SwapSideTimers(gNewBS->maxWildfireTimers);
 			SwapSideTimers(gNewBS->maxCannonadeTimers);
 			SwapSideTimers(gNewBS->maxVolcalithTimers);
+			SwapSideTimers(gNewBS->SaltcureTimers);
 			SwapVanillaSideTimers();
 			gBattleStringLoader = gText_CourtChange;
 			break;
@@ -1408,12 +1409,6 @@ void AbilityChangeBSFunc(void)
 	defAbility = *defAbilityLoc;
 
 	gNewBS->backupAbility = *defAbilityLoc;
-
-	if (IsMyceliumMightOnField())
-    {
-        *defAbilityLoc = ABILITY_NONE;
-        defAbility = ABILITY_NONE;
-    }
 
 	switch (gCurrentMove) {
 		case MOVE_WORRYSEED:
