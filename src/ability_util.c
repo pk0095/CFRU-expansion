@@ -52,6 +52,7 @@ extern const u8 gText_AbilityName_CrabbyTactics[];
 extern const u8 gText_AbilityName_HoneyArmor[];
 extern const u8 gText_AbilityName_FaceShield[];
 extern const u8 gText_AbilityName_RoyalRoar[];
+extern const u8 gText_AbilityName_HundredLegs[];
 
 extern const u8 gText_AbilityDescription_Evaporate[];
 extern const u8 gText_AbilityDescription_GrassDash[];
