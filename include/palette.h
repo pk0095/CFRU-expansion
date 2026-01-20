@@ -102,5 +102,6 @@ void __attribute__((long_call)) TintPalette_CustomTone(u16 *palette, u16 count, 
 void __attribute__((long_call)) sub_80716F8(const u16 *src, u16 *dst, u16 count, u8 a4);
 void __attribute__((long_call)) sub_80717A8(u32 a1, s8 a2, u8 a3, u8 a4, u16 a5, u8 a6, u8 a7);
 bool32 __attribute__((long_call)) sub_807185C(u8 var);
+void __attribute__((long_call)) SignalEndTitleScreenPaletteSomethingTask(void);
 
 // extern struct PaletteFadeControl gPaletteFade;

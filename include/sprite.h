@@ -342,6 +342,8 @@ void __attribute__((long_call)) PlayCry7(u16 species, u8 mode);
 u8 __attribute__((long_call)) CreateMonSprite_FieldMove(u16 species, u32 otId, u32 personality, s16 x, s16 y, u8 subpriority);
 void __attribute__((long_call)) FreeResourcesAndDestroySprite(struct Sprite * sprite, u8 spriteId);
 void __attribute__((long_call)) QuestLog_CutRecording(void);
+void __attribute__((long_call)) DeactivateSlashSprite(u8 spriteId);
+bool32 __attribute__((long_call)) IsSlashSpriteDeactivated(u8 spriteId);
 
 /*
 u16 AllocTilesForSpriteSheet(struct SpriteSheet *sheet);

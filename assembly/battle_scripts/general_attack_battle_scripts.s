@@ -1094,8 +1094,37 @@ BS_041_DragonRage:
 
 .global BS_042_TrapAndDamage
 BS_042_TrapAndDamage:
+	jumpifmove MOVE_SALTCURE SaltCureBS
 	setmoveeffect MOVE_EFFECT_WRAP
 	goto BS_STANDARD_HIT
+
+SaltCureBS:
+    call STANDARD_DAMAGE
+	faintpokemon BANK_TARGET FALSE NULL
+	jumpiffaintedmon BANK_TARGET, TRUE, BS_EffectSaltCure_End
+	applysaltcure BANK_TARGET
+	setword BATTLE_STRING_LOADER sText_TargetIsBeingSaltCured
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+BS_EffectSaltCure_End:
+	goto BS_MOVE_END
+
+.global BattleScript_SaltCureExtraDamage
+BattleScript_SaltCureExtraDamage:
+	playanimation BANK_TARGET, B_ANIM_SALT_CURE_DAMAGE, NULL
+	waitanimation
+	call BattleScript_HurtTarget_NoString
+	setword BATTLE_STRING_LOADER sText_TargetIsHurtBySaltCure
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+	end2
+
+BattleScript_HurtTarget_NoString:
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_NON_ATTACK_DMG
+	healthbarupdate BANK_TARGET
+	datahpupdate BANK_TARGET
+	faintpokemon BANK_TARGET FALSE NULL
+	return
 	
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -3400,8 +3429,38 @@ BS_149_Gust:
 
 .global BS_150_Splinters @;Was Stomp
 BS_150_Splinters:
+	jumpifmove MOVE_STONEAXE StoneAxe_BS
+	jumpifmove MOVE_CEASELESSEDGE Ceaceless_BS
 	setmoveeffect MOVE_EFFECT_SPLINTERS
 	goto BS_STANDARD_HIT
+
+StoneAxe_BS:
+	attackcanceler
+	call STANDARD_DAMAGE
+	playanimation BANK_TARGET ANIM_STEALTHROCK2 0x0
+	waitanimation
+	setspikes StoneAxeFailed
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+	prefaintmoveendeffects 0x0
+	faintpokemonaftermove
+	goto BS_MOVE_END
+
+StoneAxeFailed:
+	setword BATTLE_STRING_LOADER ButFailedString
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+	goto BS_MOVE_FAINT
+
+Ceaceless_BS:
+	attackcanceler
+	call STANDARD_DAMAGE
+	playanimation BANK_TARGET ANIM_SPIKES2 0x0
+	waitanimation
+	setspikes StoneAxeFailed
+	printstring 0x184
+	waitmessage DELAY_1SECOND
+	goto BS_MOVE_FAINT
 
 @;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -5702,7 +5761,6 @@ BS_223_RelicSong:
 	jumpifability BANK_ATTACKER ABILITY_SHEERFORCE BS_MOVE_END
 	jumpifnoviablemonsleft BANK_TARGET BS_MOVE_END
 	jumpifmove MOVE_WICKEDTORQUE BS_MOVE_END
-	jumpifmove MOVE_PHANTOMVOID BS_MOVE_END
 	jumpifspecies BANK_ATTACKER SPECIES_MELOETTA TransformToPirouetteBS
 	jumpifspecies BANK_ATTACKER SPECIES_MELOETTA_PIROUETTE TransformToAriaBS
 	goto BS_MOVE_END

@@ -4,73 +4,73 @@ Creating following mon.
 #org @gText_PalletGirl_Text1
 Show or hide follower mon?\nSelect Yes to show or No to hide.
 
-#org @gText_PalletTown_YoungLadyAsk
+#org @gText_ChangeTeraTypeNPCAsk
 Ah, hi there[.]\pI can change your Pok\emon's\nTera Type!\pWould you like me to change it?
 
-#org @gText_PalletTown_YoungLadyNo
+#org @gText_ChangeTeraTypeNPCNo
 Oh, I see[.]\pPlease do visit again\nnext time!
 
-#org @gText_PalletTown_YoungLadyOpenMenu
+#org @gText_ChangeTeraTypeNPCOpenMenu
 Which Pok\emon's Tera Type\nwould you like me to change[.]?
 
-#org @gText_PalletTown_YoungLadySelected
+#org @gText_ChangeTeraTypeNPCSelected
 Ah, so you've selected\n[BUFFER1][.]\pWhich type would you like\nme to change it to[.]?
 
-#org @gText_PalletTown_YoungLadyFetchTeraNormal
+#org @gText_ChangeTeraTypeNPCFetchTeraNormal
 The Tera Type of [BUFFER1]\nis now Normal!
 
-#org @gText_PalletTown_YoungLadyFetchTeraFighting
+#org @gText_ChangeTeraTypeNPCFetchTeraFighting
 The Tera Type of [BUFFER1]\nis now Fighting!
 
-#org @gText_PalletTown_YoungLadyFetchTeraFlying
+#org @gText_ChangeTeraTypeNPCFetchTeraFlying
 The Tera Type of [BUFFER1]\nis now Flying!
 
-#org @gText_PalletTown_YoungLadyFetchTeraPoison
+#org @gText_ChangeTeraTypeNPCFetchTeraPoison
 The Tera Type of [BUFFER1]\nis now Poison!
 
-#org @gText_PalletTown_YoungLadyFetchTeraGround
+#org @gText_ChangeTeraTypeNPCFetchTeraGround
 The Tera Type of [BUFFER1]\nis now Ground!
 
-#org @gText_PalletTown_YoungLadyFetchTeraRock
+#org @gText_ChangeTeraTypeNPCFetchTeraRock
 The Tera Type of [BUFFER1]\nis now Rock!
 
-#org @gText_PalletTown_YoungLadyFetchTeraBug
+#org @gText_ChangeTeraTypeNPCFetchTeraBug
 The Tera Type of [BUFFER1]\nis now Bug!
 
-#org @gText_PalletTown_YoungLadyFetchTeraGhost
+#org @gText_ChangeTeraTypeNPCFetchTeraGhost
 The Tera Type of [BUFFER1]\nis now Ghost!
 
-#org @gText_PalletTown_YoungLadyFetchTeraSteel
+#org @gText_ChangeTeraTypeNPCFetchTeraSteel
 The Tera Type of [BUFFER1]\nis now Steel!
 
-#org @gText_PalletTown_YoungLadyFetchTeraFire
+#org @gText_ChangeTeraTypeNPCFetchTeraFire
 The Tera Type of [BUFFER1]\nis now Fire!
 
-#org @gText_PalletTown_YoungLadyFetchTeraWater
+#org @gText_ChangeTeraTypeNPCFetchTeraWater
 The Tera Type of [BUFFER1]\nis now Water!
 
-#org @gText_PalletTown_YoungLadyFetchTeraGrass
+#org @gText_ChangeTeraTypeNPCFetchTeraGrass
 The Tera Type of [BUFFER1]\nis now Grass!
 
-#org @gText_PalletTown_YoungLadyFetchTeraElectric
+#org @gText_ChangeTeraTypeNPCFetchTeraElectric
 The Tera Type of [BUFFER1]\nis now Electric!
 
-#org @gText_PalletTown_YoungLadyFetchTeraPsychic
+#org @gText_ChangeTeraTypeNPCFetchTeraPsychic
 The Tera Type of [BUFFER1]\nis now Psychic!
 
-#org @gText_PalletTown_YoungLadyFetchTeraIce
+#org @gText_ChangeTeraTypeNPCFetchTeraIce
 The Tera Type of [BUFFER1]\nis now Ice!
 
-#org @gText_PalletTown_YoungLadyFetchTeraDragon
+#org @gText_ChangeTeraTypeNPCFetchTeraDragon
 The Tera Type of [BUFFER1]\nis now Dragon!
 
-#org @gText_PalletTown_YoungLadyFetchTeraDark
+#org @gText_ChangeTeraTypeNPCFetchTeraDark
 The Tera Type of [BUFFER1]\nis now Dark!
 
-#org @gText_PalletTown_YoungLadyFetchTeraFairy
+#org @gText_ChangeTeraTypeNPCFetchTeraFairy
 The Tera Type of [BUFFER1]\nis now Fairy!
 
-#org @gText_PalletTown_YoungLadyFetchTeraStellar
+#org @gText_ChangeTeraTypeNPCFetchTeraStellar
 The Tera Type of [BUFFER1]\nis now Stellar!
 
 #org @gText_TestScript2

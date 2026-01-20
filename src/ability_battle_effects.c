@@ -1953,8 +1953,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 				&& BATTLER_ALIVE(bank)
 				&& gBankAttacker != bank
 				&& !SheerForceCheck()
-				&& !SpeciesHasElectromorphosis(SPECIES(bank)
-				&& gMultiHitCounter <= 1)
+				&& !SpeciesHasElectromorphosis(SPECIES(bank))
+				&& gMultiHitCounter <= 1
 				&& !IsTerastallized(bank))
 				{
 					SET_BATTLER_TYPE(bank, moveType);

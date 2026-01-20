@@ -180,6 +180,7 @@ void DebugMenu_ShinyTeam(void)
 #include "../include/constants/species.h"
 #include "../include/constants/pokemon.h"
 #include "../include/constants/vars.h"
+#include "../include/new/terastallization.h"
 #define VAR_8000 0x8000
 
 void DebugMenu_GivePokemonFromVar(void)
@@ -195,22 +196,6 @@ void DebugMenu_GivePokemonFromVar(void)
 		return;
 
 	CreateMon(&mon, species, 50, 32, TRUE, 0, OT_ID_PLAYER_ID, 0);
-	u8 type1 = gBaseStats[species].type1;
-	u8 type2 = gBaseStats[species].type2;
-
-	if (type1 == type2 || type2 == TYPE_MYSTERY || type2 == TYPE_BLANK)
-		mon.teraType = type1;
-	else
-	{
-		u8 roll = Random() % 100;
-
-		if (roll < 49)
-			mon.teraType = type1;
-		else if (roll < 98) // 49 + 49
-			mon.teraType = type2;
-		else
-			mon.teraType = Random() % NUMBER_OF_MON_TYPES; // 2% chance random type
-	}
 	gPlayerParty[slot] = mon;
 }
 void DebugMenu_GiveItemFromVar(void)
@@ -251,4 +236,15 @@ void DebugMenu_Fly(void)
         UnlockFlySpot(i);
 
     FinalCall((void *)FINAL_ARG);
+}
+void DebugMenu_SetterFlag(void)
+{
+	u16 flag = VarGet(VAR_8000);
+	FlagSet(flag);
+}
+void DebugMenu_SetterVar(void)
+{
+	u16 var = VarGet(VAR_DEBUG_MENU_SET_CUSTOM_VAR);
+	u16 value = VarGet(VAR_DEBUG_MENU_SET_CUSTOM_VAR_VALUE);
+	VarSet(var, value);
 }

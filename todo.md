@@ -1,22 +1,20 @@
-This contains a list of items/features we want to add to this CFRU.:
-- Mid-battle evolutions (https://www.pokecommunity.com/threads/simple-modifications-directory.416647/page-18#post-10464666)
+This contains a list of items/features we want to add to this CFRU
+RESEARCH NEEDED:
 - New Mini games
-- Option menu BW
-- Main menu/ Continue Screen BW
-- Costume box
-- ORAS style key item registeration wheel (or Register items in a list menu given here - https://www.pokecommunity.com/threads/simple-modifications-directory.416647/page-15#post-10380770)
-- Configurable INtro and titlescreen
-- Done (100%), Overworld Expansion
-- Pokedex (HGSS or BW)
-- A pokenav or pokegear
-- Custom start menu (a menu with icons instead of text)
-- Done 100%, Wonder trades
+- Configurable Intro and titlescreen
 - Sidequest menu
-- RSE Berry system
-- 16 badges (based on cmnt/uncmnt)
 - New bag pockets
-- PokePC
 - Wild pokemon attacks in overworld before the wild battle
-- Maps previews/Pre warp mugshots
+CAN BE DONE:
 - Craft menu/craft system
+- Bug testing (all code)
+- Buying/Selling Pokemon NPC
+- Update DNS Battle backgrounds
+- Research on Abilities Expansion
+- Shadows in overworld port
+- Upgrade Debug Menu to 2.0
+- Custom start menu (a menu with icons instead of text)
+- RSE Berry system (Still overworld handling needed with a table)
+- 16 badges (based on cmnt/uncmnt)
+- Maps previews/Pre warp mugshots based on DNS
 - ..........................................................................................................

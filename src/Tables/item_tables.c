@@ -1293,64 +1293,64 @@ const u32 *const gItemGraphicsTable[ITEMS_COUNT + 1][2] =
 	{gBag_RootFossilTiles, gBag_RootFossilPal},
 	{gBag_ClawFossilTiles, gBag_ClawFossilPal},
 	{gBag_DevonScopeTiles, gBag_DevonScopePal},
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_TM01_FOCUS_PUNCH - Lutador
-	{gBag_TMTiles, gBag_TMDragonPal},    // ITEM_TM02_DRAGON_CLAW - Dragão
-	{gBag_TMTiles, gBag_TMWaterPal},     // ITEM_TM03_WATER_PULSE - Água
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM04_CALM_MIND - Psíquico
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM05_ROAR - Normal
-	{gBag_TMTiles, gBag_TMPoisonPal},    // ITEM_TM06_TOXIC - Veneno
-	{gBag_TMTiles, gBag_TMIcePal},       // ITEM_TM07_HAIL - Gelo
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_TM08_BULK_UP - Lutador
-	{gBag_TMTiles, gBag_TMGrassPal},     // ITEM_TM09_BULLET_SEED - Grama
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM10_HIDDEN_POWER - Normal
-	{gBag_TMTiles, gBag_TMFirePal},      // ITEM_TM11_SUNNY_DAY - Fogo
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM12_TAUNT - Sombrio
-	{gBag_TMTiles, gBag_TMIcePal},       // ITEM_TM13_ICE_BEAM - Gelo
-	{gBag_TMTiles, gBag_TMIcePal},       // ITEM_TM14_BLIZZARD - Gelo
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM15_HYPER_BEAM - Normal
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM16_LIGHT_SCREEN - Psíquico
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM17_PROTECT - Normal
-	{gBag_TMTiles, gBag_TMWaterPal},     // ITEM_TM18_RAIN_DANCE - Água
-	{gBag_TMTiles, gBag_TMGrassPal},     // ITEM_TM19_GIGA_DRAIN - Grama
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM20_SAFEGUARD - Normal
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM21_FRUSTRATION - Normal
-	{gBag_TMTiles, gBag_TMGrassPal},     // ITEM_TM22_SOLARBEAM - Grama
-	{gBag_TMTiles, gBag_TMSteelPal},     // ITEM_TM23_IRON_TAIL - Aço
-	{gBag_TMTiles, gBag_TMElectricPal},  // ITEM_TM24_THUNDERBOLT - Elétrico
-	{gBag_TMTiles, gBag_TMElectricPal},  // ITEM_TM25_THUNDER - Elétrico
-	{gBag_TMTiles, gBag_TMGroundPal},    // ITEM_TM26_EARTHQUAKE - Terra
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM27_RETURN - Normal
-	{gBag_TMTiles, gBag_TMGroundPal},    // ITEM_TM28_DIG - Terra
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM29_PSYCHIC - Psíquico
-	{gBag_TMTiles, gBag_TMGhostPal},     // ITEM_TM30_SHADOW_BALL - Fantasma
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_TM31_BRICK_BREAK - Lutador
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM32_DOUBLE_TEAM - Normal
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM33_REFLECT - Psíquico
-	{gBag_TMTiles, gBag_TMElectricPal},  // ITEM_TM34_SHOCK_WAVE - Elétrico
-	{gBag_TMTiles, gBag_TMFirePal},      // ITEM_TM35_FLAMETHROWER - Fogo
-	{gBag_TMTiles, gBag_TMPoisonPal},    // ITEM_TM36_SLUDGE_BOMB - Veneno
-	{gBag_TMTiles, gBag_TMRockPal},      // ITEM_TM37_SANDSTORM - Pedra
-	{gBag_TMTiles, gBag_TMFirePal},      // ITEM_TM38_FIRE_BLAST - Fogo
-	{gBag_TMTiles, gBag_TMRockPal},      // ITEM_TM39_ROCK_TOMB - Pedra
-	{gBag_TMTiles, gBag_TMFlyingPal},    // ITEM_TM40_AERIAL_ACE - Voador
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM41_TORMENT - Sombrio
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM42_FACADE - Normal
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM43_SECRET_POWER - Normal
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM44_REST - Psíquico
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM45_ATTRACT - Normal
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM46_THIEF - Sombrio
-	{gBag_TMTiles, gBag_TMFlyingPal},    // ITEM_TM47_STEEL_WING - Voador/Aço
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM48_SKILL_SWAP - Psíquico
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM49_SNATCH - Sombrio
-	{gBag_TMTiles, gBag_TMFirePal},      // ITEM_TM50_OVERHEAT - Fogo
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_HM01_CUT - Normal
-	{gBag_TMTiles, gBag_TMFlyingPal},    // ITEM_HM02_FLY - Voador
-	{gBag_TMTiles, gBag_TMWaterPal},     // ITEM_HM03_SURF - Água
-	{gBag_TMTiles, gBag_TMNormalPal}, 	 // ITEM_HM04_STRENGTH - Normal
-	{gBag_TMTiles, gBag_TMWaterPal},     // ITEM_HM05_DIVE - Água
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_HM06_ROCK_SMASH - Lutador
-	{gBag_TMTiles, gBag_TMWaterPal},     // ITEM_HM07_WATERFALL - Água
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_HM08_ROCK_CLIMB - Normal
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_TM01_FOCUS_PUNCH - Lutador
+	{gBag_TMDragonTiles, gBag_TMDragonPal},    // ITEM_TM02_DRAGON_CLAW - Dragão
+	{gBag_TMWaterTiles, gBag_TMWaterPal},     // ITEM_TM03_WATER_PULSE - Água
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM04_CALM_MIND - Psíquico
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM05_ROAR - Normal
+	{gBag_TMPoisonTiles, gBag_TMPoisonPal},    // ITEM_TM06_TOXIC - Veneno
+	{gBag_TMIceTiles, gBag_TMIcePal},       // ITEM_TM07_HAIL - Gelo
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_TM08_BULK_UP - Lutador
+	{gBag_TMGrassTiles, gBag_TMGrassPal},     // ITEM_TM09_BULLET_SEED - Grama
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM10_HIDDEN_POWER - Normal
+	{gBag_TMFireTiles, gBag_TMFirePal},      // ITEM_TM11_SUNNY_DAY - Fogo
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM12_TAUNT - Sombrio
+	{gBag_TMIceTiles, gBag_TMIcePal},       // ITEM_TM13_ICE_BEAM - Gelo
+	{gBag_TMIceTiles, gBag_TMIcePal},       // ITEM_TM14_BLIZZARD - Gelo
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM15_HYPER_BEAM - Normal
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM16_LIGHT_SCREEN - Psíquico
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM17_PROTECT - Normal
+	{gBag_TMWaterTiles, gBag_TMWaterPal},     // ITEM_TM18_RAIN_DANCE - Água
+	{gBag_TMGrassTiles, gBag_TMGrassPal},     // ITEM_TM19_GIGA_DRAIN - Grama
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM20_SAFEGUARD - Normal
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM21_FRUSTRATION - Normal
+	{gBag_TMGrassTiles, gBag_TMGrassPal},     // ITEM_TM22_SOLARBEAM - Grama
+	{gBag_TMSteelTiles, gBag_TMSteelPal},     // ITEM_TM23_IRON_TAIL - Aço
+	{gBag_TMElectricTiles, gBag_TMElectricPal},  // ITEM_TM24_THUNDERBOLT - Elétrico
+	{gBag_TMElectricTiles, gBag_TMElectricPal},  // ITEM_TM25_THUNDER - Elétrico
+	{gBag_TMGroundTiles, gBag_TMGroundPal},    // ITEM_TM26_EARTHQUAKE - Terra
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM27_RETURN - Normal
+	{gBag_TMGroundTiles, gBag_TMGroundPal},    // ITEM_TM28_DIG - Terra
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM29_PSYCHIC - Psíquico
+	{gBag_TMGhostTiles, gBag_TMGhostPal},     // ITEM_TM30_SHADOW_BALL - Fantasma
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_TM31_BRICK_BREAK - Lutador
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM32_DOUBLE_TEAM - Normal
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM33_REFLECT - Psíquico
+	{gBag_TMElectricTiles, gBag_TMElectricPal},  // ITEM_TM34_SHOCK_WAVE - Elétrico
+	{gBag_TMFireTiles, gBag_TMFirePal},      // ITEM_TM35_FLAMETHROWER - Fogo
+	{gBag_TMPoisonTiles, gBag_TMPoisonPal},    // ITEM_TM36_SLUDGE_BOMB - Veneno
+	{gBag_TMRockTiles, gBag_TMRockPal},     // ITEM_TM37_SANDSTORM - Pedra
+	{gBag_TMFireTiles, gBag_TMFirePal},      // ITEM_TM38_FIRE_BLAST - Fogo
+	{gBag_TMRockTiles, gBag_TMRockPal},     // ITEM_TM39_ROCK_TOMB - Pedra
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},    // ITEM_TM40_AERIAL_ACE - Voador
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM41_TORMENT - Sombrio
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM42_FACADE - Normal
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM43_SECRET_POWER - Normal
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM44_REST - Psíquico
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM45_ATTRACT - Normal
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM46_THIEF - Sombrio
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},    // ITEM_TM47_STEEL_WING - Voador/Aço
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM48_SKILL_SWAP - Psíquico
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM49_SNATCH - Sombrio
+	{gBag_TMFireTiles, gBag_TMFirePal},      // ITEM_TM50_OVERHEAT - Fogo
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_HM01_CUT - Normal
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},    // ITEM_HM02_FLY - Voador
+	{gBag_TMWaterTiles, gBag_TMWaterPal},     // ITEM_HM03_SURF - Água
+	{gBag_TMNormalTiles, gBag_TMNormalPal}, 	 // ITEM_HM04_STRENGTH - Normal
+	{gBag_TMWaterTiles, gBag_TMWaterPal},     // ITEM_HM05_DIVE - Água
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_HM06_ROCK_SMASH - Lutador
+	{gBag_TMWaterTiles, gBag_TMWaterPal},     // ITEM_HM07_WATERFALL - Água
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_HM08_ROCK_CLIMB - Normal
 	{gBag_DynamaxBandTiles, gBag_DynamaxBandPal},
 	{gBag_GoldTeethTiles, gBag_GoldTeethPal},
 	{gBag_OaksParcelTiles, gBag_OaksParcelPal},
@@ -1380,76 +1380,76 @@ const u32 *const gItemGraphicsTable[ITEMS_COUNT + 1][2] =
 	{gBag_RubyTiles, gBag_RubyPal},
 	{gBag_SapphireTiles, gBag_SapphirePal},
 	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_TMTiles, gBag_TMFlyingPal},  	 // ITEM_TM51_MOVE_ROOST - Voador
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_TM52_MOVE_FOCUSBLAST - Lutador
-	{gBag_TMTiles, gBag_TMGrassPal}, 	 // ITEM_TM53_MOVE_ENERGYBALL - Grama
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM54_MOVE_FALSESWIPE - Normal
-	{gBag_TMTiles, gBag_TMWaterPal},  	 // ITEM_TM55_MOVE_BRINE - Agua
-	{gBag_TMTiles, gBag_TMDarkPal}, 	 // ITEM_TM56_MOVE_HONECLAWS - Noturno
-	{gBag_TMTiles, gBag_TMElectricPal},  // ITEM_TM57_MOVE_CHARGEBEAM - Eletrico
-	{gBag_TMTiles, gBag_TMNormalPal},  	 // ITEM_TM58_MOVE_ENDURE - Normal
-	{gBag_TMTiles, gBag_TMDragonPal},    // ITEM_TM59_DRAGON_PULSE - Dragão
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_TM60_DRAIN_PUNCH - Lutador
-	{gBag_TMTiles, gBag_TMFirePal},   	 // ITEM_TM61_WILL_O_WISP - Fogo
-	{gBag_TMTiles, gBag_TMBugPal},       // ITEM_TM62_SILVER_WIND - Inseto
-	{gBag_TMTiles, gBag_TMPoisonPal},    // ITEM_TM63_VENOSHOCK - Veneno
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM64_EXPLOSION - Normal
-	{gBag_TMTiles, gBag_TMGhostPal},     // ITEM_TM65_SHADOW_CLAW - Fantasma
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM66_PAYBACK - Sombrio
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM67_RECYCLE - Normal
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM68_GIGA_IMPACT - Normal
-	{gBag_TMTiles, gBag_TMRockPal},      // ITEM_TM69_ROCK_POLISH - Pedra
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM70_FLASH - Normal
-	{gBag_TMTiles, gBag_TMRockPal},      // ITEM_TM71_STONE_EDGE - Pedra
-	{gBag_TMTiles, gBag_TMIcePal},       // ITEM_TM72_AVALANCHE - Gelo
-	{gBag_TMTiles, gBag_TMElectricPal},  // ITEM_TM73_THUNDER_WAVE - Elétrico
-	{gBag_TMTiles, gBag_TMSteelPal},     // ITEM_TM74_GYRO_BALL - Aço
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM75_SWORDS_DANCE - Normal
-	{gBag_TMTiles, gBag_TMRockPal},      // ITEM_TM76_STEALTH_ROCK - Pedra
-	{gBag_TMTiles, gBag_TMFirePal},      // ITEM_TM77_FLAME_CHARGE - Fogo
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_TM78_LOW_SWEEP - Lutador
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM79_DARK_PULSE - Sombrio
-	{gBag_TMTiles, gBag_TMRockPal},      // ITEM_TM80_ROCK_SLIDE - Pedra
-	{gBag_TMTiles, gBag_TMBugPal},       // ITEM_TM81_X_SCISSOR - Inseto
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM82_SLEEP_TALK - Normal
-	{gBag_TMTiles, gBag_TMWaterPal},     // ITEM_TM83_SCALD - Água
-	{gBag_TMTiles, gBag_TMPoisonPal},    // ITEM_TM84_POISON_JAB - Veneno
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM85_DREAM_EATER - Psíquico
-	{gBag_TMTiles, gBag_TMGrassPal},     // ITEM_TM86_GRASS_KNOT - Grama
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM87_SWAGGER - Normal
-	{gBag_TMTiles, gBag_TMFlyingPal},    // ITEM_TM88_PLUCK - Voador
-	{gBag_TMTiles, gBag_TMBugPal},       // ITEM_TM89_U_TURN - Inseto
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM90_SUBSTITUTE - Normal
-	{gBag_TMTiles, gBag_TMSteelPal},     // ITEM_TM91_FLASH_CANNON - Aço
-	{gBag_TMTiles, gBag_TMElectricPal},  // ITEM_TM92_VOLT_SWITCH - Elétrico
-	{gBag_TMTiles, gBag_TMDragonPal},    // ITEM_TM93_DRAGON_TAIL - Dragão
-	{gBag_TMTiles, gBag_TMFirePal},      // ITEM_TM94_INCINERATE - Fogo
-	{gBag_TMTiles, gBag_TMBugPal},       // ITEM_TM95_STRUGGLE_BUG - Inseto
-	{gBag_TMTiles, gBag_TMGroundPal},    // ITEM_TM96_BULLDOZE - Terra
-	{gBag_TMTiles, gBag_TMIcePal},       // ITEM_TM97_FROST_BREATH - Gelo
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM98_WORK_UP - Normal
-	{gBag_TMTiles, gBag_TMElectricPal},  // ITEM_TM99_WILD_CHARGE - Elétrico
-	{gBag_TMTiles, gBag_TMBugPal},       // ITEM_TM100_INFESTATION - Inseto
-	{gBag_TMTiles, gBag_TMFightingPal},  // ITEM_TM101_POWER_UP_PUNCH - Lutador
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM102_DAZZLING_GLEAM - Fada
-	{gBag_TMTiles, gBag_TMPoisonPal},    // ITEM_TM103_SLUDGE_WAVE - Veneno
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM104_PSYSHOCK - Psíquico
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM105_BRUTAL_SWING - Sombrio
-	{gBag_TMTiles, gBag_TMSteelPal},     // ITEM_TM106_SMART_STRIKE - Aço
-	{gBag_TMTiles, gBag_TMFlyingPal},    // ITEM_TM107_ACROBATICS - Voador
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM108_SNARL - Sombrio
-	{gBag_TMTiles, gBag_TMFlyingPal},    // ITEM_TM109_DEFOG - Voador
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM110_CAPTIVATE - Normal
-	{gBag_TMTiles, gBag_TMRockPal},      // ITEM_TM111_SMACK_DOWN - Pedra
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM112_ROUND - Normal
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM113_ECHOED_VOICE - Normal
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM114_NATURAL_GIFT - Normal
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM115_QUASH - Sombrio
-	{gBag_TMTiles, gBag_TMPsychicPal},   // ITEM_TM116_TRICK_ROOM - Psíquico
-	{gBag_TMTiles, gBag_TMDarkPal},      // ITEM_TM117_FLING - Sombrio
-	{gBag_TMTiles, gBag_TMIcePal},       // ITEM_TM118_AURORA_VEIL - Gelo
-	{gBag_TMTiles, gBag_TMFlyingPal},    // ITEM_TM119_SKY_DROP - Voador
-	{gBag_TMTiles, gBag_TMNormalPal},    // ITEM_TM120_NATURE_POWER - Normal
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},  	 // ITEM_TM51_MOVE_ROOST - Voador
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_TM52_MOVE_FOCUSBLAST - Lutador
+	{gBag_TMGrassTiles, gBag_TMGrassPal}, 	 // ITEM_TM53_MOVE_ENERGYBALL - Grama
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM54_MOVE_FALSESWIPE - Normal
+	{gBag_TMWaterTiles, gBag_TMWaterPal},  	 // ITEM_TM55_MOVE_BRINE - Agua
+	{gBag_TMDarkTiles, gBag_TMDarkPal}, 	 // ITEM_TM56_MOVE_HONECLAWS - Noturno
+	{gBag_TMElectricTiles, gBag_TMElectricPal},  // ITEM_TM57_MOVE_CHARGEBEAM - Eletrico
+	{gBag_TMNormalTiles, gBag_TMNormalPal},  	 // ITEM_TM58_MOVE_ENDURE - Normal
+	{gBag_TMDragonTiles, gBag_TMDragonPal},    // ITEM_TM59_DRAGON_PULSE - Dragão
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_TM60_DRAIN_PUNCH - Lutador
+	{gBag_TMFireTiles, gBag_TMFirePal},   	 // ITEM_TM61_WILL_O_WISP - Fogo
+	{gBag_TMBugTiles, gBag_TMBugPal},       // ITEM_TM62_SILVER_WIND - Inseto
+	{gBag_TMPoisonTiles, gBag_TMPoisonPal},    // ITEM_TM63_VENOSHOCK - Veneno
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM64_EXPLOSION - Normal
+	{gBag_TMGhostTiles, gBag_TMGhostPal},     // ITEM_TM65_SHADOW_CLAW - Fantasma
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM66_PAYBACK - Sombrio
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM67_RECYCLE - Normal
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM68_GIGA_IMPACT - Normal
+	{gBag_TMRockTiles, gBag_TMRockPal},     // ITEM_TM69_ROCK_POLISH - Pedra
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM70_FLASH - Normal
+	{gBag_TMRockTiles, gBag_TMRockPal},     // ITEM_TM71_STONE_EDGE - Pedra
+	{gBag_TMIceTiles, gBag_TMIcePal},       // ITEM_TM72_AVALANCHE - Gelo
+	{gBag_TMElectricTiles, gBag_TMElectricPal},  // ITEM_TM73_THUNDER_WAVE - Elétrico
+	{gBag_TMSteelTiles, gBag_TMSteelPal},     // ITEM_TM74_GYRO_BALL - Aço
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM75_SWORDS_DANCE - Normal
+	{gBag_TMRockTiles, gBag_TMRockPal},     // ITEM_TM76_STEALTH_ROCK - Pedra
+	{gBag_TMFireTiles, gBag_TMFirePal},      // ITEM_TM77_FLAME_CHARGE - Fogo
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_TM78_LOW_SWEEP - Lutador
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM79_DARK_PULSE - Sombrio
+	{gBag_TMRockTiles, gBag_TMRockPal},     // ITEM_TM80_ROCK_SLIDE - Pedra
+	{gBag_TMBugTiles, gBag_TMBugPal},       // ITEM_TM81_X_SCISSOR - Inseto
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM82_SLEEP_TALK - Normal
+	{gBag_TMWaterTiles, gBag_TMWaterPal},     // ITEM_TM83_SCALD - Água
+	{gBag_TMPoisonTiles, gBag_TMPoisonPal},    // ITEM_TM84_POISON_JAB - Veneno
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM85_DREAM_EATER - Psíquico
+	{gBag_TMGrassTiles, gBag_TMGrassPal},     // ITEM_TM86_GRASS_KNOT - Grama
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM87_SWAGGER - Normal
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},    // ITEM_TM88_PLUCK - Voador
+	{gBag_TMBugTiles, gBag_TMBugPal},       // ITEM_TM89_U_TURN - Inseto
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM90_SUBSTITUTE - Normal
+	{gBag_TMSteelTiles, gBag_TMSteelPal},     // ITEM_TM91_FLASH_CANNON - Aço
+	{gBag_TMElectricTiles, gBag_TMElectricPal},  // ITEM_TM92_VOLT_SWITCH - Elétrico
+	{gBag_TMDragonTiles, gBag_TMDragonPal},    // ITEM_TM93_DRAGON_TAIL - Dragão
+	{gBag_TMFireTiles, gBag_TMFirePal},      // ITEM_TM94_INCINERATE - Fogo
+	{gBag_TMBugTiles, gBag_TMBugPal},       // ITEM_TM95_STRUGGLE_BUG - Inseto
+	{gBag_TMGroundTiles, gBag_TMGroundPal},    // ITEM_TM96_BULLDOZE - Terra
+	{gBag_TMIceTiles, gBag_TMIcePal},       // ITEM_TM97_FROST_BREATH - Gelo
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM98_WORK_UP - Normal
+	{gBag_TMElectricTiles, gBag_TMElectricPal},  // ITEM_TM99_WILD_CHARGE - Elétrico
+	{gBag_TMBugTiles, gBag_TMBugPal},       // ITEM_TM100_INFESTATION - Inseto
+	{gBag_TMFightingTiles, gBag_TMFightingPal},  // ITEM_TM101_POWER_UP_PUNCH - Lutador
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM102_DAZZLING_GLEAM - Fada
+	{gBag_TMPoisonTiles, gBag_TMPoisonPal},    // ITEM_TM103_SLUDGE_WAVE - Veneno
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM104_PSYSHOCK - Psíquico
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM105_BRUTAL_SWING - Sombrio
+	{gBag_TMSteelTiles, gBag_TMSteelPal},     // ITEM_TM106_SMART_STRIKE - Aço
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},    // ITEM_TM107_ACROBATICS - Voador
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM108_SNARL - Sombrio
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},    // ITEM_TM109_DEFOG - Voador
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM110_CAPTIVATE - Normal
+	{gBag_TMRockTiles, gBag_TMRockPal},     // ITEM_TM111_SMACK_DOWN - Pedra
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM112_ROUND - Normal
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM113_ECHOED_VOICE - Normal
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM114_NATURAL_GIFT - Normal
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM115_QUASH - Sombrio
+	{gBag_TMPsychicTiles, gBag_TMPsychicPal},   // ITEM_TM116_TRICK_ROOM - Psíquico
+	{gBag_TMDarkTiles, gBag_TMDarkPal},      // ITEM_TM117_FLING - Sombrio
+	{gBag_TMIceTiles, gBag_TMIcePal},       // ITEM_TM118_AURORA_VEIL - Gelo
+	{gBag_TMFlyingTiles, gBag_TMFlyingPal},    // ITEM_TM119_SKY_DROP - Voador
+	{gBag_TMNormalTiles, gBag_TMNormalPal},    // ITEM_TM120_NATURE_POWER - Normal
 	{gBag_OccaBerryTiles, gBag_OccaBerryPal},
 	{gBag_PasshoBerryTiles, gBag_PasshoBerryPal},
 	{gBag_WacanBerryTiles, gBag_WacanBerryPal},
@@ -1779,30 +1779,10 @@ const u32 *const gItemGraphicsTable[ITEMS_COUNT + 1][2] =
 	{masterpiece_teacupTiles, masterpiece_teacupPal},
 	{unremarkable_teacupTiles, unremarkable_teacupPal},
 	{tera_orbTiles, tera_orbPal},
+	{Portable_PCTiles, Portable_PCPal},
 	{gBag_InterrogationTiles, gBag_InterrogationPal}, //Free space 1
 	{gBag_InterrogationTiles, gBag_InterrogationPal},
 	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal},
-	{gBag_InterrogationTiles, gBag_InterrogationPal}, //Shiny Space 20
-	
 };
 
 const struct Item gItemData[] =
@@ -2096,7 +2076,7 @@ const struct Item gItemData[] =
         .secondaryId = 0
 	},
 	{
-		.name = {_P, _a, _r, _a, _l, _y, _z, _SPACE, _H, _e, _a, _l, _END, _END},
+		.name = {_P, _a, _r, _a, _l, _y, _z, _SPACE, _H, _e, _a, _l, _END},
 		.itemId = ITEM_PARALYZE_HEAL,
 		.price = 200,
 		.holdEffect = 0,
@@ -2784,7 +2764,7 @@ const struct Item gItemData[] =
         .secondaryId = 0
 	},
 	{
-		.name = {_C, _l, _e, _v, _e, _r, _SPACE, _W, _i, _n, _g, _SPACE, _END, 0xDC},
+		.name = {_C, _l, _e, _v, _e, _r, _SPACE, _W, _i, _n, _g, _END},
 		.itemId = ITEM_CLEVER_WING,
 		.price = 300,
 		.holdEffect = 0,
@@ -2800,7 +2780,7 @@ const struct Item gItemData[] =
         .secondaryId = 0
 	},
 	{
-		.name = {_S, _w, _i, _f, _t, _SPACE, _W, _i, _n, _g, _SPACE, _SPACE, _END, 0xD9},
+		.name = {_S, _w, _i, _f, _t, _SPACE, _W, _i, _n, _g, _END},
 		.itemId = ITEM_SWIFT_WING,
 		.price = 300,
 		.holdEffect = 0,
@@ -6176,7 +6156,7 @@ const struct Item gItemData[] =
         .secondaryId = 1
 	},
 	{
-		.name = {_PO, _KE, _BL, _OC, _OK, _SPACE, _C, _A, _S, _E, _END},
+		.name = {_P, _o, _k, _e, _b, _l, _o, _c, _k, _SPACE, _C, _a, _s, _END},
 		.itemId = ITEM_POKEBLOCK_CASE,
 		.price = 0,
 		.holdEffect = 0,
@@ -7809,7 +7789,7 @@ const struct Item gItemData[] =
 	},
 	{
 		.name = {_HYPHEN, _D, _O, _N, _T, _SPACE, _U, _S, _E, _HYPHEN, _END},
-		.itemId = ITEM_NONE,
+		.itemId = ITEM_X_SP_DEF,
 		.price = 0,
 		.holdEffect = 0,
 		.holdEffectParam = 0,
@@ -14233,6 +14213,23 @@ const struct Item gItemData[] =
 		.battleUseFunc = NULL,
 		.secondaryId = 0
 	},
+	[ITEM_PORTABLE_PC]
+	{
+		.name = {_P, _o, _r, _t, _a, _b, _l, _e, _SPACE, _P, _C, _END},
+		.itemId = ITEM_PORTABLE_PC,
+		.price = 0,
+		.holdEffect = 0,
+		.holdEffectParam = 0,
+		.description = DESC_PORTABLE_PC,
+		.importance = 1,
+		.unk19 = 0,
+		.pocket = POCKET_KEY_ITEMS,
+		.type = ITEM_USE_FIELD,
+		.fieldUseFunc = FieldUseFunc_PortablePC,
+		.battleUsage = 0,
+		.battleUseFunc = NULL,
+		.secondaryId = 0
+	},
 	{
         .name = {_F, _r, _e, _e, _SPACE, _S, _p, _a, _c, _e, _SPACE, _1, _END},
         .itemId = ITEM_FREE_SPACE1,
@@ -14251,7 +14248,7 @@ const struct Item gItemData[] =
     },
 	{
         .name = {_F, _r, _e, _e, _SPACE, _S, _p, _a, _c, _e, _SPACE, _2, _END},
-        .itemId = ITEM_FREE_SPACE1,
+        .itemId = ITEM_FREE_SPACE2,
         .price = 0,
         .holdEffect = 0,
         .holdEffectParam = 0,
@@ -14267,7 +14264,7 @@ const struct Item gItemData[] =
     },
 	{
         .name = {_F, _r, _e, _e, _SPACE, _S, _p, _a, _c, _e, _SPACE, _3, _END},
-        .itemId = ITEM_FREE_SPACE1,
+        .itemId = ITEM_FREE_SPACE3,
         .price = 0,
         .holdEffect = 0,
         .holdEffectParam = 0,
@@ -14281,345 +14278,5 @@ const struct Item gItemData[] =
         .battleUseFunc = NULL,
         .secondaryId = 0
     },
-	    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _1, _END},
-        .itemId = ITEM_SHINY_SPACE1,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _2, _END},
-        .itemId = ITEM_SHINY_SPACE2,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _3, _END},
-        .itemId = ITEM_SHINY_SPACE3,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _4, _END},
-        .itemId = ITEM_SHINY_SPACE4,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _5, _END},
-        .itemId = ITEM_SHINY_SPACE5,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _6, _END},
-        .itemId = ITEM_SHINY_SPACE6,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _7, _END},
-        .itemId = ITEM_SHINY_SPACE7,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _8, _END},
-        .itemId = ITEM_SHINY_SPACE8,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _SPACE, _9, _END},
-        .itemId = ITEM_SHINY_SPACE9,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _0, _END},
-        .itemId = ITEM_SHINY_SPACE10,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _1, _END},
-        .itemId = ITEM_SHINY_SPACE11,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _2, _END},
-        .itemId = ITEM_SHINY_SPACE12,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _3, _END},
-        .itemId = ITEM_SHINY_SPACE13,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _4, _END},
-        .itemId = ITEM_SHINY_SPACE14,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _5, _END},
-        .itemId = ITEM_SHINY_SPACE15,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _6, _END},
-        .itemId = ITEM_SHINY_SPACE16,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _7, _END},
-        .itemId = ITEM_SHINY_SPACE17,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _8, _END},
-        .itemId = ITEM_SHINY_SPACE18,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _1, _9, _END},
-        .itemId = ITEM_SHINY_SPACE19,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
-    {
-        .name = {_S, _h, _i, _n, _y, _SPACE, _S, _p, _a, _c, _e, _2, _0, _END},
-        .itemId = ITEM_SHINY_SPACE20,
-        .price = 0,
-        .holdEffect = 0,
-        .holdEffectParam = 0,
-        .description = gText_ItemNone,
-        .importance = 0,
-        .unk19 = 0,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = FieldUseFunc_OakStopsYou,
-        .battleUsage = 0,
-        .battleUseFunc = NULL,
-        .secondaryId = 0
-    },
-
 };
 #endif

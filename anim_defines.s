@@ -16,7 +16,7 @@
 .equ TEMPLATE_ABOVE, 0x20
 .equ TEMPLATE_BELOW, 0x40 @;Appears underneath the sprite
 .equ TEMPLATE_TARGET, 0x80
-
+ 
 @background IDs
 .equ BG_DARK, 0x1
 .equ BG_GHOST, 0x2

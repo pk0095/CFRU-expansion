@@ -488,11 +488,13 @@ u32 MultiMoneyCalc(void)
 	return money;
 }
 
+#ifndef EXPAND_TRAINERS
 #define gTrainerMoneyTable ((struct TrainerMoney*) *((u32*) 0x80259CC))
+#endif
 static u32 CalcPrizeiMoneyForTrainer(u16 trainerId)
 {
 	u8 i, firstMonId, lastMonId, level, rate;
-	struct Trainer* trainer = &gTrainers[trainerId];
+	const struct Trainer* trainer = &gTrainers[trainerId];
 
 	//Get the party range to search through for the given trainer
 	if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)

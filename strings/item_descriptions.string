@@ -1,3 +1,842 @@
+#org @DESC_MASTER_BALL
+The best BALL with the ultimate\nperformance. It will catch any wild\nPOK\eMON without fail.
+
+#org @DESC_ULTRA_BALL
+A very high-grade BALL that offers\na higher POK\eMON catch rate than\na GREAT BALL.
+
+#org @DESC_GREAT_BALL
+A good, quality BALL that offers\na higher POK\eMON catch rate than\na standard POK\e BALL.
+
+#org @DESC_POKE_BALL
+A BALL thrown to catch a wild\nPOK\eMON. It is designed in a\ncapsule style.
+
+#org @DESC_SAFARI_BALL
+A special BALL that is used only in\nthe SAFARI ZONE. It is finished in\na camouflage pattern.
+
+#org @DESC_NET_BALL
+A somewhat different BALL that\nworks especially well on WATER- and\nBUG-type POK\eMON.
+
+#org @DESC_DIVE_BALL
+A somewhat different BALL that\nworks especially well on POK\eMON\ndeep in the sea.
+
+#org @DESC_NEST_BALL
+A somewhat different BALL that\nworks especially well on weaker\nPOK\eMON.
+
+#org @DESC_REPEAT_BALL
+A somewhat different BALL that\nworks especially well on POK\eMON\ncaught before.
+
+#org @DESC_TIMER_BALL
+A somewhat different BALL that\nbecomes progressively better the\nmore turns there are in a battle.
+
+#org @DESC_LUXURY_BALL
+A comfortable BALL that makes a\ncaptured wild POK\eMON quickly grow\nfriendly.
+
+#org @DESC_PREMIER_BALL
+A rare BALL that has been\nspecially made to commemorate an\nevent of some sort.
+
+#org @DESC_POTION
+A spray-type wound medicine.\nIt restores the HP of one POK\eMON\nby 20 points.
+
+#org @DESC_ANTIDOTE
+A spray-type medicine.\nIt heals one POK\eMON from a\npoisoning.
+
+#org @DESC_BURN_HEAL
+A spray-type medicine.\nIt heals one POK\eMON of a burn.
+
+#org @DESC_ICE_HEAL
+A spray-type medicine.\nIt defrosts a frozen POK\eMON.
+
+#org @DESC_AWAKENING
+A spray-type medicine.\nIt awakens a sleeping POK\eMON.
+
+#org @DESC_PARALYZE_HEAL
+A spray-type medicine.\nIt heals one POK\eMON from\nparalysis.
+
+#org @DESC_FULL_RESTORE
+A medicine that fully restores the\nHP and heals any status problems\nof one POK\eMON.
+
+#org @DESC_MAX_POTION
+A spray-type wound medicine.\nIt fully restores the HP of one\nPOK\eMON.
+
+#org @DESC_HYPER_POTION
+A spray-type wound medicine.\nIt restores the HP of one POK\eMON\nby 200 points.
+
+#org @DESC_SUPER_POTION
+A spray-type wound medicine.\nIt restores the HP of one POK\eMON\nby 50 points.
+
+#org @DESC_FULL_HEAL
+A spray-type medicine.\nIt heals all the status problems of\none POK\eMON.
+
+#org @DESC_REVIVE
+A medicine that revives a fainted\nPOK\eMON, restoring HP by half the\nmaximum amount.
+
+#org @DESC_MAX_REVIVE
+A medicine that revives a fainted\nPOK\eMON, restoring HP fully.
+
+#org @DESC_FRESH_WATER
+Water with a high mineral content.\nIt restores the HP of one POK\eMON\nby 50 points.
+
+#org @DESC_SODA_POP
+A fizzy soda drink.\nIt restores the HP of one POK\eMON\nby 60 points.
+
+#org @DESC_LEMONADE
+A very sweet drink.\nIt restores the HP of one POK\eMON\nby 80 points.
+
+#org @DESC_MOOMOO_MILK
+Highly nutritious milk.\nIt restores the HP of one POK\eMON\nby 100 points.
+
+#org @DESC_ENERGY_POWDER
+A very bitter medicine powder.\nIt restores the HP of one POK\eMON\nby 50 points.
+
+#org @DESC_ENERGY_ROOT
+A very bitter root.\nIt restores the HP of one POK\eMON\nby 200 points.
+
+#org @DESC_HEAL_POWDER
+A very bitter medicine powder.\nIt heals all the status problems of\none POK\eMON.
+
+#org @DESC_REVIVAL_HERB
+A very bitter medicinal herb.\nIt revives a fainted POK\eMON,\nrestoring HP fully.
+
+#org @DESC_ETHER
+Restores a selected move's PP by\n10 points for one POK\eMON.
+
+#org @DESC_MAX_ETHER
+Fully restores a selected move's PP\nfor one POK\eMON.
+
+#org @DESC_ELIXIR
+Restores the PP of all moves for\none POK\eMON by 10 points each.
+
+#org @DESC_MAX_ELIXIR
+Fully restores the PP of all moves\nfor one POK\eMON.
+
+#org @DESC_LAVA_COOKIE
+LAVARIDGE TOWN's local specialty.\nIt heals all the status problems of\none POK\eMON.
+
+#org @DESC_BLUE_FLUTE
+A blue glass flute that awakens\na sleeping POK\eMON.
+
+#org @DESC_YELLOW_FLUTE
+A yellow glass flute that snaps one\nPOK\eMON out of confusion.
+
+#org @DESC_RED_FLUTE
+A red glass flute that snaps one\nPOK\eMON out of infatuation.
+
+#org @DESC_BLACK_FLUTE
+A black glass flute.\nWhen blown, it makes wild POK\eMON\nless likely to appear.
+
+#org @DESC_WHITE_FLUTE
+A white glass flute.\nWhen blown, it makes wild POK\eMON\nmore likely to appear.
+
+#org @DESC_BERRY_JUICE
+A 100% pure juice.\nIt restores the HP of one POK\eMON\nby 20 points.
+
+#org @DESC_SACRED_ASH
+Revives all fainted POK\eMON,\nrestoring HP fully.
+
+#org @DESC_SHOAL_SALT
+Pure salt obtained from deep inside\nthe SHOAL CAVE. It is extremely\nsalty.
+
+#org @DESC_SHOAL_SHELL
+A pretty seashell found deep inside\nthe SHOAL CAVE. It is striped in\nblue and white.
+
+#org @DESC_RED_SHARD
+A small red shard.\nIt appears to be from some sort of\na tool made long ago.
+
+#org @DESC_BLUE_SHARD
+A small blue shard.\nIt appears to be from some sort of\na tool made long ago.
+
+#org @DESC_YELLOW_SHARD
+A small yellow shard.\nIt appears to be from some sort of\na tool made long ago.
+
+#org @DESC_GREEN_SHARD
+A small green shard.\nIt appears to be from some sort of\na tool made long ago.
+
+#org @DESC_HP_UP
+A nutritious drink for POK\eMON.\nIt raises the base HP of one\nPOK\eMON.
+
+#org @DESC_PROTEIN
+A nutritious drink for POK\eMON.\nIt raises the base ATTACK stat of\none POK\eMON.
+
+#org @DESC_IRON
+A nutritious drink for POK\eMON.\nIt raises the base DEFENSE stat of\none POK\eMON.
+
+#org @DESC_CARBOS
+A nutritious drink for POK\eMON.\nIt raises the base SPEED stat of\none POK\eMON.
+
+#org @DESC_CALCIUM
+A nutritious drink for POK\eMON.\nIt raises the base SP. ATK stat\nof one POK\eMON.
+
+#org @DESC_RARE_CANDY
+A candy that is packed with energy.\nIt raises the level of a POK\eMON\nby one.
+
+#org @DESC_PP_UP
+Slightly raises the maximum PP of\na selected move for one POK\eMON.
+
+#org @DESC_ZINC
+A nutritious drink for POK\eMON.\nIt raises the base SP. DEF stat\nof one POK\eMON.
+
+#org @DESC_PP_MAX
+Raises the PP of a selected move\nto its maximum level for one\nPOK\eMON.
+
+#org @DESC_GUARD_SPEC
+An item that prevents stat reduction\namong party POK\eMON for five turns\nafter use.
+
+#org @DESC_DIRE_HIT
+Raises the critical-hit ratio of\nPOK\eMON in battle. Wears off if the\nPOK\eMON is withdrawn.
+
+#org @DESC_X_ATTACK
+Raises the ATTACK stat of POK\eMON\nin battle. Wears off if the POK\eMON\nis withdrawn.
+
+#org @DESC_X_DEFEND
+Raises the DEFENSE stat of POK\eMON\nin battle. Wears off if the POK\eMON\nis withdrawn.
+
+#org @DESC_X_SPEED
+Raises the SPEED stat of POK\eMON\nin battle. Wears off if the POK\eMON\nis withdrawn.
+
+#org @DESC_X_ACCURACY
+Raises the accuracy stat of\nPOK\eMON in battle. Wears off if the\nPOK\eMON is withdrawn.
+
+#org @DESC_X_SPECIAL
+Raises the SP. ATK stat of\nPOK\eMON in battle. Wears off if the\nPOK\eMON is withdrawn.
+
+#org @DESC_POKE_DOLL
+An attractive doll.\nUse it to flee from any battle with\na wild POK\eMON.
+
+#org @DESC_FLUFFY_TAIL
+An attractive item.\nUse it to flee from any battle with\na wild POK\eMON.
+
+#org @DESC_SUPER_REPEL
+Prevents weak wild POK\eMON from\nappearing for 200 steps.
+
+#org @DESC_MAX_REPEL
+Prevents weak wild POK\eMON from\nappearing for 250 steps.
+
+#org @DESC_ESCAPE_ROPE
+A long, durable rope.\nUse it to escape instantly from a\ncave or a dungeon.
+
+#org @DESC_REPEL
+Prevents weak wild POK\eMON from\nappearing for 100 steps.
+
+#org @DESC_SUN_STONE
+A peculiar stone that makes certain\nspecies of POK\eMON evolve.\nIt is as red as the sun.
+
+#org @DESC_MOON_STONE
+A peculiar stone that makes certain\nspecies of POK\eMON evolve.\nIt is as black as the night sky.
+
+#org @DESC_FIRE_STONE
+A peculiar stone that makes certain\nspecies of POK\eMON evolve.\nIt is colored orange.
+
+#org @DESC_THUNDER_STONE
+A peculiar stone that makes certain\nspecies of POK\eMON evolve.\nIt has a thunderbolt pattern.
+
+#org @DESC_WATER_STONE
+A peculiar stone that makes certain\nspecies of POK\eMON evolve.\nIt is a clear light blue.
+
+#org @DESC_LEAF_STONE
+A peculiar stone that makes certain\nspecies of POK\eMON evolve.\nIt has a leaf pattern.
+
+#org @DESC_TINY_MUSHROOM
+A small and rare mushroom.\nIt is quite popular among certain\npeople.
+
+#org @DESC_BIG_MUSHROOM
+A large and rare mushroom.\nIt is very popular among certain\npeople.
+
+#org @DESC_PEARL
+A relatively small pearl that\nsparkles in a pretty silver color.\nIt can be sold cheaply.
+
+#org @DESC_BIG_PEARL
+A quite-large pearl that sparkles\nin a pretty silver color.\nIt can be sold at a high price.
+
+#org @DESC_STARDUST
+A pretty red sand with a loose,\nsilky feel.\nIt can be sold at a high price.
+
+#org @DESC_STAR_PIECE
+A shard of a pretty gem that\nsparkles in a red color.\nIt can be sold at a high price.
+
+#org @DESC_NUGGET
+A nugget of pure gold that gives\noff a lustrous gleam.\nIt can be sold at a high price.
+
+#org @DESC_HEART_SCALE
+A pretty, heart-shaped scale that\nis extremely rare. It glows faintly\nin the colors of a rainbow.
+
+#org @DESC_ORANGE_MAIL
+A piece of MAIL featuring a cute\nZIGZAGOON print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_HARBOR_MAIL
+A piece of MAIL featuring a cute\nWINGULL print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_GLITTER_MAIL
+A piece of MAIL featuring a cute\nPIKACHU print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_MECH_MAIL
+A piece of MAIL featuring a cute\nMAGNEMITE print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_WOOD_MAIL
+A piece of MAIL featuring a cute\nSLAKOTH print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_WAVE_MAIL
+A piece of MAIL featuring a cute\nWAILMER print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_BEAD_MAIL
+A piece of MAIL to be held by a\nPOK\eMON. It will bear the print of\nthe POK\eMON holding it.
+
+#org @DESC_SHADOW_MAIL
+A piece of MAIL featuring a cute\nDUSKULL print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_TROPIC_MAIL
+A piece of MAIL featuring a cute\nBELLOSSOM print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_DREAM_MAIL
+A piece of MAIL to be held by a\nPOK\eMON. It will bear the print of\nthe POK\eMON holding it.
+
+#org @DESC_FAB_MAIL
+A piece of MAIL featuring a\ngorgeous, extravagant print.\nIt is to be held by a POK\eMON.
+
+#org @DESC_RETRO_MAIL
+A piece of MAIL featuring a print\nof three cute POK\eMON.\nIt is to be held by a POK\eMON.
+
+#org @DESC_CHERI_BERRY
+When held by a POK\eMON, it will be\nused in battle to heal paralysis.
+
+#org @DESC_CHESTO_BERRY
+When held by a POK\eMON, it will be\nused in battle to wake up.
+
+#org @DESC_PECHA_BERRY
+When held by a POK\eMON, it will be\nused in battle to cure poison.
+
+#org @DESC_RAWST_BERRY
+When held by a POK\eMON, it will be\nused in battle to heal a burn.
+
+#org @DESC_ASPEAR_BERRY
+When held by a POK\eMON, it will be\nused in battle for defrosting.
+
+#org @DESC_LEPPA_BERRY
+When held by a POK\eMON, it will be\nused in battle to restore 10 PP.
+
+#org @DESC_ORAN_BERRY
+When held by a POK\eMON, it will be\nused in battle to restore 10 HP.
+
+#org @DESC_PERSIM_BERRY
+When held by a POK\eMON, it will be\nused in battle to lift confusion.
+
+#org @DESC_LUM_BERRY
+When held by a POK\eMON, it will be\nused in battle to heal any problem.
+
+#org @DESC_SITRUS_BERRY
+When held by a POK\eMON, it will be\nused in battle to restore 30 HP.
+
+#org @DESC_FIGY_BERRY
+A hold item that restores HP but\nmay cause confusion when used.
+
+#org @DESC_WIKI_BERRY
+A hold item that restores HP but\nmay cause confusion when used.
+
+#org @DESC_MAGO_BERRY
+A hold item that restores HP but\nmay cause confusion when used.
+
+#org @DESC_AGUAV_BERRY
+A hold item that restores HP but\nmay cause confusion when used.
+
+#org @DESC_IAPAPA_BERRY
+A hold item that restores HP but\nmay cause confusion when used.
+
+#org @DESC_INGREDIENT_BERRY
+Can be ground up into a powder as\nan ingredient for medicine.
+
+#org @DESC_LIECHI_BERRY
+When held by a POK\eMON, it raises\nthe ATTACK stat in a pinch.
+
+#org @DESC_GANLON_BERRY
+When held by a POK\eMON, it raises\nthe DEFENSE stat in a pinch.
+
+#org @DESC_SALAC_BERRY
+When held by a POK\eMON, it raises\nthe SPEED stat in a pinch.
+
+#org @DESC_PETAYA_BERRY
+When held by a POK\eMON, it raises\nthe SP. ATK stat in a pinch.
+
+#org @DESC_APICOT_BERRY
+When held by a POK\eMON, it raises\nthe SP. DEF stat in a pinch.
+
+#org @DESC_LANSAT_BERRY
+When held by a POK\eMON, it raises\nthe critical-hit ratio in a pinch.
+
+#org @DESC_STARF_BERRY
+When held by a POK\eMON, it sharply\nraises one stat in a pinch.
+
+#org @DESC_BRIGHT_POWDER
+An item to be held by a POK\eMON.\nIt casts a tricky glare that lowers\nthe opponent's accuracy.
+
+#org @DESC_WHITE_HERB
+An item to be held by a POK\eMON.\nIt restores any lowered stat in\nbattle. It can be used only once.
+
+#org @DESC_MACHO_BRACE
+An item to be held by a POK\eMON.\nIt promotes strong growth but\nlowers SPEED while it is held.
+
+#org @DESC_EXP_SHARE
+An item to be held by a POK\eMON.\nThe holder gets a share of EXP.\npoints without having to battle.
+
+#org @DESC_QUICK_CLAW
+An item to be held by a POK\eMON.\nA light and sharp claw. The holder\nmay be able to strike first.
+
+#org @DESC_SOOTHE_BELL
+An item to be held by a POK\eMON.\nA bell with a comforting chime that\nmakes the holder calm and friendly.
+
+#org @DESC_MENTAL_HERB
+An item to be held by a POK\eMON.\nIt snaps the holder out of\ninfatuation. It can be used once.
+
+#org @DESC_KINGS_ROCK
+An item to be held by a POK\eMON.\nIt may cause the foe to flinch\nupon taking damage.
+
+#org @DESC_SILVER_POWDER
+An item to be held by a POK\eMON.\nA shiny silver powder that boosts\nthe power of BUG-type moves.
+
+#org @DESC_AMULET_COIN
+An item to be held by a POK\eMON.\nIt doubles the battle money if the\nholding POK\eMON takes part.
+
+#org @DESC_CLEANSE_TAG
+An item to be held by a POK\eMON.\nIt repels wild POK\eMON if the\nholder is first in the party.
+
+#org @DESC_SOUL_DEW
+An orb to be held by a LATIOS or\nLATIAS. It raises the SP. ATK\nand SP. DEF stats.
+
+#org @DESC_DEEP_SEA_TOOTH
+An item to be held by a POK\eMON.\nA fang that gleams a sharp silver.\nIt raises the SP. ATK stat.
+
+#org @DESC_DEEP_SEA_SCALE
+An item to be held by a POK\eMON.\nA scale that shines a faint pink.\nIt raises the SP. DEF stat.
+
+#org @DESC_SMOKE_BALL
+An item to be held by a POK\eMON.\nThe holding POK\eMON can flee from\nany wild POK\eMON for sure.
+
+#org @DESC_EVERSTONE
+An item to be held by a POK\eMON.\nThe holding POK\eMON is prevented\nfrom evolving.
+
+#org @DESC_FOCUS_BAND
+An item to be held by a POK\eMON.\nThe holding POK\eMON may endure an\nattack, leaving just 1 HP.
+
+#org @DESC_LUCKY_EGG
+An item to be held by a POK\eMON.\nAn egg filled with happiness that\nearns extra EXP. points in battle.
+
+#org @DESC_SCOPE_LENS
+An item to be held by a POK\eMON.\nA lens that boosts the critical-hit\nratio of the holding POK\eMON.
+
+#org @DESC_METAL_COAT
+An item to be held by a POK\eMON.\nA special metallic film that boosts\nthe power of STEEL-type moves.
+
+#org @DESC_LEFTOVERS
+An item to be held by a POK\eMON.\nThe holding POK\eMON gradually\nregains HP during battle.
+
+#org @DESC_DRAGON_SCALE
+A thick and tough scale.\nA DRAGON-type POK\eMON may be\nholding it.
+
+#org @DESC_LIGHT_BALL
+An orb to be held by a PIKACHU\nthat raises the SP. ATK stat.\nTouching it may cause a shock.
+
+#org @DESC_SOFT_SAND
+An item to be held by a POK\eMON.\nA loose, silky sand that boosts the\npower of GROUND-type moves.
+
+#org @DESC_HARD_STONE
+An item to be held by a POK\eMON.\nAn unbreakable stone that boosts\nthe power of ROCK-type moves.
+
+#org @DESC_MIRACLE_SEED
+An item to be held by a POK\eMON.\nA seed imbued with life that boosts\nthe power of GRASS-type moves.
+
+#org @DESC_BLACK_GLASSES
+An item to be held by a POK\eMON.\nA shady-looking pair of glasses\nthat boosts DARK-type moves.
+
+#org @DESC_BLACK_BELT
+An item to be held by a POK\eMON.\nA belt that boosts determination\nand FIGHTING-type moves.
+
+#org @DESC_MAGNET
+An item to be held by a POK\eMON.\nA powerful magnet that boosts the\npower of ELECTRIC-type moves.
+
+#org @DESC_MYSTIC_WATER
+An item to be held by a POK\eMON.\nA teardrop-shaped gem that boosts\nthe power of WATER-type moves.
+
+#org @DESC_SHARP_BEAK
+An item to be held by a POK\eMON.\nA long, sharp beak that boosts the\npower of FLYING-type moves.
+
+#org @DESC_POISON_BARB
+An item to be held by a POK\eMON.\nA small, poisonous barb that boosts\nthe power of POISON-type moves.
+
+#org @DESC_NEVER_MELT_ICE
+An item to be held by a POK\eMON.\nA piece of ice that repels heat\nand boosts ICE-type moves.
+
+#org @DESC_SPELL_TAG
+An item to be held by a POK\eMON.\nA sinister, eerie tag that boosts\nGHOST-type moves.
+
+#org @DESC_TWISTED_SPOON
+An item to be held by a POK\eMON.\nA spoon imbued with telekinetic\npower boosts PSYCHIC-type moves.
+
+#org @DESC_CHARCOAL
+An item to be held by a POK\eMON.\nA combustible fuel that boosts the\npower of FIRE-type moves.
+
+#org @DESC_DRAGON_FANG
+An item to be held by a POK\eMON.\nA hard and sharp fang that boosts\nthe power of DRAGON-type moves.
+
+#org @DESC_SILK_SCARF
+An item to be held by a POK\eMON.\nA sumptuous scarf that boosts the\npower of NORMAL-type moves.
+
+#org @DESC_UP_GRADE
+A transparent device filled with all\nsorts of data.\nIt is made by SILPH CO.
+
+#org @DESC_SHELL_BELL
+An item to be held by a POK\eMON.\nThe holding POK\eMON regains some\nHP upon striking the foe.
+
+#org @DESC_SEA_INCENSE
+An item to be held by a POK\eMON.\nIt slightly boosts the power of\nWATER-type moves.
+
+#org @DESC_LAX_INCENSE
+An item to be held by a POK\eMON.\nIts tricky aroma slightly reduces\nthe foe's accuracy.
+
+#org @DESC_LUCKY_PUNCH
+A glove to be held by a CHANSEY.\nIt raises CHANSEY's critical-hit\nratio.
+
+#org @DESC_METAL_POWDER
+A fine, hard powder to be held by\na DITTO.\nIt raises DITTO's DEFENSE stat.
+
+#org @DESC_THICK_CLUB
+A hard bone of some sort to be\nheld by a CUBONE or MAROWAK.\nIt raises the ATTACK stat.
+
+#org @DESC_LEEK
+A stick of leek to be held by a\nFARFETCH'D. It raises FARFETCH'D's\ncritical-hit ratio.
+
+#org @DESC_RED_SCARF
+An item to be held by a POK\eMON.\nIt boosts the holding POK\eMON's\nCOOL condition in CONTESTS.
+
+#org @DESC_BLUE_SCARF
+An item to be held by a POK\eMON.\nIt boosts the holding POK\eMON's\nBEAUTY condition in CONTESTS.
+
+#org @DESC_PINK_SCARF
+An item to be held by a POK\eMON.\nIt boosts the holding POK\eMON's\nCUTE condition in CONTESTS.
+
+#org @DESC_GREEN_SCARF
+An item to be held by a POK\eMON.\nIt boosts the holding POK\eMON's\nSMART condition in CONTESTS.
+
+#org @DESC_YELLOW_SCARF
+An item to be held by a POK\eMON.\nIt boosts the holding POK\eMON's\nTOUGH condition in CONTESTS.
+
+#org @DESC_MACH_BIKE
+A folding bicycle that is at least\ntwice as fast as walking.
+
+#org @DESC_COIN_CASE
+A case for holding COINS obtained\nat the GAME CORNER.\nIt holds up to 9,999 COINS.
+
+#org @DESC_ITEMFINDER
+A device used for finding items.\nIf there is a hidden item nearby\nwhen it is used, it emits a signal.
+
+#org @DESC_OLD_ROD
+An old and beat-up fishing rod.\nUse it by any body of water to \nfish for wild POK\eMON.
+
+#org @DESC_GOOD_ROD
+A new, good-quality fishing rod.\nUse it by any body of water to \nfish for wild POK\eMON.
+
+#org @DESC_SUPER_ROD
+An awesome, high-tech fishing rod.\nUse it by any body of water to fish\nfor wild POK\eMON.
+
+#org @DESC_SS_TICKET
+The ticket required for sailing on\nthe ferry S.S. ANNE.\nIt has a drawing of a ship on it.
+
+#org @DESC_CONTEST_PASS
+The pass required for entering\nPOK\eMON CONTESTS. It has a\ndrawing of an award ribbon on it.
+
+#org @DESC_WAILMER_PAIL
+A nifty watering pail.\nUse it to promote strong growth in\nBERRIES planted in soft soil.
+
+#org @DESC_DEVON_GOODS
+A package that contains mechanical\nparts of some sort made by the\nDEVON CORPORATION.
+
+#org @DESC_SOOT_SACK
+A sack used to collect volcanic\nash automatically during walks\nover deep ash.
+
+#org @DESC_BASEMENT_KEY
+The key to NEW MAUVILLE, which\nwas constructed beneath MAUVILLE\nCITY.
+
+#org @DESC_ACRO_BIKE
+A folding bicycle that is capable\nof stunts like jumps and wheelies.
+
+#org @DESC_POKEBLOCK_CASE
+A case for holding <0x55><0x56><0x57><0x58><0x59>S made\nwith a BERRY BLENDER. It releases\none <0x55><0x56><0x57><0x58><0x59> when shaken.
+
+#org @DESC_LETTER
+An extremely important letter to\nSTEVEN from the PRESIDENT of the\nDEVON CORPORATION.
+
+#org @DESC_EON_TICKET
+The ticket required for sailing on a\nferry to a distant southern island.\nIt features a drawing of an island.
+
+#org @DESC_RED_ORB
+An orb that glows red.\nIt is said to contain an incredible\npower from ancient times.
+
+#org @DESC_BLUE_ORB
+An orb that glows blue.\nIt is said to contain an incredible\npower from ancient times.
+
+#org @DESC_SCANNER
+A device used to search for\nlife-forms in water.\nIt looks too difficult to use.
+
+#org @DESC_GO_GOGGLES
+A pair of protective goggles.\nThey enable a TRAINER to travel\nthrough even desert sandstorms.
+
+#org @DESC_METEORITE
+A meteorite that fell from space\nonto MT. MOON long ago.\nIt is very lumpy and hard.
+
+#org @DESC_ROOM_1_KEY
+A key that opens the door to Room\n1 inside the ABANDONED SHIP.\nIt is old and looks easily broken.
+
+#org @DESC_ROOM_2_KEY
+A key that opens the door to Room\n2 inside the ABANDONED SHIP.\nIt is old and looks easily broken.
+
+#org @DESC_ROOM_4_KEY
+A key that opens the door to Room\n4 inside the ABANDONED SHIP.\nIt is old and looks easily broken.
+
+#org @DESC_ROOM_6_KEY
+A key that opens the door to Room\n6 inside the ABANDONED SHIP.\nIt is old and looks easily broken.
+
+#org @DESC_STORAGE_KEY
+A key that opens the storage hold\ninside the ABANDONED SHIP.\nIt is old and looks easily broken.
+
+#org @DESC_ROOT_FOSSIL
+A fossil of an ancient, seafloor-\ndwelling POK\eMON. It appears to be\npart of a plant root.
+
+#org @DESC_CLAW_FOSSIL
+A fossil of an ancient, seafloor-\ndwelling POK\eMON. It appears to be\npart of a claw.
+
+#org @DESC_DEVON_SCOPE
+A scope that signals the presence\nof any unseeable POK\eMON.\nIt is made by the DEVON CORP.
+
+#org @DESC_TM01
+An attack that is\nexecuted last.\nThe user flinches\nif hit beforehand.
+
+#org @DESC_TM02
+Sharp, huge claws\nhook and slash the\nfoe quickly and\nwith great power.
+
+#org @DESC_TM03
+An attack with a\npulsing blast of\nwater. It may also\nconfuse the foe.
+
+#org @DESC_TM04
+The user focuses\nits mind to raise\nthe SP. ATK and\nSP. DEF stats.
+
+#org @DESC_TM05
+The foe is made to\nswitch out with an\nally. In the wild,\nthe battle ends.
+
+#org @DESC_TM06
+A move that badly\npoisons the foe.\nIts poison damage\nworsens every turn.
+
+#org @DESC_TM07
+A hailstorm lasting\nfive turns damages\nall POK\eMON except\nthe ICE-type.
+
+#org @DESC_TM08
+The user bulks up\nits body to boost\nboth its ATTACK and\nDEFENSE stats.
+
+#org @DESC_TM09
+The user shoots\nseeds at the foe.\nTwo to five seeds\nare shot at once.
+
+#org @DESC_TM10
+An attack that\nvaries in type and\nintensity depending\non the user.
+
+#org @DESC_TM11
+The sun blazes for\nfive turns, powering\nup FIRE-type\nmoves.
+
+#org @DESC_TM12
+The foe is taunted\ninto a rage that\nallows it to use\nonly attack moves.
+
+#org @DESC_TM13
+The foe is struck\nwith an icy beam.\nIt may freeze the\nfoe solid.
+
+#org @DESC_TM14
+The foe is blasted\nwith a blizzard.\nIt may freeze the\nfoe solid.
+
+#org @DESC_TM15
+A severely damaging\nattack that makes\nthe user rest on\nthe next turn.
+
+#org @DESC_TM16
+A wall of light\ncuts damage from\nSP. ATK attacks\nfor five turns.
+
+#org @DESC_TM17
+Enables the user to\nevade all attacks.\nIt may fail if used\nin succession.
+
+#org @DESC_TM18
+A heavy rain falls\nfor five turns,\npowering up WATER-\ntype moves.
+
+#org @DESC_TM19
+A harsh attack that\nabsorbs half the\ndamage it inflicted\nto restore HP.
+
+#org @DESC_TM20
+It protects the\nuser's party from\nall status problems\nfor five turns.
+
+#org @DESC_TM21
+This attack move\ngrows more powerful\nthe less the user\nlikes its TRAINER.
+
+#org @DESC_TM22
+A 2-turn move that\nblasts the foe with\nabsorbed energy in\nthe 2nd turn.
+
+#org @DESC_TM23
+An attack with a\nsteel-hard tail.\nIt may lower the\nfoe's DEFENSE stat.
+
+#org @DESC_TM24
+A strong electrical\nattack that may\nalso leave the foe\nparalyzed.
+
+#org @DESC_TM25
+A brutal lightning\nattack that may\nalso leave the foe\nparalyzed.
+
+#org @DESC_TM26
+An earthquake that\nstrikes all POK\eMON\nin battle excluding\nthe user.
+
+#org @DESC_TM27
+This attack move\ngrows more powerful\nthe more the user\nlikes its TRAINER.
+
+#org @DESC_TM28
+An attack that hits\non the 2nd turn.\nCan also be used\nto exit dungeons.
+
+#org @DESC_TM29
+A strong telekinetic\nattack. It may also\nlower the foe's\nSP. DEF stat.
+
+#org @DESC_TM30
+A shadowy blob is\nhurled at the foe.\nMay also lower the\nfoe's SP. DEF.
+
+#org @DESC_TM31
+An attack that also\nbreaks any barrier\nlike LIGHT SCREEN\nand REFLECT.
+
+#org @DESC_TM32
+The user creates\nillusory copies of\nitself to raise its\nevasiveness.
+
+#org @DESC_TM33
+A wall of light\ncuts damage from\nphysical attacks\nfor five turns.
+
+#org @DESC_TM34
+A rapid jolt of\nelectricity strikes\nthe foe. It can't\nbe evaded.
+
+#org @DESC_TM35
+The foe is scorched\nwith intense flames.\nThe foe may suffer\na burn.
+
+#org @DESC_TM36
+Filthy sludge is\nhurled at the foe.\nIt may poison the\ntarget.
+
+#org @DESC_TM37
+A 5-turn sandstorm\nthat damages all\ntypes except ROCK,\nGROUND, and STEEL.
+
+#org @DESC_TM38
+The foe is hit with\nan intense flame.\nIt may leave the\ntarget with a burn.
+
+#org @DESC_TM39
+Boulders are hurled\nat the foe. It also\nlowers the foe's\nSPEED if it hits.
+
+#org @DESC_TM40
+An extremely fast\nattack against one\ntarget. It can't be\nevaded.
+
+#org @DESC_TM41
+It enrages the foe,\nmaking it incapable\nof using the same\nmove successively.
+
+#org @DESC_TM42
+An attack that is\nboosted if user is\nburned, poisoned,\nor paralyzed.
+
+#org @DESC_TM43
+An attack that may\nhave an additional\neffect that varies\nwith the terrain.
+
+#org @DESC_TM44
+The user sleeps for\ntwo turns to fully\nrestore HP and heal\nany status problem.
+
+#org @DESC_TM45
+If it is the other\ngender, the foe is\nmade infatuated and\nunlikely to attack.
+
+#org @DESC_TM46
+An attack that may\ntake the foe's held\nitem if the user\nisn't holding one.
+
+#org @DESC_TM47
+The foe is hit with\nwings of steel.\nIt may also raise\nthe user's DEFENSE.
+
+#org @DESC_TM48
+The user employs\nits psychic power\nto swap abilities\nwith the foe.
+
+#org @DESC_TM49
+Steals the effects\nof the foe's\nhealing or status-\nchanging move.
+
+#org @DESC_TM50
+An intense attack\nthat also sharply\nreduces the user's\nSP. ATK stat.
+
+#org @DESC_CRAZY_AXE
+
+#org @DESC_CRAZY_MACE
+A parcel to be delivered to PROF.\nOAK from VIRIDIAN CITY's POK\eMON\nMART.
+
+#org @DESC_GOLD_TEETH
+A set of false teeth lost by the\nSAFARI ZONE'S WARDEN. It makes his\nsmile sparkle.
+
+#org @DESC_OAKS_PARCEL
+A parcel to be delivered to PROF.\nOAK from VIRIDIAN CITY's POK\eMON\nMART.
+
+#org @DESC_POKE_FLUTE
+A flute that is said to instantly\nawaken any POK\eMON. It has a\nlovely tone.
+
+#org @DESC_SECRET_KEY
+The key to CINNABAR ISLAND GYM's\nfront door. It is colored red and\ndecorated.
+
+#org @DESC_BIKE_VOUCHER
+Take this voucher to the BIKE SHOP\nin CERULEAN CITY and exchange it\nfor a bicycle.
+
+#org @DESC_OLD_AMBER
+A piece of amber that contains\nthe genes of an ancient POK\eMON.\nIt is clear with a reddish tint.
+
+#org @DESC_CARD_KEY
+A card-type key that unlocks doors\nin SILPH CO.'s HEAD OFFICE in\nSAFFRON CITY.
+
+#org @DESC_LIFT_KEY
+A key that operates the elevator\nin TEAM ROCKET's HIDEOUT.\nIt bears the TEAM ROCKET logo.
+
+#org @DESC_HELIX_FOSSIL
+A fossil of an ancient, seafloor-\ndwelling POK\eMON. It appears to be\npart of a seashell.
+
+#org @DESC_DOME_FOSSIL
+A fossil of an ancient, seafloor-\ndwelling POK\eMON. It appears to be\npart of a shell.
+
+#org @DESC_SILPH_SCOPE
+A scope that makes unseeable\nPOK\eMON visible.\nIt is made by SILPH CO.
+
+#org @DESC_BICYCLE
+A folding bicycle that allows\nfaster movement than the RUNNING\nSHOES.
+
+#org @DESC_TOWN_MAP
+A very convenient map that can be\nviewed anytime. It even shows your \npresent location.
+
+#org @DESC_VS_SEEKER
+A device that indicates TRAINERS\nwho want to battle. The battery\ncharges while traveling.
+
+#org @DESC_FAME_CHECKER
+A device that enables you to\nrecall what you've heard and seen\nabout famous people.
+
+#org @DESC_TM_CASE
+A case that holds TMs and HMs.\nIt is attached to the BAG's\ncompartment for important items.
+
+#org @DESC_BERRY_POUCH
+A pouch for carrying BERRIES.\nIt is attached to the BAG's\ncompartment for important items.
+
+#org @DESC_TEACHY_TV
+A television set that is tuned to\na program with useful tips for\nnovice TRAINERS.
+
+#org @DESC_TRI_PASS
+A pass for ferries between ONE,\nTWO, and THREE ISLAND.\nIt has a drawing of three islands.
+
+#org @DESC_RAINBOW_PASS
+A pass for ferries between\nVERMILION and the SEVII ISLANDS.\nIt features a drawing of a rainbow.
+
+#org @DESC_TEA
+An aromatic tea prepared by an old\nlady. It will slake even the worst\nthirst.
+
+#org @DESC_MYSTIC_TICKET
+A ticket required to board the ship\nto NAVEL ROCK.\nIt glows with a mystic light.
+
+#org @DESC_AURORA_TICKET
+A ticket required to board the ship\nto BIRTH ISLAND.\nIt glows beautifully.
+
+#org @DESC_POWDER_JAR
+A jar for storing BERRY POWDER\nmade using a BERRY CRUSHER.
+
+#org @DESC_RUBY
+An exquisitely beautiful gem that\nhas a red glow.\nIt symbolizes passion.
+
+#org @DESC_SAPPHIRE
+An exquisitely beautiful gem that\nhas a blue glow.\nIt symbolizes honesty.
+
 #org @DESC_RAGE_CANDY_BAR
 Mahogany Town's famous candy. It\nheals all the status conditions of\na Pokémon.
 
@@ -212,7 +1051,7 @@ A Ball that makes it easier to\ncatch wild Pokémon while it is\nasleep.
 A special Poké Ball for\nthe Pal Park.
 
 #org @DESC_Z_POWER_RING
-A mysterious ring that enables\nthe use of Z-Power. It requires the\nwillpower of the trainer wearing it.   
+A mysterious ring that enables\nthe use of Z-Power. It requires the\nwillpower of the trainer wearing it.
 
 #org @DESC_HM01
 A basic attack.\nIt can be used to\ncut down thin trees\nand grass.
@@ -257,7 +1096,7 @@ The user draws power\nfrom nature and fires\nit at the foe. May\nlow target SpDe
 A restrained attack that\nprevents the foe from\nfainting. The target is\nleft with at least 1 HP.
 
 #org @DESC_TM55
-This move's power is\ndoubled if the\ntarget's HP is at\nhalf or less. 
+This move's power is\ndoubled if the\ntarget's HP is at\nhalf or less.
 
 #org @DESC_TM56
 User sharpens its\nclaws to increase\nits Attack and\nAccuracy.
@@ -266,7 +1105,7 @@ User sharpens its\nclaws to increase\nits Attack and\nAccuracy.
 User attacks with\nbeam of energy that\nmay also raise its\nSpecial Attack.
 
 #org @DESC_TM58
-The user endures any\nhit with 1 HP left.\nIt may fail if used\nin succession. 
+The user endures any\nhit with 1 HP left.\nIt may fail if used\nin succession.
 
 #org @DESC_TM59
 The target is attacked\nwith a shock wave\ngenerated by the user's\ngaping mouth.
@@ -278,13 +1117,13 @@ User attacks with an\nenergy-draining\npunch that restores\nthe user's HP.
 The user shoots a\nsinister flame at\nthe target to\ninflict a burn.
 
 #org @DESC_TM62
-The foe is attacked\nwith a silver dust.\nIt may raise all\nthe user's stats. 
+The foe is attacked\nwith a silver dust.\nIt may raise all\nthe user's stats.
 
 #org @DESC_TM63
 The foe is soaked by\na special acid. Its\npower doubles if the\nfoe is poisoned.
 
 #org @DESC_TM64
-The user explodes to\ninflict terrible\ndamage even while\nfainting itself. 
+The user explodes to\ninflict terrible\ndamage even while\nfainting itself.
 
 #org @DESC_TM65
 User slashes with a\nsharp claw made from\nshadows. Critical\nhits land easily.
@@ -311,7 +1150,7 @@ The user stabs the target\nwith sharpened stones\nfrom below. Critical hits\nlan
 This move's power is\ndoubled if target has\ninflicted damage on\nuser in same turn.
 
 #org @DESC_TM73
-A weak electric\nshock that is sure\nto cause paralysis\nif it hits. 
+A weak electric\nshock that is sure\nto cause paralysis\nif it hits.
 
 #org @DESC_TM74
 Tackles the foe with\na high-speed spin.\nThe slower the user,\nthe greater the damage.
@@ -374,7 +1213,7 @@ After attacking,\nthe user switches\nplaces with a\nparty Pokémon.
 The foe is made to\nswitch out with an\nally. In the wild,\nthe battle ends.
 
 #org @DESC_TM94
-If the target is\nholding a Berry, the\nBerry becomes burnt\nup and unusable. 
+If the target is\nholding a Berry, the\nBerry becomes burnt\nup and unusable.
 
 #org @DESC_TM95
 Resisting, the user\nattacks the opposing\nPokémon. Foe's SpAtk\nstat is reduced.
@@ -425,7 +1264,7 @@ A strong wind blows\naway foes barriers.\nThis also lowers the\ntargets evasiven
 If it is the opposite\ngender of the user,\nthe foe is charmed\ninto lower its SpAtk.
 
 #org @DESC_TM111
-User throws a stone\nor projectile. A\nflying Pokémon will\nfall to the ground. 
+User throws a stone\nor projectile. A\nflying Pokémon will\nfall to the ground.
 
 #org @DESC_TM112
 User emits a musical\nsound. Others can\njoin in the Round to\nboost atk's power.
@@ -1349,19 +2188,19 @@ This carved wooden mask is\nadorned with crystals. Changes\nOgerpon to Fire-type
 This carved wooden mask is\nadorned with crystals. Changes\nOgerpon to Rock-type form.
 
 #org @DESC_LONELY_MINT
-When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Defense will grow slowly. 
+When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Defense will grow slowly.
 
 #org @DESC_ADAMANT_MINT
-When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Sp.Attack will grow slowly. 
+When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Sp.Attack will grow slowly.
 
 #org @DESC_NAUGHTY_MINT
-When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Sp.Defense will grow slowly. 
+When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Sp.Defense will grow slowly.
 
 #org @DESC_BRAVE_MINT
-When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Speed will grow slowly. 
+When a Pokémon smells this mint,\nits Attack will grow easily, but\nits Speed will grow slowly.
 
 #org @DESC_BOLD_MINT
-When a Pokémon smells this mint,\nits Defense will grow easily, but\nits Attack will grow slowly. 
+When a Pokémon smells this mint,\nits Defense will grow easily, but\nits Attack will grow slowly.
 
 #org @DESC_IMPISH_MINT
 When a Pokémon smells this mint,\nits Defense will grow easily, but\nits Sp.Attack will grow slowly.
@@ -1414,7 +2253,6 @@ When a Pokémon smells this mint, \nall of its stats will grow at an equal rate.
 #org @gItemDescription_PokeVial
 A special vial that fully restores \nall Pokémon in your party. One-time use \nuntil recharged.
 
-
 #org @DESC_EVIV_DISPLAYER
 Know the secrets of \nall your party pokemon!
 
@@ -1432,3 +2270,6 @@ A chipped teacup that makes \ncertain Pokémon evolve.
 
 #org @DESC_UNREMARKABLE_TEACUP
 A cracked teacup that makes \ncertain Pokémon evolve.
+
+#org @DESC_PORTABLE_PC
+A Portable PC containing useful\noperations related to Pokemon.

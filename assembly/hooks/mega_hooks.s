@@ -43,15 +43,26 @@ MegaLevelStringHook:
 	bl HasMegaSymbol
 	cmp r0, #0
 	bne LoadSpecialMegaSymbol
-	ldr r2, objects
-	lsl r1, r5, #4
-	add r1, r5
-	lsl r1, r1, #2
-	add r1, r2
-	ldrh r0, [r1, #0x3A]
-	bl HasDynamaxSymbol
-	cmp r0, #0
-	bne LoadSpecialMegaSymbol
+
+    ldr r2, objects
+    lsl r1, r5, #4
+    add r1, r5
+    lsl r1, r1, #2
+    add r1, r2
+    ldrh r0, [r1, #0x3A]
+    bl HasDynamaxSymbol
+    cmp r0, #0
+    bne LoadSpecialMegaSymbol
+
+    ldr r2, objects
+    lsl r1, r5, #4
+    add r1, r5
+    lsl r1, r1, #2
+    add r1, r2
+    ldrh r0, [r1, #0x3A]
+    bl IsTerastallized
+    cmp r0, #0
+    bne LoadSpecialMegaSymbol
 
 	ldr r1, level_string
 	mov r0, sp
@@ -213,7 +224,6 @@ LoadHealthBoxesIndicatorHook:
 DynamaxPalFadeHook1_LoadOpponentGfx:
 	mov r0, r8
 	mov r1, r7
-	bl FadeBankPaletteForTera
 	bl TryFadeBankPaletteForDynamax
 	ldr r0, =0x8034468 | 1
 	bx r0
@@ -223,7 +233,6 @@ DynamaxPalFadeHook1_LoadOpponentGfx:
 DynamaxPalFadeHook2_LoadPlayerGfx:
 	mov r0, r8
 	mov r1, r7
-	bl FadeBankPaletteForTera
 	bl TryFadeBankPaletteForDynamax
 	ldr r0, =0x8034626 | 1
 	bx r0

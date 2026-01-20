@@ -47,6 +47,7 @@ battle_start_turn_start.c
 enum BattleBeginStates
 {
 	BTSTART_BACKUP_PARTY_ITEMS,
+	BTSTART_TRY_CHANGE_ABILITY,
 	BTSTART_GET_TURN_ORDER,
 	BTSTART_ACTIVATE_OW_WEATHER,
 	BTSTART_ACTIVATE_OW_TERRAIN,
@@ -70,6 +71,16 @@ enum BattleBeginStates
 	BTSTART_TOTEM_POKEMON,
 	BTSTART_END,
 };
+
+#ifdef EXPAND_TRAINERS
+const struct TrainerCustomAbility gCustomTrainerAbilityTable[TRAINERS_COUNT][PARTY_SIZE] = {
+	[TRAINER_RIVAL_ROUTE22_EARLY_SQUIRTLE] = {
+		{SPECIES_GOOMY, ABILITY_MOLDBREAKER},
+		{SPECIES_GROWLITHE, ABILITY_INTREPIDSWORD},
+		CUSTOM_ABILITYTABLE_TERMIN
+	},
+};
+#endif
 
 enum SpeedWarResults
 {
@@ -238,6 +249,13 @@ static void TryClearLevelCapKeptOn(void)
 void BattleBeginFirstTurn(void)
 {
 	int i, j;
+
+	#ifdef EXPAND_TRAINERS
+	int tableSlot;
+	u16 trainerId = gTrainerBattleOpponent_A;
+	const struct TrainerCustomAbility *table = gCustomTrainerAbilityTable[trainerId];
+	#endif
+
 	u8* state = &(gBattleStruct->switchInAbilitiesCounter);
 	u8* bank = &(gBattleStruct->switchInItemsCounter);
 
@@ -252,6 +270,30 @@ void BattleBeginFirstTurn(void)
 				SavePartyItems();
 				TryBackupEnemyTeam();
 				TryClearLevelCapKeptOn();
+				++*state;
+				break;
+			
+			case BTSTART_TRY_CHANGE_ABILITY:
+			#ifdef EXPAND_TRAINERS
+				for (i = 0; i < gBattlersCount; ++i)
+				{
+					u16 species = gBattleMons[i].species;
+
+					for (tableSlot = 0; tableSlot < PARTY_SIZE; tableSlot++)
+					{
+						u16 targetSpecies = table[tableSlot].species;
+						u8 targetAbility = table[tableSlot].ability;
+
+						// Quit on encountering SPECIES_NONE
+						if (targetSpecies == SPECIES_NONE)
+							break;
+
+						// Set ability
+						if (targetSpecies == species)
+							gBattleMons[i].ability = targetAbility;
+					}
+				}
+			#endif
 				++*state;
 				break;
 
@@ -1915,6 +1957,7 @@ u16 GetMUS_ForBattle(void)
 			if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
 			{
 				trainerClass = gTrainers[SECOND_OPPONENT].trainerClass;
+
 				if (gClassBasedBattleBGM[trainerClass])
 					return gClassBasedBattleBGM[trainerClass];
 			}
@@ -2325,13 +2368,13 @@ s32 BracketCalc(u8 bank, u8 action, u16 move)
 			}
 		}
 
-		if (ability == ABILITY_STALL && !(SpeciesHasBeadsofRuin(SPECIES(bank))
-										|| SpeciesHasSwordofRuin(SPECIES(bank))
-										|| SpeciesHasTabletsofRuin(SPECIES(bank))
-										|| SpeciesHasVesselofRuin(SPECIES(bank))))
+		if (ability == ABILITY_STALL && !(SpeciesHasBeadsofRuin(LEECH_SPECIES(bank))
+										|| SpeciesHasSwordofRuin(LEECH_SPECIES(bank))
+										|| SpeciesHasTabletsofRuin(LEECH_SPECIES(bank))
+										|| SpeciesHasVesselofRuin(LEECH_SPECIES(bank))))
 			return -1;
-		
-		if (SPLIT(gCurrentMove) == SPLIT_STATUS && ability == ABILITY_MOLDBREAKER && SpeciesHasMyceliumMight(SPECIES(bank)))
+
+		if (SPLIT(gCurrentMove) == SPLIT_STATUS && SpeciesHasMyceliumMight(LEECH_SPECIES(bank)))
 			return -2;
 	}
 

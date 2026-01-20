@@ -621,9 +621,26 @@ extern const u32 gBag_BlueOrbPal[];
 #define gBag_TMIcePal ((u32*)0x08E91EB4)
 #define gBag_TMDragonPal ((u32*)0x08E91DEC)
 #define gBag_TMDarkPal ((u32*)0x08E91F2C)
-
+extern const u32 gBag_TMNormalTiles[];
+extern const u32 gBag_TMFightingTiles[];
+extern const u32 gBag_TMFlyingTiles[];
+extern const u32 gBag_TMPoisonTiles[];
+extern const u32 gBag_TMGroundTiles[];
+extern const u32 gBag_TMRockTiles[];
+extern const u32 gBag_TMGhostTiles[];
+extern const u32 gBag_TMSteelTiles[];
+extern const u32 gBag_TMFireTiles[];
+extern const u32 gBag_TMWaterTiles[];
+extern const u32 gBag_TMGrassTiles[];
+extern const u32 gBag_TMElectricTiles[];
+extern const u32 gBag_TMPsychicTiles[];
+extern const u32 gBag_TMIceTiles[];
+extern const u32 gBag_TMDragonTiles[];
+extern const u32 gBag_TMDarkTiles[];
 extern const u32 gBag_TMFairyPal[];
 extern const u32 gBag_TMBugPal[];
+extern const u32 gBag_TMFairyTiles[];
+extern const u32 gBag_TMBugTiles[];
 extern const u32 gBag_DynamaxBandTiles[];
 extern const u32 gBag_DynamaxBandPal[];
 
@@ -1364,6 +1381,8 @@ extern const u32 masterpiece_teacupTiles[];
 extern const u32 masterpiece_teacupPal[];
 extern const u32 unremarkable_teacupTiles[];
 extern const u32 unremarkable_teacupPal[];
+extern const u32 Portable_PCTiles[];
+extern const u32 Portable_PCPal[];
 
 //Funcs
 void __attribute__((long_call)) FieldUseFunc_OakStopsYou(u8 taskId);
@@ -1408,6 +1427,7 @@ void FieldUseFunc_NatureMint(u8 taskId);
 void ItemUseOutOfBattle_PokeVial(u8 taskId);
 void ResetPokeVialUses(void);
 void FieldUseFunc_EVIV(u8 taskId);
+void FieldUseFunc_PortablePC(u8 taskId);
 
 
 //Descriptions
@@ -2170,4 +2190,5 @@ extern const u8 DESC_CATCHING_CHARM[];
 extern const u8 DESC_HISUI_ROCK[];
 extern const u8 DESC_MASTERPIECE_TEACUP[];
 extern const u8 DESC_UNREMARKABLE_TEACUP[];
+extern const u8 DESC_PORTABLE_PC[];
 #endif

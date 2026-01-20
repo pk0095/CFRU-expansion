@@ -2002,3 +2002,13 @@ callasm ResetPokeVialUses
 .macro resetvar var:req
 	setvar \var 0
 .endm
+
+.macro goto_if_flag flag:req destination:req
+	checkflag \flag
+	if equal _goto \destination
+.endm
+
+.macro call_if_flag flag:req destination:req
+	checkflag \flag
+	if equal _call \destination
+.endm

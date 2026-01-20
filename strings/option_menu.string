@@ -45,3 +45,18 @@ By Type
 
 #org @gText_ByAmount
 By Amount
+
+#org @gText_GameDifficulty
+Game Difficulty
+
+#org @gText_Normal
+Normal
+
+#org @gText_Easy
+Easy
+
+#org @gText_Hard
+Hard
+
+#org @gText_Expert
+Expert

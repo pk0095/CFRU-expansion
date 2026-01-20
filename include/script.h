@@ -54,6 +54,9 @@ bool8 __attribute__((long_call)) ScriptContext1_IsScriptSetUp(void);
 void __attribute__((long_call)) ScriptContext1_Stop(void);
 void __attribute__((long_call)) SetupNativeScript(struct ScriptContext *ctx, bool8 (*ptr)(void));
 const u8 __attribute__((long_call)) *GetRamScript(u8 objectId, const u8 *script);
+void __attribute__((long_call)) SeedRngAndSetTrainerId(void);
+void __attribute__((long_call)) CB2_InitMainMenu(void);
+void __attribute__((long_call)) Task_TitleScreenMain(u8 taskId);
 
 /*Ignore Wild Pokemon*/
 u8 CreateWindowFromRect(u8 left, u8 top, u8 width, u8 height);

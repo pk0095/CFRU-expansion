@@ -14,12 +14,6 @@
 //#define DEBUG_AI_CHOICES //Removes the frame-based randomness of the AI's decisions
 //#define DEBUG_TERASTAL //Terastallization can be used in any battle without a Tera Orb
 
-/*===== EV-IV Screen =====*/
-#define FLAG_STAT_EDITOR_UNLOCKED 0x1203
-
-/*===== Custom code for Pokemon Amethyst =====*/
-//#define NEW_BATTLE_BACKGROUNDS //When set, battle backgrounds and intro animations will be dynamically replaced by those defined in src/Tables/battle_background_tables.c 
-
 /*===== General Vars =====*/
 #define VAR_TERRAIN 0x5000 //Set to a terrain type for a battle to begin with the given terrain
 #define VAR_TOTEM 0x5001 //to var + 3 (0x5004)
@@ -127,8 +121,8 @@ enum //These vars need to be one after the other (hence the enum)
 #define EXPANDED_MOVE_TUTORS //Comment this out if you want to keep 16 move tutors and the ultimate elemental moves being exclusive to Kantonian starters
 #define NUM_TMS 120	//keep this defined even if EXPANDED_TMSHMS is not!!
 #define NUM_HMS 8	//keep this defined even if EXPANDED_TMSHMS is not!!
-#define NUM_MOVE_TUTORS 171 //keep this defined even if EXPANDED_MOVE_TUTORS is not!! If using DPE, set to 128.
-#define LAST_TOTAL_TUTOR_NUM 180 //Should be equal to (NUM_MOVE_TUTORS - 1) + 9. Must be set to an actual integer or the compilation will not work.
+#define NUM_MOVE_TUTORS 152 //keep this defined even if EXPANDED_MOVE_TUTORS is not!! If using DPE, set to 128.
+#define LAST_TOTAL_TUTOR_NUM 161 //Should be equal to (NUM_MOVE_TUTORS - 1) + 9. Must be set to an actual integer or the compilation will not work.
 //#define TMS_BEFORE_HMS  //Uncomment this if you want the HMs to appear after the TMs in your bag
 #define DELETABLE_HMS //Uncomment this if you want HMs to be deletable without the Move Deleter
 #define REUSABLE_TMS	//if defined, don't forget to give all TMs a Mystery byte of 1!
@@ -150,7 +144,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define POWER_ITEM_EV_YIELD 8 //Set to 4 for older mechanic
 
 #define DUSK_BALL_MULTIPLIER 30 //Change this line to 35 to make the catch rate for the Dusk Ball 3.5x like before Gen 7
-#define STANDARD_IV 10 //Change this to be the number of IVs Pokemon owned by random trainers should have (all stats will have this number)
+#define STANDARD_IV 15 //Change this to be the number of IVs Pokemon owned by random trainers should have (all stats will have this number)
 #define SWARM_CHANCE 50 //Change this to the percentage that swarming Pokemon will appear if they can be found on the current route.
 #define WILD_DOUBLE_RANDOM_CHANCE 50 //Change this to the percentage that a wild double battle will be initiated if the player is in special grass.
 #define CREATE_WITH_X_PERFECT_IVS 3 //Change this to the number of set 31 IVs you'd like Pokemon defined in gSetPerfectXIvList to have.
@@ -165,6 +159,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define MB_ROCK_CLIMB_WALL 0xA5 //The tile behaviour byte that can be climbed up using Rock Climb
 #define MB_HEADBUTT_TREE 0xA6 //The tile behaviour byte for starting a wild encounter by headbutting a tree
 //#define MB_UNDERGROUND_MINING 0xA7 //the tile behaviour byte for underground mining (CAUTION: Needs you to define your maps in include/constants/maps.h)
+#define MB_LAVA 0xA8 //The Tile behaviour for Lava Surf. (Surfing on Lava using fire type mons)
 
 #define MAP_PLAYER_HOME ((4 << 8) | 0) //The map bank and map number of the player's home
 
@@ -321,7 +316,7 @@ enum //These vars need to be one after the other (hence the enum)
 
 /*===== Other Battle Options =====*/
 //#define NO_GHOST_BATTLES //Uncomment this line to disable the Ghost battle feature from Pokemon Tower in Lavender town
-#define GEN4_PLUS_SELECTION_SCREEN //Uncommenting this line does not give you the Gen 4+ selection screen, it only adds features that supports it
+//#define GEN4_PLUS_SELECTION_SCREEN //Uncommenting this line does not give you the Gen 4+ selection screen, it only adds features that supports it
 //#define OBEDIENCE_CHECK_FOR_PLAYER_ORIGINAL_POKEMON //Uncommenting line line will open up the possibility that the Player's Pokemon can disobey them (not just traded mons)
 #define WILD_ALWAYS_SMART //Uncomment this line if you want all Wild Pokemon to act smartly
 #define HAIL_IN_BATTLE //Uncommenting this line enables the Hail weather effect in battle when the OW weather is set to WEATHER_STEADY_SNOW (0x7)
@@ -344,7 +339,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define TAKE_WILD_MON_ITEM_ON_CAPTURE //Items held by Wild Pokemon when caught can be placed in the bag at the player's request
 //#define PAYDAY_MONEY_CAP //Pay Day and G-Max Gold Rush should cap at $99999 per battle
 #define QUICK_CLAW_PROCING_ALWAYS_ALLOWS_FLEEING //Fleeing from wild battles will never fail the turn a Quick Claw activates
-//#define FROSTBITE //Replaces the Freeze status condition with the Frostbite status condition from PLA
+#define FROSTBITE //Replaces the Freeze status condition with the Frostbite status condition from PLA
 
 //Save stuff
 #define VAR_R_BUTTON_MODE 0x5150
@@ -356,32 +351,47 @@ enum //These vars need to be one after the other (hence the enum)
 #define SIDEWAY_STAIRS_IMPLEMENTED //Uncomment if you're using Sideway Stairs patch.
 #define FLAG_FOLLOWER_POKEMON 0x4BD //0x4BD is an unused flag.
 #define MAX_POKEVIAL_USES 3  // Maximum uses before recharge
-#define VAR_POKEVIAL_USES 0x501A // Use a free variable ID to track uses
+#define VAR_POKEVIAL_USES 0x5155 // Use a free variable ID to track uses
 //#define REMOVE_CRITICAL_HITS //Uncomment this to remove critical hits.
 #define MULTIPLE_PREMIER_BALLS_AT_ONCE //Comment out if you don't want the player received a Premier ball for every 10 Poke Balls purchased (only 1 no matter how many over 10 balls the player buys)
 #define ENABLE_MULTIPLE_PURCHASE_REWARDS // Premium Quantity based rewards with a custom item : reward : quantity system (check src/item.c for table). Remeber the above line will not be useful now!
 #define EXPANDED_NEW_ITEMS //Expands items table and add new items util gen 9.
 #define SHOWPOKEPIC_WITHOUT_UGLY_BOX //Fixes the ShowPokePic command to only show Pokemon sprite and not a box with it
-#define CHANGE_ITEM_STORAGE_GRAPHIC //if uncommented, will change pc item storage to Swsh style (background modificable)
+//#define CHANGE_ITEM_STORAGE_GRAPHIC //if uncommented, will change pc item storage to Swsh style (background modificable)
 #define FLAG_KEPT_LEVEL_CAP_ON 0xA04 // For level caps, to be used with FLAG_HARD_LEVEL_CAP
 #define FLAG_HARD_LEVEL_CAP 0xA05 // Enables level caps
 #define FLAG_NUZLOCKE 0xA06 //If set nuzlock mode will be turned on
-#define VAR_WILD_BATTLE_COUNT 0x5155 //Counts number of wild battles, if >1 then NO_CATCHING is enabled.
+#define VAR_WILD_BATTLE_COUNT 0x5156 //Counts number of wild battles, if >1 then NO_CATCHING is enabled.
 #define FLAG_VISITED_AREA_START 0x1300 //Flag that is set in a nuzlocke for every visited area (Helpful in tracking)
 #define FLAG_FOLLOWER_WAS_SURFING 0xA07 //Flag that sets when following pokemon starts surfing to restore it after a warp is used!
 #define TERASTAL_FEATURE //Comment this line to remove Terastallization
-#define FLAG_TERA_BATTLE 0xA08 //Works like an half tera orb
-#define SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN //If you just want to show the tera type icon on the summary screen, uncomment this one
+#define FLAG_TERA_BATTLE 0xA08 // Set this flag before a trainerbattle command to enable Terastallization
+//#define SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN // Comment this out if you want only the Tera Icon to be displayed on summary screen
 #define FLAG_EXPLAINED_MINING_RULES 0xA09 //If set, the player will not be shown the mining rules second time when using the mining feature
 #define BW_SUMMARY_SCREEN // Implements the BW summary screen
 #define NATURE_COLORS_ON_SUMMARY_SCREEN //will implement nature coloured stats and IV ranking in summary (Don't uncomment if you're using BW Summary Screen)
 #define MID_BATTLE_EVO //Comment this line to remove Mid-Battle Evolution.
+//#define SKIP_INTRO_CONTROLS_GUIDE //Uncomment this line to remove the intro constrols guide.
+#define FLAG_SPAWN_INVISIBLE 0xA0A //This feature allows us to spawn the player object as invisible after a warp, which can be useful for cutscenes, etc. Note that the camera will still be centered on the player.
+#define FLAG_PORTABLE_PC 0xA0B //Flag to Enable/Disable Pocket PC.
+#define VAR_GAME_DIFFICULTY 0x5157 //Var to store the game difficulty level. If 0 difficulty is normal(vanilla), if 1 its easy, if 2 its Hard, if 3 its Expert. ShouldGiveTrainerMonMaxFriendship and ShouldGiveTrainerMonMaxEVs need to be set at your choice in build_pokemon.c
+#define CRY_SPECIES SPECIES_CHARIZARD //The species that will be used for the cry in the titlescreen. Currently its 0x6 (Charizard).
+#define OAK_INTRO_SPECIES SPECIES_NIDORAN_F //The species that appears in Oak's intro(New Game).
+#define OPEN_WORLD_TRAINERS // Custom Trainers and teams based on party levels (Not area based, making game open world). CAUTION: NOT TO USE WITH EXPAND_TRAINERS
+//Also, using OPEN_WORLD_TRAINERS, you would need to edit gGeneralTrainerSpreads in build_pokemon.c
+#define SHOW_MEGAS_IN_HOF // Uncomment if you want mega and primal to be shown in hall of fame.
+#define FLAG_STAT_EDITOR_UNLOCKED 0xA0C
+//#define NEW_BATTLE_BACKGROUNDS //When set, battle backgrounds and intro animations will be dynamically replaced by those defined in src/Tables/battle_background_tables.c 
+#define FLAG_SANDBOX_MODE 0xA0D // Use it only when you know what it does, lol.
+#define VAR_DEBUG_MENU_SET_CUSTOM_VAR 0x5158 // The var that stores the value used for set custom var option in debug menu.
+#define VAR_DEBUG_MENU_SET_CUSTOM_VAR_VALUE 0x5159 // The var that stores the value used for set custom var option in debug menu.
+#define NEW_MINI_NAME_BOX //New box frame for Mini Name Box
 
 /* DexNav Options */
 //See "include/new/dexnav_config.h"
 
 /* Ignore Wild Pokemon */
-#define IgnoreWildPokemon //If defined, it generates a prebattle screen. (Ignore/Engage)
+//#define IgnoreWildPokemon //If defined, it generates a prebattle screen. (Ignore/Engage)
 
 #ifdef IgnoreWildPokemon
 #define FLAG_WILD_POKEMON_PREBATTLE_SCREEN 0xA02 //If set, CreateWindowFromRect starts from tile 0x98 instead of 0x38
@@ -390,3 +400,6 @@ enum //These vars need to be one after the other (hence the enum)
 
 /* Palette Swapper*/
 #define PALETTE_SWAPPER
+
+/* Trainer Data */
+//#define EXPAND_TRAINERS // Makes trainers editable, well useless if OPEN_WORLD_TRAINERS is being used.

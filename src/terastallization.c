@@ -10,6 +10,7 @@
 #include "../include/battle.h"
 #include "../include/event_data.h"
 #include "../include/item.h"
+#include "../include/new/item.h"
 #include "../include/mgba.h"
 #include "../include/palette.h"
 #include "../include/pokemon.h"
@@ -23,7 +24,9 @@
 #include "../include/new/ai_util.h"
 #include "../include/new/battle_indicators.h"
 #include "../include/new/battle_script_util.h"
+#include "../include/new/dynamax.h"
 #include "../include/new/frontier.h"
+#include "../include/new/mega.h"
 #include "../include/new/move_battle_scripts.h"
 #include "../include/new/ram_locs.h"
 #include "../include/new/terastallization.h"
@@ -53,7 +56,7 @@ static const item_t sTeraOrbTable[] =
 const u16 gTeraBlendColors[] =
 {
     [TYPE_NORMAL]   = RGB(25, 25, 25),  // Light Gray
-    [TYPE_FIGHTING] = RGB(27, 6, 4),    // Crimson Red
+    [TYPE_FIGHTING] = RGB(31, 0, 12),    // Crimson Red
     [TYPE_FLYING]   = RGB(18, 22, 31),  // Sky Blue
     [TYPE_POISON]   = RGB(22, 2, 28),   // Deep Violet
     [TYPE_GROUND]   = RGB(16, 7, 1),    // Deep Brown
@@ -129,137 +132,13 @@ void ChangeTeraTypeInOW(void)
     gPlayerParty[partySlot].teraType = newTeraType;
 }
 
-// Check whether Pokemon can Tera
-bool8 CanTerastallize(u8 bank)
-{
-    #ifndef TERASTAL_FEATURE
-		return FALSE;
-	#else
-
-    if (GetBattlerSide(bank) == B_SIDE_OPPONENT)
-	{
-        return TRUE;
-    }
-    else {
-    if (FlagGet(FLAG_TERA_BATTLE) && !IsTerastallized(bank))
-        return TRUE;
-
-    return FALSE;
-    }
-    #endif
-}
-
-static bool8 IsItemTeraOrb(u16 item)
-{
-	for (u8 i = 0; i < ARRAY_COUNT(sTeraOrbTable); ++i)
-	{
-		if (item == sTeraOrbTable[i])
-			return TRUE;
-	}
-
-	return FALSE;
-}
-
-static item_t FindTrainerTeraOrb(u16 trainerId)
-{
-	if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK) || IsFrontierTrainerId(trainerId))
-		return ITEM_TERA_ORB;
-
-	for (u8 i = 0; i < TRAINER_ITEM_COUNT; ++i)
-	{
-		if (IsItemTeraOrb(gTrainers[trainerId].items[i]))
-			return gTrainers[trainerId].items[i];
-	}
-
-	return ITEM_NONE;
-}
-
-static item_t FindPlayerTeraOrb(void)
-{
-	if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK))
-		return ITEM_TERA_ORB;
-
-	for (u8 i = 0; i < ARRAY_COUNT(sTeraOrbTable); ++i)
-	{
-		if (CheckBagHasItem(sTeraOrbTable[i], 1))
-			return sTeraOrbTable[i];
-	}
-
-	#ifdef DEBUG_TERASTAL
-		return ITEM_TERA_ORB; //Give player Dynamax Band if they have none
-	#endif
-
-	return ITEM_NONE;
-}
-
-static item_t FindBankTeraOrb(u8 bank)
-{
-	#ifdef DEBUG_TERASRAL
-		if (bank + 1)
-			return ITEM_TERA_ORB;
-	#endif
-
-	if (SIDE(bank) == SIDE_OPPONENT)
-	{
-		if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-		{
-			if (GetBattlerPosition(bank) == B_POSITION_OPPONENT_LEFT)
-				return FindTrainerTeraOrb(gTrainerBattleOpponent_A);
-			else
-				return FindTrainerTeraOrb(SECOND_OPPONENT);
-		}
-		else
-			return FindTrainerTeraOrb(gTrainerBattleOpponent_A);
-	}
-	else //SIDE_PLAYER
-	{
-		if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-		{
-			if (GetBattlerPosition(bank) == B_POSITION_PLAYER_RIGHT)
-				return FindTrainerTeraOrb(VarGet(VAR_PARTNER));
-			else
-				return FindPlayerTeraOrb();
-		}
-		else
-			return FindPlayerTeraOrb();
-	}
-}
-
-bool8 TerastalEnabled(u8 bank)
-{
-	if (GetBattlerSide(bank) == B_SIDE_OPPONENT)
-	{
-		if (FindBankTeraOrb(bank) != ITEM_NONE)
-			return TRUE;
-		else
-			return FALSE;
-	}
-	else
-	{
-		if (!FlagGet(FLAG_TERA_BATTLE))
-			return FALSE;
-
-		if (FindBankTeraOrb(bank) != ITEM_NONE)
-			return TRUE;
-
-		#ifdef DEBUG_TERASTAL
-			return TRUE;
-		#else
-			return FALSE;
-		#endif
-	}
-}
-
 // Fades palette according to teraType
 void FadeBankPaletteForTera(u8 bank, u16 paletteOffset)
 {
     u8 teraType = GetTeraType(bank);
 
-	if (IsTerastallized(bank))
-	{
-		BlendPalette(paletteOffset, 16, 6, gTeraBlendColors[teraType]);
-		CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
-	}
+	BlendPalette(paletteOffset, 16, 4, gTeraBlendColors[teraType]);
+	CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
 }
 
 static const u8 *const sTypeNames[NUMBER_OF_MON_TYPES] =
@@ -302,10 +181,10 @@ u8 *DoTerastallize(u8 bank)
         u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
 
         gBattleScripting.bank = bank;
+
         // Because Stellar Tera Defensive Typing remains same
         if (teraType != TYPE_STELLAR)
             SET_BATTLER_TYPE(bank, teraType);
-        FlagClear(FLAG_TERA_BATTLE);
         GetSpeciesName(gStringVar1, species);
         StringCopy(gStringVar2, sTypeNames[teraType]);
 
@@ -318,7 +197,7 @@ u8 *DoTerastallize(u8 bank)
 bool8 ShouldAIDelayTerastallization(u8 bankAtk, u8 bankDef, u16 move, bool8 optimizeAndLookAtTeraPotential, bool8 runDamageCalcs)
 {
     if (optimizeAndLookAtTeraPotential && !CanTerastallize(bankAtk))
-        return TRUE; // This bank can't Terastallize
+        return TRUE;
 
     if (IsTerastallized(bankAtk)) // Is already Terastallized
         return FALSE;
@@ -344,6 +223,176 @@ bool8 ShouldAIDelayTerastallization(u8 bankAtk, u8 bankDef, u16 move, bool8 opti
     return FALSE;
 }
 
+// Check whether Pokemon can Tera
+bool8 CanTerastallize(u8 bank)
+{
+    #ifndef TERASTAL_FEATURE
+		return FALSE;
+	#else
+
+    // Terastallization disabled in Dynamax battles
+    if (gBattleTypeFlags & BATTLE_TYPE_DYNAMAX)
+        return FALSE; 
+
+    if (GetBattlerSide(bank) == B_SIDE_OPPONENT)
+        return TRUE;
+    else
+    {
+        if (FlagGet(FLAG_TERA_BATTLE) && !IsTerastallized(bank))
+            return TRUE;
+
+        return FALSE;
+    }
+    #endif
+}
+
+// For NPC trainers
+static bool8 IsItemTeraOrb(u16 item)
+{
+	for (u8 i = 0; i < ARRAY_COUNT(sTeraOrbTable); ++i)
+	{
+		if (item == sTeraOrbTable[i])
+			return TRUE;
+	}
+
+	return FALSE;
+}
+
+// Check if NPC has Tera Orb in item slot
+static item_t FindTrainerTeraOrb(u16 trainerId)
+{
+    // Don't require Tera Orb for these battles
+	if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK) || IsFrontierTrainerId(trainerId))
+		return ITEM_TERA_ORB;
+
+    // Normal Battles
+	for (u8 i = 0; i < TRAINER_ITEM_COUNT; ++i)
+	{
+		if (IsItemTeraOrb(gTrainers[trainerId].items[i]))
+			return gTrainers[trainerId].items[i];
+	}
+
+    // Fallback
+	return ITEM_NONE;
+}
+
+// Check if player has Tera Orb in bag
+static item_t FindPlayerTeraOrb(void)
+{
+    // Don't require Tera Orb for these battles
+	if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_LINK))
+		return ITEM_TERA_ORB;
+
+    // Normal battles
+	for (u8 i = 0; i < ARRAY_COUNT(sTeraOrbTable); ++i)
+	{
+		if (CheckBagHasItem(sTeraOrbTable[i], 1))
+			return sTeraOrbTable[i];
+	}
+
+	#ifdef DEBUG_TERASTAL
+		return ITEM_TERA_ORB;
+	#endif
+
+    // Fallback
+	return ITEM_NONE;
+}
+
+// Used for AI
+static item_t FindBankTeraOrb(u8 bank)
+{
+	#ifdef DEBUG_TERASTAL
+		if (bank + 1)
+			return ITEM_TERA_ORB;
+	#endif
+
+	if (SIDE(bank) == SIDE_OPPONENT)
+	{
+		if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+		{
+			if (GetBattlerPosition(bank) == B_POSITION_OPPONENT_LEFT)
+				return FindTrainerTeraOrb(gTrainerBattleOpponent_A);
+			else
+				return FindTrainerTeraOrb(SECOND_OPPONENT);
+		}
+		else
+			return FindTrainerTeraOrb(gTrainerBattleOpponent_A);
+	}
+	else //SIDE_PLAYER
+	{
+		if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+		{
+			if (GetBattlerPosition(bank) == B_POSITION_PLAYER_RIGHT)
+				return FindTrainerTeraOrb(VarGet(VAR_PARTNER));
+			else
+				return FindPlayerTeraOrb();
+		}
+		else
+			return FindPlayerTeraOrb();
+	}
+}
+
+// Check for both
+bool8 TerastalEnabled(u8 bank)
+{
+    // Terastallization disabled in Dynamax battles
+    if (gBattleTypeFlags & BATTLE_TYPE_DYNAMAX)
+        return FALSE;
+
+    // Opponents don't rely on held Tera Orbs
+    if (GetBattlerSide(bank) == B_SIDE_OPPONENT)
+    {
+        // Wild Battle check
+        if (!((gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TRAINER_TOWER)) == BATTLE_TYPE_TRAINER)
+        ||   (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER))     
+            return FALSE;
+
+        if (!FlagGet(FLAG_TERA_BATTLE))
+            return FALSE;
+
+        return TRUE; // Allow tera
+    }
+
+    // The rest of the code assumes B_SIDE_PLAYER
+    if (!FlagGet(FLAG_TERA_BATTLE))
+        return FALSE;
+
+    // Only one gimmick allowed - Mega and Z take precedence
+    if (CanMegaEvolve(bank, FALSE) || CanMegaEvolve(bank, TRUE) || HasMegaSymbol(bank))
+        return FALSE;
+
+    if (IsZCrystal(ITEM(bank)))
+        return FALSE;
+
+    // Can't Terastallize if this mon is Dynamaxing
+    if (IsDynamaxed(bank)
+    || gNewBS->dynamaxData.used[bank]
+    || gNewBS->dynamaxData.toBeUsed[bank])
+        return FALSE;
+
+    if (FindBankTeraOrb(bank) != ITEM_NONE)
+        return TRUE;
+
+    #ifdef DEBUG_TERASTAL
+        return TRUE;
+    #else
+        return FALSE;
+    #endif
+}
+
+// Get a random teraType
+u8 GetRandomTeraType(void)
+{
+    u8 randomType;
+
+    // Reroll if invalid type
+    do randomType = Random() % NUMBER_OF_MON_TYPES;
+    while ((randomType == TYPE_BLANK) || (randomType == TYPE_MYSTERY) || (randomType == TYPE_BLANK)
+            || (randomType == 0x12) || (randomType == 0x16) || (randomType == TYPE_ROOSTLESS));
+
+    return randomType;
+}
+
 // givepokemon set-up
 void SetGiftMonTeraType(void)
 {
@@ -354,22 +403,13 @@ void SetGiftMonTeraType(void)
     struct Pokemon* mon = &gPlayerParty[partySlot];
     u16 species = mon->species;
 
-	u8 type1 = gBaseStats[species].type1;
-	u8 type2 = gBaseStats[species].type2;
+    u8 type1 = gBaseStats[species].type1;
+    u8 type2 = gBaseStats[species].type2;
 
-	if (type1 == type2 || type2 == TYPE_MYSTERY || type2 == TYPE_BLANK)
-		mon->teraType = type1;
-	else
-	{
-		u8 roll = Random() % 100;
-
-		if (roll < 49)
-			mon->teraType = type1;
-		else if (roll < 98) // 49 + 49
-			mon->teraType = type2;
-		else
-			mon->teraType = Random() % NUMBER_OF_MON_TYPES; // 2% chance random type
-	}
+    if (type1 == type2 || type2 == TYPE_MYSTERY)
+        mon->teraType = type1;
+    else
+        mon->teraType = (Random() & 1 ) ? type1 : type2;
 }
 
 #ifdef SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN

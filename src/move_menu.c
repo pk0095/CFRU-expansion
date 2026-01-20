@@ -7,7 +7,6 @@
 #include "../include/window.h"
 #include "../include/constants/songs.h"
 #include "../include/constants/items.h"
-
 #include "../include/new/accuracy_calc.h"
 #include "../include/new/ai_util.h"
 #include "../include/new/battle_indicators.h"
@@ -24,10 +23,10 @@
 #include "../include/new/move_tables.h"
 #include "../include/new/multi.h"
 #include "../include/new/set_z_effect.h"
+#include "../include/new/terastallization.h"
 #include "../include/new/text.h"
 #include "../include/new/util.h"
 #include "../include/new/z_move_effects.h"
-#include "../include/new/terastallization.h"
 
 /*
 move_menu.c
@@ -299,7 +298,7 @@ void HandleInputChooseMove(void)
 	{
 		if (!MoveSelectionDisplayZMove()) // Only one special mechanic is allowed at a time
 		{
-			if (!TriggerTerastallization() && (!TriggerMegaEvolution() && gBattleTypeFlags & BATTLE_TYPE_DYNAMAX))
+			if (!TriggerTerastallization() && (!TriggerMegaEvolution() && (gBattleTypeFlags & BATTLE_TYPE_DYNAMAX)))
 				MoveSelectionDisplayMaxMove();
 		}
 	}
@@ -363,11 +362,14 @@ static bool8 TriggerTerastallization(void)
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleBufferA[gActiveBattler][4]);
     u8 side = GetBattlerSide(gActiveBattler);
 
-	if (!CanTerastallize(side) && !TerastalEnabled(side))
-		return FALSE;
+       if (!CanTerastallize(side) || !TerastalEnabled(side))
+               return FALSE;
+	
+    // Return FALSE if can't Tera
+    if (!moveInfo->canTera)
+        return FALSE;
 
-    // Returns FALSE if can Mega Evolve
-    if (moveInfo->canMegaEvolve)
+    if (IS_DOUBLE_BATTLE && gNewBS->teraData.chosen[PARTNER(gActiveBattler)])
         return FALSE;
 
     for (u8 i = 0; i < PARTY_SIZE; i++)
@@ -376,14 +378,13 @@ static bool8 TriggerTerastallization(void)
             return FALSE;
     }
 
-    //Toggle Terastallization state
+    // Alterna o estado da Terastalização
     PlaySE(gNewBS->teraData.chosen[gActiveBattler] ? 3 : SE_PC_LOGON);
     gNewBS->teraData.chosen[gActiveBattler] ^= TRUE;
     MoveSelectionDisplayMoveEffectiveness();
     return TRUE;
 	#endif
 }
-
 
 //This function sends useful data over Link Cable for the move menu to use
 void EmitChooseMove(u8 bufferId, bool8 isDoubleBattle, bool8 NoPpNumber, struct ChooseMoveStruct *movePpData)
@@ -551,9 +552,10 @@ void EmitChooseMove(u8 bufferId, bool8 isDoubleBattle, bool8 NoPpNumber, struct 
 	// For Terastallization
 	tempMoveStruct->teraDone = IsTerastallized(gActiveBattler);
 
-	// Return TRUE if Terastallization NOT USED
-	if (!IsTerastallized(gActiveBattler) && TerastalEnabled(gActiveBattler))
-		tempMoveStruct->canTera = TRUE;
+    if (!IsTerastallized(gActiveBattler)
+    && TerastalEnabled(gActiveBattler)
+    && !(IS_DOUBLE_BATTLE && BATTLER_ALIVE(PARTNER(gActiveBattler)) && gNewBS->teraData.chosen[PARTNER(gActiveBattler)]))
+       tempMoveStruct->canTera = TRUE;
 
 	gBattleBuffersTransferData[0] = CONTROLLER_CHOOSEMOVE;
 	gBattleBuffersTransferData[1] = isDoubleBattle;
@@ -682,6 +684,7 @@ void MoveSelectionDisplayMoveEffectiveness(void)
 			 || moveType == moveInfo->monType3
 			 || (IsTerastallized(gActiveBattler) && (moveType == originalType1 || moveType == originalType2))) // Show STAB for original types too
 			&& !CheckTableForMovesEffect(move, gMoveEffectsThatIgnoreWeaknessResistance); //These moves can't have STAB
+
 		doubleTeraStab = split != SPLIT_STATUS
 						&& (IsTerastallized(gActiveBattler) && (moveType == originalType1 || moveType == originalType2)
 						&& moveType == GetTeraType(gActiveBattler));
@@ -755,6 +758,7 @@ void MoveSelectionDisplayMoveEffectiveness(void)
 	{
 		gPlttBufferUnfaded[stabPalIndex + 0] = RGB(27, 27, 27); //Copy over PP colours so it's unaffected by low PP
 		gPlttBufferUnfaded[stabPalIndex + 1] = RGB(4, 4, 4);
+
 		if (doubleTeraStab && !resultTracker)
 			StringCopy(txtPtr, gText_BattleUI_DoubleTeraSTAB);
 		else
@@ -1880,19 +1884,6 @@ u8 TrySetCantSelectMoveBattleScript(void)
 		gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingMoveWithNoPP;
 		++limitations;
 	}
-
-	else if(move == MOVE_GIGATONHAMMER && gLastUsedMoves[gActiveBattler] == MOVE_GIGATONHAMMER)
-    {
-        gCurrentMove = MOVE_GIGATONHAMMER;
-        gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedGigatonHammer;
-        ++limitations;
-    }
-	else if(move == MOVE_BLOODMOON && gLastUsedMoves[gActiveBattler] == MOVE_BLOODMOON)
-    {
-        gCurrentMove = MOVE_BLOODMOON;
-        gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingNotAllowedGigatonHammer;
-        ++limitations;
-    }
 
 	if (limitations != 0)
 	{

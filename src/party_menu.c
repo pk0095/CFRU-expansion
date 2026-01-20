@@ -2971,6 +2971,8 @@ void FieldUseFunc_VsSeeker(u8 taskId)
 
 extern const u8 SystemScript_Exp_Share_On[];
 extern const u8 SystemScript_Exp_Share_Off[];
+extern const u8 SystemScript_Portable_PC_On[];
+extern const u8 SystemScript_Portable_PC_Off[];
 
 static void Task_ExpShareField(u8 taskId)
 {
@@ -2990,6 +2992,26 @@ void FieldUseFunc_ExpShare(u8 taskId)
     sItemUseOnFieldCB = Task_ExpShareField;
     SetUpItemUseOnFieldCallback(taskId);
 }
+
+static void Task_PortablePCField(u8 taskId)
+{
+    if (FlagGet(FLAG_PORTABLE_PC))
+    {
+        ScriptContext1_SetupScript(SystemScript_Portable_PC_On);
+    }
+    else
+    {
+        ScriptContext1_SetupScript(SystemScript_Portable_PC_Off);
+    }
+    DestroyTask(taskId);
+}
+
+void FieldUseFunc_PortablePC(u8 taskId)
+{
+    sItemUseOnFieldCB = Task_PortablePCField;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
 extern void CB2_ShowEvIv(void);
  void Item_EVIV(u8 taskId)
  {
@@ -2998,14 +3020,24 @@ extern void CB2_ShowEvIv(void);
      SetVBlankCallback(NULL);
      SetMainCallback2(CB2_ShowEvIv);
      ScriptContext2_Enable();
-     SetUpItemUseOnFieldCallback(taskId);
+     SetUpItemUseCallback(taskId);
  }
  
- void FieldUseFunc_EVIV(u8 taskId)
- {
-     sItemUseOnFieldCB = Item_EVIV;
-     SetUpItemUseOnFieldCallback(taskId);
- }
+void FieldUseFunc_EVIV(u8 taskId)
+{
+
+    if (gTasks[taskId].data[3] == 0) // From Bag
+    {
+        Item_EVIV(taskId);
+    }
+    else // From Overworld (Select)
+    {
+        FadeScreen(FADE_TO_BLACK, 0);
+        // jump directly to EV/IV screen
+        SetMainCallback2(CB2_ShowEvIv);
+    }
+}
+
 
 void FieldUseFunc_NatureMint(u8 taskId)
 {

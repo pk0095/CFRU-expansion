@@ -52,7 +52,6 @@ extern const u8 gText_AbilityName_CrabbyTactics[];
 extern const u8 gText_AbilityName_HoneyArmor[];
 extern const u8 gText_AbilityName_FaceShield[];
 extern const u8 gText_AbilityName_RoyalRoar[];
-extern const u8 gText_AbilityName_HundredLegs[];
 
 extern const u8 gText_AbilityDescription_Evaporate[];
 extern const u8 gText_AbilityDescription_GrassDash[];
@@ -214,8 +213,6 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 				return gText_AbilityName_Turboblaze;
 			else if (SpeciesHasTeravolt(species))
 				return gText_AbilityName_Teravolt;
-			else if(SpeciesHasMyceliumMight(species))
-				return gText_AbilityName_MyceliumMight;
 			break;
 		case ABILITY_STORMDRAIN:
 			if (SpeciesHasEvaporate(species))
@@ -277,6 +274,7 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 				#if (defined NATIONAL_DEX_DIGLETT && defined NATIONAL_DEX_DUGTRIO)
 				case NATIONAL_DEX_DIGLETT:
 				case NATIONAL_DEX_DUGTRIO:
+					return gText_AbilityName_TanglingHair;
 				#endif
 				#if (defined NATIONAL_DEX_SMOOCHUM && defined NATIONAL_DEX_JYNX)
 				case NATIONAL_DEX_SMOOCHUM:
@@ -295,11 +293,14 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 			switch (dexNum)
 			{
 				default:
-				break;
+					break;
 				#if (defined NATIONAL_DEX_GIRAFARIG && defined NATIONAL_DEX_FARIGIRAF)
 				case NATIONAL_DEX_GIRAFARIG:
 				case NATIONAL_DEX_FARIGIRAF:
-					return gText_AbilityName_BrainBond;
+				    return gText_AbilityName_BrainBond;
+				#endif
+				#ifdef NATIONAL_DEX_SCOLIPEDE
+				case NATIONAL_DEX_SCOLIPEDE:
 				#endif
 				#if (defined NATIONAL_DEX_SIZZLIPEDE && defined NATIONAL_DEX_CENTISKORCH)
 				case NATIONAL_DEX_SIZZLIPEDE:
@@ -409,9 +410,6 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 				case NATIONAL_DEX_SMOOCHUM:
 				case NATIONAL_DEX_JYNX:
 					return gText_AbilityName_IcySkin;
-				#endif
-				#ifdef NATIONAL_DEX_VENOMOTH
-				case NATIONAL_DEX_VENOMOTH:
 				#endif
 				#ifdef NATIONAL_DEX_DUSTOX
 				case NATIONAL_DEX_DUSTOX:
@@ -569,6 +567,9 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 			if (SpeciesHasZerotoHero(species))
 				return gText_AbilityName_ZerotoHero;
 			break;
+		case ABILITY_MINUS:
+			if(SpeciesHasMyceliumMight(species))
+				return gText_AbilityName_MyceliumMight;
 	}
 
 	return NULL;
@@ -653,10 +654,6 @@ const u8* GetAbilityDescriptionOverride(const u8 ability, const u16 species) //B
 			if(SpeciesHasMindsEye(species))
 				return gText_AbilityDescription_MindsEye;
 			break;
-		case ABILITY_MOLDBREAKER:
-			if(SpeciesHasMyceliumMight(species))
-				return gText_AbilityDescription_MyceliumMight;
-			break;
 		case ABILITY_DANCER:
 			if(SpeciesHasOportunist(species))
 				return gText_AbilityDescription_Opportunist;
@@ -730,6 +727,10 @@ const u8* GetAbilityDescriptionOverride(const u8 ability, const u16 species) //B
 		case ABILITY_TORRENT:
 			if (SpeciesHasZerotoHero(species))
 				return gText_AbilityDescription_ZerotoHero;
+			break;
+		case ABILITY_MINUS:
+			if(SpeciesHasMyceliumMight(species))
+				return gText_AbilityDescription_MyceliumMight;
 			break;
 	}
 
@@ -853,8 +854,8 @@ bool8 SpeciesHasEvaporate(unusedArg u16 species) //Custom Unbound Ability
 
 bool8 SpeciesHasSlipperyTail(unusedArg u16 species) //Custom Unbound Ability
 {
-	#ifdef SPECIES_SEVIPER
-	return species == SPECIES_SEVIPER;
+	#if (defined SPECIES_EKANS && defined SPECIES_ARBOK && defined SPECIES_ONIX && defined SPECIES_STEELIX && defined SPECIES_SEVIPER)
+	return species == SPECIES_EKANS || species == SPECIES_ARBOK || species == SPECIES_ONIX || species == SPECIES_STEELIX || species == SPECIES_SEVIPER;
 	#else
 	return FALSE;
 	#endif
@@ -942,7 +943,7 @@ bool8 IsElectricAbsorptionAblity(u8 ability)
 
 bool8 IsPlusMinusAbility(u8 ability)
 {
-	if (SpeciesHasPoisonPuppeteer(SPECIES(gActiveBattler)))
+	if (SpeciesHasPoisonPuppeteer(LEECH_SPECIES(gActiveBattler)) || SpeciesHasMyceliumMight(LEECH_SPECIES(gActiveBattler)))
 		return FALSE;
 
 	switch (ability)
@@ -1151,7 +1152,7 @@ bool8 IsVitalSpiritAbility(u8 ability, u16 species)
 		#ifdef NATIONAL_DEX_ELECTABUZZ
 		case NATIONAL_DEX_ELECTABUZZ:
 		#endif
-		#ifdef NATIONAL_DEX_ELECTABUZZ
+		#ifdef NATIONAL_DEX_MAGMAR
 		case NATIONAL_DEX_MAGMAR:
 		#endif
 		#ifdef NATIONAL_DEX_DELIBIRD

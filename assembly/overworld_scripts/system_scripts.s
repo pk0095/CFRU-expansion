@@ -1171,10 +1171,16 @@ SystemScript_DebugMenu_Custom:
 	lockall
 	multichoiceoption gText_DebugMenu_GivePokemonById 0
 	multichoiceoption gText_DebugMenu_GiveItemById 1
-	multichoice 0, 0, TWO_MULTICHOICE_OPTIONS, 0
+	multichoiceoption gText_DebugMenu_CustomSetFlag 2
+	multichoiceoption gText_DebugMenu_SetVar 3
+	multichoiceoption gText_DebugMenu_Trainerbattle 4
+	multichoice 0, 0, FIVE_MULTICHOICE_OPTIONS, 0
 	switch LASTRESULT
 		case 0, SystemScript_DebugMenu_GivePokemonPrompt
 		case 1, SystemScript_DebugMenu_GiveItemPrompt
+		case 2, SystemScript_DebugMenu_CustomSetFlag
+		case 3, SystemScript_DebugMenu_SetVar
+		case 4, SystemScript_DebugMenu_Trainerbattle
 	releaseall
 	end
 
@@ -1229,6 +1235,48 @@ SystemScript_DebugMenu_GiveItemPrompt:
 	giveitem 0x8000 0x1 MSG_OBTAIN
 	releaseall
 	end
+
+.global SystemScript_DebugMenu_CustomSetFlag
+SystemScript_DebugMenu_CustomSetFlag:
+	lockall
+	msgbox Text_CustomSetFlag MSG_NORMAL
+	special 0xB3
+	waitstate
+	copyvar 0x8000, LASTRESULT
+	callasm DebugMenu_SetterFlag
+	msgbox Text_FlagSet MSG_NORMAL
+	releaseall
+	end
+
+.global SystemScript_DebugMenu_SetVar
+SystemScript_DebugMenu_SetVar:
+	lockall
+	msgbox Text_CustomSetVar MSG_NORMAL
+	special 0xB3
+	waitstate
+	copyvar 0x5158, LASTRESULT
+	msgbox gText_VarValue MSG_NORMAL
+	special 0xB3
+	waitstate
+	copyvar 0x5159, LASTRESULT
+	callasm DebugMenu_SetterVar
+	msgbox Text_VarSet MSG_NORMAL
+	releaseall
+	end
+
+.global SystemScript_DebugMenu_Trainerbattle
+SystemScript_DebugMenu_Trainerbattle:
+	lockall
+	msgbox gText_TrainerCustomBattle MSG_NORMAL
+	special 0xB3
+	waitstate
+	setvar 0x8000 0xFEFE
+	setvar 0x503A 0x2
+	setvar 0x503B 0x0
+	trainerbattle3 0x3 LASTRESULT 0x100 DebugMenu_LossMessage
+	releaseall
+	end
+
 SystemScript_DebugMenu_StartWildBattleNow:
 	msgbox gText_DebugMenu_EnterSpecies MSG_NORMAL
 	special 0xB3
@@ -1306,3 +1354,42 @@ SystemScript_Exp_Share_Off:
 	msgboxsign
 	msgbox gText_Exp_Share_Off MSG_SIGN
 	goto EndScript
+
+.global SystemScript_Portable_PC_On
+.global SystemScript_Portable_PC_Off
+
+SystemScript_Portable_PC_On:
+	lockall
+	msgbox gText_PortablePCPrompt MSG_KEEPOPEN
+
+	@ Define multichoice options inline
+	multichoiceoption gText_OpenPCBox 0
+	multichoiceoption gText_HealPokemon 1
+	multichoice 0x0, 0x0, TWO_MULTICHOICE_OPTIONS, 0x0
+
+	switch LASTRESULT
+	case 0, OpenPCBox
+	case 1, HealParty
+	releaseall
+	end
+
+OpenPCBox:
+	special 0x3C
+	waitstate
+	playse 0x3
+	releaseall
+	end
+
+HealParty:
+	special 0x0
+	playse 0x1
+	waitse
+	msgbox gText_HealedPCParty MSG_NORMAL
+	releaseall
+	end
+
+SystemScript_Portable_PC_Off:
+	lock
+	msgbox gText_PCUnavailable MSG_NORMAL
+	release
+	end

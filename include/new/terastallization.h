@@ -20,6 +20,7 @@ extern bool8 CanTerastallize(u8 bank);
 bool8 ShouldAIDelayTerastallization(u8 bankAtk, u8 bankDef, u16 move, bool8 optimizeAndLookAtTeraPotential, bool8 runDamageCalcs);
 bool8 CalculateMoveKnocksOutXHitsFresh(u16 move, u8 bankAtk, u8 bankDef, u8 numHits);
 bool8 TerastalEnabled(u8 bank);
+u8 GetRandomTeraType(void);
 #ifdef SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN
 void TeraIconSummaryScreen(void);
 #endif

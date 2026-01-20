@@ -183,7 +183,7 @@ struct PokemonSummaryScreenData
     u8 ALIGNED(4) lastPageFlipDirection; /* 0x3300 */
     u8 ALIGNED(4) unk3304; /* 0x3304 */
 };
-static const u8 sLevelNickTextColors[][3] =
+static const u8 __attribute__((unused)) sLevelNickTextColors[][3] =
 {
     {0, 14, 10},
     {0, 1, 2},

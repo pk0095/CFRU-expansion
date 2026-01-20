@@ -105,6 +105,7 @@ enum
 	TRAINER_SLIDE_LAST_SWITCHIN,
 	TRAINER_SLIDE_LAST_LOW_HP,
 	TRAINER_SLIDE_FIRST_DOWN,
+	TRAINER_SLIDE_FIRST_HURT,
 };
 
 extern const struct BattleMove gBattleMoves[];
@@ -115,8 +116,15 @@ extern u8 BattleScript_ButItFailed[];
 #define BattleScript_NotAffected (const u8*) 0x81D7E04
 
 typedef u8 TrainerClassNames_t[13];
-#define gTrainerClassNames ((TrainerClassNames_t*) *((u32*) 0x811B4B4)) //0x823E558
+
+#ifdef EXPAND_TRAINERS
+extern const struct Trainer gTrainers[];
+extern const u8 gTrainerClassNames[][13];
+#else
 #define gTrainers ((struct Trainer*) *((u32*) 0x800FC00)) //0x823EAC8
+#define gTrainerClassNames ((TrainerClassNames_t*) *((u32*) 0x811B4B4)) //0x823E558
+
+#endif
 #define gTrainerFrontPicCoords ((struct TrainerPicCoords*) 0x823932C)
 #define gTrainerFrontPicTable ((struct CompressedSpriteSheet*) 0x823957C)
 #define gTrainerFrontPicPaletteTable ((struct CompressedSpritePalette*) 0x8239A1C)
@@ -138,3 +146,4 @@ extern const u8 gStatusConditionString_Frostbite[];
 #define gStatusConditionString_Confusion ((u8*) 0x82500BC)
 #define gStatusConditionString_Love ((u8*) 0x82500C4)
 extern const u8 gStatusConditionString_PurifySalt[];
+#define LEECH_SPECIES(bank) GetProperAbilityPopUpSpecies(bank)

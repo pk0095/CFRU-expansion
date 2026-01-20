@@ -2699,13 +2699,6 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 				attack *= 2;
 			break;
 
-		case ABILITY_PUREAURA:
-        // 2x Special Attack (Special Huge Power)
-            if (!IsScaleMonsBattle()
-            || !IsSpeciesAffectedByScalemons(data->atkSpecies))
-            spAttack *= 2;
-            break;
-
 		case ABILITY_FLOWERGIFT:
 		//1.5x Boost
 			if (WEATHER_HAS_EFFECT && (gBattleWeather & WEATHER_SUN_ANY)
@@ -3339,7 +3332,7 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 
 		case ABILITY_IMMUNITY:
 		//0.5x Decrement
-			if (data->moveType == TYPE_GHOST && SpeciesHasPurifyingSalt(SPECIES(bankDef)))
+			if (data->moveType == TYPE_GHOST && SpeciesHasPurifyingSalt(GetProperAbilityPopUpSpecies(bankDef)))
 				damage /= 2;
 			break;
 

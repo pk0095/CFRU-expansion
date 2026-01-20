@@ -58,6 +58,7 @@
 #include "../include/new/party_menu.h"
 #include "../include/new/read_keys.h"
 #include "../include/new/wild_encounter.h"
+#include "../include/save.h"
 
 /*
 overworld.c
@@ -3137,6 +3138,8 @@ void CB2_EndTrainerBattle(void)
         if (IsPlayerDefeated(gBattleOutcome) == TRUE)
         {
             gSpecialVar_LastResult = TRUE;
+
+			#ifndef CONTINUE_LOST_BATTLES
             if (sRivalBattleFlags & RIVAL_BATTLE_HEAL_AFTER)
             {
                 HealPlayerParty();
@@ -3146,6 +3149,7 @@ void CB2_EndTrainerBattle(void)
                 SetMainCallback2(CB2_WhiteOut);
                 return;
             }
+			#endif
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
             SetBattledTrainerFlag();
             QuestLogEvents_HandleEndTrainerBattle();
@@ -3227,13 +3231,13 @@ void CB2_EndScriptedWildBattle_2(void)
 void CB2_WhiteOut(void)
 {
     u8 val;
-
-    if (++gMain.state >= 120)
-    {
-		if (FlagGet(FLAG_NUZLOCKE))
+	if (FlagGet(FLAG_NUZLOCKE))
 		{
+			ClearSaveData();
 			CB2_NewGameOld();
 		}
+    if (++gMain.state >= 120)
+    {
         FieldClearVBlankHBlankCallbacks();
         StopMapMusic();
         ResetSafariZoneFlag_();

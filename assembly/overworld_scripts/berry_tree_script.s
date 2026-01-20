@@ -50,13 +50,8 @@ EventScript_Plant_Berry_Tree_NonePlanted:
     msgbox gText_None_Planted MSG_YESNO
     compare LASTRESULT 0x0
     if equal _goto EventScript_Plant_Berry_Tree_End
-    fadescreen FADEOUT_BLACK
-    setvar 0x800F 0x7E
-    setvar 0x800E 0x0
-    writebytetooffset 0x0 0x203AD02
-    callasm 0x80A1881
-    waitmsg
-    setvar 0x800F 0x0
+    setvar 0x8000 0x4
+    special 0xB1
     compare 0x800E 0x0
     if equal _goto EventScript_Plant_Berry_Tree_End
     compare 0x800E 0x84

@@ -21,8 +21,8 @@
 #include "../include/new/move_menu.h"
 #include "../include/new/multi.h"
 #include "../include/new/set_z_effect.h"
-#include "../include/new/util.h"
 #include "../include/new/terastallization.h"
+#include "../include/new/util.h"
 
 /*
 move_menu.c
@@ -91,6 +91,7 @@ static void DestroyLastBallTrigger(struct Sprite* sprite);
 static void DestroyLastBallTriggerBall(struct Sprite* sprite);
 static void DestroyTeamPreviewTrigger(struct Sprite* sprite);
 static void DestroyTypeIcon(struct Sprite* sprite);
+
 // For Terastallization - Custom functions in this file
 static void SpriteCB_TeraTrigger(struct Sprite* self);
 static void DestroyTeraTrigger(struct Sprite* sprite);
@@ -568,7 +569,6 @@ static const struct SpriteTemplate * const sTeraIndicatorSpriteTemplates[NUMBER_
 	[TYPE_STELLAR] = &sTeraStellarIndicatorSpriteTemplate,  
 };
 
-
 #define type_icon_frame(ptr, frame) {.data = (u8 *)ptr + (1 * 2 * frame * 32), .size = 1 * 2 * 32}
 static const struct SpriteFrameImage sTypeIconPicTable[] =
 {
@@ -1012,7 +1012,7 @@ static void SpriteCB_TeraTrigger(struct Sprite* self)
 			}
 		}
 
-		if (hasTerastallized || !CanTerastallize(TRIGGER_BANK) || !TerastalEnabled(TRIGGER_BANK))
+		if (hasTerastallized || !CanTerastallize(TRIGGER_BANK) || !TerastalEnabled(TRIGGER_BANK) || DynamaxEnabled(TRIGGER_BANK))
 			self->invisible = TRUE;
 		else
 			self->invisible = FALSE;
@@ -1056,10 +1056,14 @@ static void SpriteCB_TeraTrigger(struct Sprite* self)
 		}
 	}
 
-	if (gNewBS->teraData.chosen[TRIGGER_BANK])
-		PALETTE_STATE = TriggerLightUp;
-	else
-		PALETTE_STATE = TriggerNormalColour;
+    struct ChooseMoveStruct* moveInfo = (struct ChooseMoveStruct*) (&gBattleBufferA[TRIGGER_BANK][4]);
+
+    if (!moveInfo->canTera)
+        PALETTE_STATE = TriggerGrayscale;
+    else if (gNewBS->teraData.chosen[TRIGGER_BANK])
+        PALETTE_STATE = TriggerLightUp;
+    else
+        PALETTE_STATE = TriggerNormalColour;
 
 	// Only change the palette if the state has changed
 	if (PALETTE_STATE != self->data[2])
@@ -1137,7 +1141,8 @@ static void SpriteCB_MegaIndicator(struct Sprite* self)
 				return;
 			}
 			break;
-				// Add case for Terastallization
+
+		// Add case for Terastallization
 		case GFX_TAG_TERA_INDICATOR_NORMAL ... GFX_TAG_TERA_INDICATOR_STELLAR:
 			if (!IsTerastallized(INDICATOR_BANK))
 			{
@@ -1523,11 +1528,11 @@ static void SpriteCB_CamomonsTypeIcon(struct Sprite* sprite)
 	{
 		switch (position) {
 			case B_POSITION_PLAYER_LEFT:
-				if (sprite->pos1.x < sTypeIconPositions[position][TRUE].x + 12)
+				if (sprite->pos1.x < sTypeIconPositions[position][TRUE].x + 10)
 					sprite->pos1.x += 1;
 				break;
 			case B_POSITION_OPPONENT_LEFT:
-				if (sprite->pos1.x > sTypeIconPositions[position][TRUE].x - 12)
+				if (sprite->pos1.x > sTypeIconPositions[position][TRUE].x - 10)
 					sprite->pos1.x -= 1;
 				break;
 		}
@@ -1537,12 +1542,12 @@ static void SpriteCB_CamomonsTypeIcon(struct Sprite* sprite)
 		switch (position) {
 			case B_POSITION_PLAYER_LEFT:
 			case B_POSITION_PLAYER_RIGHT:
-				if (sprite->pos1.x > sTypeIconPositions[position][FALSE].x - 12)
+				if (sprite->pos1.x > sTypeIconPositions[position][FALSE].x - 10)
 					sprite->pos1.x -= 1;
 				break;
 			case B_POSITION_OPPONENT_LEFT:
 			case B_POSITION_OPPONENT_RIGHT:
-				if (sprite->pos1.x < sTypeIconPositions[position][FALSE].x + 12)
+				if (sprite->pos1.x < sTypeIconPositions[position][FALSE].x + 10)
 					sprite->pos1.x += 1;
 				break;
 		}
@@ -1571,6 +1576,7 @@ void LoadMegaGraphics(u8 state)
 		unusedArg bool8 loadedOmegaGfx = IndexOfSpriteTileTag(GFX_TAG_OMEGA_INDICATOR) != 0xFF;
 		unusedArg bool8 loadedUltraGfx = IndexOfSpriteTileTag(GFX_TAG_ULTRA_INDICATOR) != 0xFF;;
 		unusedArg bool8 loadedDynamaxGfx = IndexOfSpriteTileTag(GFX_TAG_DYNAMAX_INDICATOR) != 0xFF;
+
 		// Tera Trackers for each type
 		unusedArg bool8 loadedTeraNormalGfx   = IndexOfSpriteTileTag(GFX_TAG_TERA_INDICATOR_NORMAL)   != 0xFF;
 		unusedArg bool8 loadedTeraFightingGfx = IndexOfSpriteTileTag(GFX_TAG_TERA_INDICATOR_FIGHTING) != 0xFF;
@@ -1925,10 +1931,13 @@ void TryLoadMegaTriggers(void)
 // For Terastallization
 void TryLoadTeraTrigger(void)
 {
-	u8 spriteId, i;
+        u8 spriteId, i;
 
-	if (gBattleTypeFlags & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_POKE_DUDE | BATTLE_TYPE_OLD_MAN))
-		return;
+        if (gBattleTypeFlags & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_POKE_DUDE | BATTLE_TYPE_OLD_MAN))
+                return;
+
+        if (!TerastalEnabled(gActiveBattler))
+                return;
 
 	if (IndexOfSpritePaletteTag(GFX_TAG_TERA_TRIGGER) == 0xFF)
 		LoadSpritePalette(&sTeraTriggerPalette);
@@ -2031,13 +2040,16 @@ static void DestroyZTrigger(struct Sprite* sprite)
 
 void TryLoadDynamaxTrigger(void)
 {
-	u8 spriteId, i;
+        u8 spriteId, i;
 
-	if (gBattleTypeFlags & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_POKE_DUDE | BATTLE_TYPE_OLD_MAN))
-		return;
+        if (gBattleTypeFlags & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_POKE_DUDE | BATTLE_TYPE_OLD_MAN))
+                return;
 
-	if (!(gBattleTypeFlags & BATTLE_TYPE_DYNAMAX))
-		return;
+        if (!(gBattleTypeFlags & BATTLE_TYPE_DYNAMAX))
+                return;
+
+        if (!DynamaxEnabled(gActiveBattler))
+                return;
 
 	if (IndexOfSpritePaletteTag(GFX_TAG_DYNAMAX_TRIGGER) == 0xFF)
 		LoadSpritePalette(&sDynamaxTriggerPalette);

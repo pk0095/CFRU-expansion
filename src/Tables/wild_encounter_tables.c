@@ -38,16 +38,16 @@ const struct WildPokemonInfo gRoute1_LandMonsInfoMorning = {15, gRoute1_LandMons
 
 const struct WildPokemon gRoute1_LandMonsDay[] =
 {
-    {20, 2, SPECIES_ZIGZAGOON},       // Classic early Normal-type
-    {15, 2, SPECIES_BUIZEL},          // Water-type, Gen 4 freshness
-    {12, 2, SPECIES_ROOKIDEE},        // Flying/Steel later on, Gen 8 bird
-    {10, 3, SPECIES_BUNEARY},         // Fast Normal-type with potential
-    {8,  3, SPECIES_SEWADDLE},        // Bug/Grass option, early status
-    {8,  3, SPECIES_SNOM},            // Unique Ice/Bug type
-    {7,  2, SPECIES_JOLTIK},          // Tiny Electric/Bug variety
-    {5,  3, SPECIES_HOUNDOUR},        // Fire/Dark, adds good offensive typing
-    {4,  2, SPECIES_DEERLING},        // Daytime flavor (Spring form)
-    {3,  2, SPECIES_MUNCHLAX},        // Bulky rare Normal-type
+    {2, 3, SPECIES_ZIGZAGOON},       // Classic early Normal-type
+    {2, 3, SPECIES_BUIZEL},          // Water-type, Gen 4 freshness
+    {2, 3, SPECIES_ROOKIDEE},        // Flying/Steel later on, Gen 8 bird
+    {2, 3, SPECIES_BUNEARY},         // Fast Normal-type with potential
+    {2,  3, SPECIES_SEWADDLE},        // Bug/Grass option, early status
+    {2,  3, SPECIES_SNOM},            // Unique Ice/Bug type
+    {2,  3, SPECIES_JOLTIK},          // Tiny Electric/Bug variety
+    {2,  3, SPECIES_HOUNDOUR},        // Fire/Dark, adds good offensive typing
+    {1,  3, SPECIES_DEERLING},        // Daytime flavor (Spring form)
+    {2,  3, SPECIES_MUNCHLAX},        // Bulky rare Normal-type
     {2,  3, SPECIES_DREEPY},          // Ghost/Dragon rare and fun
     {1,  3, SPECIES_TINKATINK},       // Fairy/Steel rare treasure
 };

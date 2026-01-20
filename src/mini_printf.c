@@ -47,6 +47,9 @@
  #include "../include/mini_printf.h"
  #include "../include/gba/types.h"
  #include "../include/gba/defines.h"
+
+ #define strlen mini_strlen
+ 
  struct mini_buff 
  {
      char *buffer, *pbuffer;

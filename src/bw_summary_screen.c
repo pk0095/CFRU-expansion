@@ -78,6 +78,7 @@ static void PokeSum_SeekToNextMon(u8 taskId, s8 direction);
 static void CreateHpBarObjs(u16 tileTag, u16 palTag);
 static void CreateShinyStarObj(u16 tileTag, u16 palTag);
 static void PokeSum_Setup_SetVBlankCallback(void);
+static bool8 HasOnlyOneMon(void);
 
 extern const u8 *const sEggHatchTimeTexts[];
 extern const struct OamData sMoveSelectionCursorOamData;
@@ -1454,6 +1455,15 @@ static void Task_InputHandler_Info(u8 taskId)
         else if (FuncIsActiveTask(Task_PokeSum_SwitchDisplayedPokemon))
             return;
 
+        if (HasOnlyOneMon())
+        {
+            if (JOY_NEW(DPAD_UP) || JOY_NEW(DPAD_DOWN))
+            {
+                PlaySE(SE_ERROR); // Toca um som de erro
+                return;
+            }
+        }
+
         if (sMonSummaryScreen->curPageIndex != PSS_PAGE_MOVES_INFO)
         {
             if (IsPageFlipInput(1) == TRUE)
@@ -2807,6 +2817,27 @@ static void VBlankCB_PokemonSummaryScreen(void)
 static void PokeSum_Setup_SetVBlankCallback(void)
 {
     SetVBlankCallback(VBlankCB_PokemonSummaryScreen);
+}
+
+static bool8 HasOnlyOneMon(void)
+{
+    if (sMonSummaryScreen->isBoxMon)
+    {
+        // Lógica para caixa de PC (se aplicável)
+        return FALSE; // Ou implemente a verificação adequada para a caixa
+    }
+    else
+    {
+        // Para party normal
+        u8 count = 0;
+        u8 i;
+        for (i = 0; i < PARTY_SIZE; i++)
+        {
+            if (GetMonData(&sMonSummaryScreen->monList.mons[i], MON_DATA_SPECIES, NULL) != SPECIES_NONE)
+                count++;
+        }
+        return (count <= 1);
+    }
 }
 
 #endif

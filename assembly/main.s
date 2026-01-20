@@ -397,45 +397,58 @@ return:
 .VAR:
     .word 0x020270B8 + (0x8004 * 2)
 
-CopyPlayerPartyMonToBattleData_Hook:
-	b CopyPlayerPartyMonToBattleData_NewFunc
-	nop
-
 .align 2
-CopyPlayerPartyMonToBattleData_NewFunc:
-    push {r0-r3, lr}
-
-    ldr r0, =gBattlerPartyIndexes    @ r0 = &gBattlerPartyIndexes[battlerId]
-    ldrb r0, [r0, r4]                @ r0 = gBattlerPartyIndexes[battlerId]
-    mov r1, r4                       @ r1 = battlerId
-    mov r2, #1                       @ r2 = TRUE
-    bl CopyPlayerPartyMonToBattleData
-    pop {r0-r3, pc}
-
-.align 2
-.global GetBerryPouchModeOverride
+.global CopyPlayerPartyMonToBattleData_Hook
 .pool
+CopyPlayerPartyMonToBattleData_Hook:
+    ldr   r0, =0x8041BD8
+    ldr   r1, =0x8041BDC
+    add   r0, r0, r1
+    ldrb  r1, [r0, #0]
+    mov   r4, #2
+    mov   r0, #2
+    and   r0, r1
+    cmp   r0, #0
+    beq   .retorno
 
-GetBerryPouchModeOverride:
-	ldr r3, var_800F
-	ldrh r3, [r3]
-	cmp r3, #0x7E
-	beq GetBerryPouchHack
-	ldr r3, unk_0203F370
-	mov r8, r3
-	ldrb r0, [r3,#0x4]
-	b GetBerryPouchReturn
+    ldr   r2, [sp, #52]
+    cmp   r2, #4
+    beq   .jump_to
 
-GetBerryPouchHack:
-	ldr r3, unk_0203F370
-	mov r8, r3
-	mov r0, #0x5
+    ldr   r2, =0x8041BE0
+    ldr   r1, =0x8041BE4
+    ldr   r3, [sp, #52]
+    lsl   r0, r3, #2
+    add   r0, r0, r1
+    ldr   r1, [r0, #0]
+    ldrb  r0, [r2, #0]
+    bic   r0, r1
+    strb  r0, [r2, #0]
 
-GetBerryPouchReturn:
-	ldr r3, returnaddress
-	bx r3
+    ldr   r1, =0x8041BE8
+    lsl   r0, r3, #1
+    add   r0, r0, r1
+    ldrb  r0, [r0, #0]
+    bl    0x8128030
 
-.align 2
-returnaddress: .word 0x0813DB1D
-unk_0203F370: .word 0x0203F370
-var_800F: .word 0x020370D2
+    mov   r1, r0
+    lsl   r1, r1, #24
+    lsr   r1, r1, #24
+    ldr   r0, [sp, #52]
+	mov   r2, #1
+    bl    CopyPlayerPartyMonToBattleData
+
+    ldr   r0, =0x041BEC
+    ldrb  r0, [r0, #0]
+	ldr   r1, =0x08041C08 | 1
+    bx    r1
+
+.jump_to:
+    ldr   r0, =0x08041BF0 | 1
+    bx    r0
+
+.retorno:
+    ldr   r0, =0x08041C46 | 1
+    bx    r0
+
+.pool
