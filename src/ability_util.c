@@ -855,8 +855,8 @@ bool8 SpeciesHasEvaporate(unusedArg u16 species) //Custom Unbound Ability
 
 bool8 SpeciesHasSlipperyTail(unusedArg u16 species) //Custom Unbound Ability
 {
-	#if (defined SPECIES_EKANS && defined SPECIES_ARBOK && defined SPECIES_ONIX && defined SPECIES_STEELIX && defined SPECIES_SEVIPER)
-	return species == SPECIES_EKANS || species == SPECIES_ARBOK || species == SPECIES_ONIX || species == SPECIES_STEELIX || species == SPECIES_SEVIPER;
+	#if (defined SPECIES_EKANS && defined SPECIES_ARBOK && defined SPECIES_ONIX && defined SPECIES_STEELIX && defined SPECIES_SEVIPER && defined SPECIES_SERPERIOR)
+	return species == SPECIES_EKANS || species == SPECIES_ARBOK || species == SPECIES_ONIX || species == SPECIES_STEELIX || species == SPECIES_SEVIPER || species == SPECIES_SERPERIOR;
 	#else
 	return FALSE;
 	#endif
@@ -1355,8 +1355,8 @@ bool8 SpeciesHasMyceliumMight(unusedArg u16 species)
 
 bool8 SpeciesHasOportunist(unusedArg u16 species)
 {
-	#ifdef SPECIES_ESPATHRA
-	return species == SPECIES_ESPATHRA;
+	#if (defined SPECIES_FLITTLE && SPECIES_ESPATHRA)
+	return species == SPECIES_FLITTLE || species == SPECIES_ESPATHRA;
 	#else
 	return FALSE;
 	#endif
