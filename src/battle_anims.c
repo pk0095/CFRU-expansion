@@ -465,6 +465,7 @@ void AnimTask_GetTrappedMoveAnimId(u8 taskId)
 			gBattleAnimArgs[0] = 1;
 			break;
 		case MOVE_WHIRLPOOL:
+		case MOVE_MAELSTROM:
 			gBattleAnimArgs[0] = 2;
 			break;
 		case MOVE_CLAMP:

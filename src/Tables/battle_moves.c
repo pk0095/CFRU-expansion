@@ -16107,7 +16107,7 @@ const struct BattleMove gBattleMoves[] =
 
 	[MOVE_MAELSTROM] =
     {
-	.effect = EFFECT_CONFUSE_HIT,
+	.effect = EFFECT_TRAP,
 	.power = 150,
 	.type = TYPE_WATER,
 	.accuracy = 100,

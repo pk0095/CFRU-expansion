@@ -3664,6 +3664,7 @@ static u16 GetBasePower(struct DamageCalc* data)
 			break;
 
 		case MOVE_WHIRLPOOL:
+		case MOVE_MAELSTROM:
 			if (!(data->specialFlags & FLAG_IGNORE_TARGET)
 			&& data->defStatus3 & STATUS3_UNDERWATER)
 				power *= 2;
