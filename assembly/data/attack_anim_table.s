@@ -1039,10 +1039,7 @@ gMoveAnimations:
 .word ANIM_SUPERCELLSLAM
 .word ANIM_PSYCHICNOISE
 @;Custom Moves
-.word ANIM_MAELSTROM
 .word ANIM_AQUAFANG
-.word ANIM_SKYDASH
-.word ANIM_MOURNFULGAZE
 .word ANIM_SAPPYSEED
 .word ANIM_ZIPPYZAP
 .word ANIM_FREEZYFROST
@@ -1057,9 +1054,13 @@ gMoveAnimations:
 .word ANIM_SHADOWSTORM
 .word ANIM_OVERCHARGE
 .word ANIM_ACIDRUST
-.word ANIM_SOULBURN
-.word ANIM_STATICWING
 .word ANIM_PHANTOMVOID
+.word ANIM_NIHILLIGHT
+.word ANIM_VEEVEEVOLLEY
+.word ANIM_PIKAPAPOW
+.word ANIM_STATICWING
+.word ANIM_SPIRITLEECH
+.word ANIM_MOURNFULGAZE
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
@@ -31089,26 +31090,8 @@ PSYCHIC_NOISE_WAVE:
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
-ANIM_MAELSTROM:
-    goto 0x81CFB3A
-    endanimation
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-.pool
 ANIM_AQUAFANG:
     goto ANIM_FISHIOUS_REND
-    endanimation
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-.pool
-ANIM_SKYDASH:
-    goto 0x81CCC39
-    endanimation
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-.pool
-ANIM_MOURNFULGAZE:
-    goto 0x81D1BA0
     endanimation
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -31197,8 +31180,26 @@ ANIM_ACIDRUST:
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
-ANIM_SOULBURN:
-    goto ANIM_INFERNAL_PARADE
+ANIM_PHANTOMVOID:
+    goto ANIM_DARKVOID
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_NIHILLIGHT:
+    goto ANIM_COREENFORCER
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_VEEVEEVOLLEY:
+    goto 0x81d36fa
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_PIKAPAPOW:
+    goto 0x81c7faa
     endanimation
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -31209,8 +31210,14 @@ ANIM_STATICWING:
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
-ANIM_PHANTOMVOID:
-    goto ANIM_DARKVOID
+ANIM_SPIRITLEECH:
+    goto 0x81cb043
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_MOURNFULGAZE:
+    goto 0x81d1ba0
     endanimation
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

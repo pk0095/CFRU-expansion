@@ -366,9 +366,9 @@ enum //These vars need to be one after the other (hence the enum)
 #define FLAG_FOLLOWER_WAS_SURFING 0xA07 //Flag that sets when following pokemon starts surfing to restore it after a warp is used!
 #define TERASTAL_FEATURE //Comment this line to remove Terastallization
 #define FLAG_TERA_BATTLE 0xA08 // Set this flag before a trainerbattle command to enable Terastallization
-//#define SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN // Comment this out if you want only the Tera Icon to be displayed on summary screen
+#define SHOW_TERA_TYPE_ICON_ON_SUMMARY_SCREEN // Comment this out if you want only the Tera Icon to be displayed on summary screen
 #define FLAG_EXPLAINED_MINING_RULES 0xA09 //If set, the player will not be shown the mining rules second time when using the mining feature
-#define BW_SUMMARY_SCREEN // Implements the BW summary screen
+//#define BW_SUMMARY_SCREEN // Implements the BW summary screen
 #define NATURE_COLORS_ON_SUMMARY_SCREEN //will implement nature coloured stats and IV ranking in summary (Don't uncomment if you're using BW Summary Screen)
 #define MID_BATTLE_EVO //Comment this line to remove Mid-Battle Evolution.
 //#define SKIP_INTRO_CONTROLS_GUIDE //Uncomment this line to remove the intro constrols guide.
@@ -377,7 +377,7 @@ enum //These vars need to be one after the other (hence the enum)
 #define VAR_GAME_DIFFICULTY 0x5157 //Var to store the game difficulty level. If 0 difficulty is normal(vanilla), if 1 its easy, if 2 its Hard, if 3 its Expert. ShouldGiveTrainerMonMaxFriendship and ShouldGiveTrainerMonMaxEVs need to be set at your choice in build_pokemon.c
 #define CRY_SPECIES SPECIES_CHARIZARD //The species that will be used for the cry in the titlescreen. Currently its 0x6 (Charizard).
 #define OAK_INTRO_SPECIES SPECIES_NIDORAN_F //The species that appears in Oak's intro(New Game).
-//#define OPEN_WORLD_TRAINERS // Custom Trainers and teams based on party levels (Not area based, making game open world). CAUTION: NOT TO USE WITH EXPAND_TRAINERS
+#define OPEN_WORLD_TRAINERS // Custom Trainers and teams based on party levels (Not area based, making game open world). CAUTION: NOT TO USE WITH EXPAND_TRAINERS
 //Also, using OPEN_WORLD_TRAINERS, you would need to edit gGeneralTrainerSpreads in build_pokemon.c
 #define SHOW_MEGAS_IN_HOF // Uncomment if you want mega and primal to be shown in hall of fame.
 #define FLAG_STAT_EDITOR_UNLOCKED 0xA0C
@@ -402,4 +402,4 @@ enum //These vars need to be one after the other (hence the enum)
 #define PALETTE_SWAPPER
 
 /* Trainer Data */
-#define EXPAND_TRAINERS // Makes trainers editable, well useless if OPEN_WORLD_TRAINERS is being used.
+//#define EXPAND_TRAINERS // Makes trainers editable, well useless if OPEN_WORLD_TRAINERS is being used.

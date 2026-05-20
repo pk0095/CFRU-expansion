@@ -812,10 +812,11 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 		}
 
 		//Get party size
+		u8 trainerClass = trainer->trainerClass;
 		if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && side == B_SIDE_OPPONENT)
 		{	
 			#ifdef OPEN_WORLD_TRAINERS
-			if ((firstTrainer && gTrainerBattleOpponent_A < DYNAMIC_TRAINER_LIMIT && class != CLASS_RIVAL && class != CLASS_RIVAL_2)
+			if ((firstTrainer && gTrainerBattleOpponent_A < DYNAMIC_TRAINER_LIMIT && trainerClass != CLASS_RIVAL && trainerClass != CLASS_RIVAL_2)
 			||  (!firstTrainer && VarGet(VAR_SECOND_OPPONENT) < DYNAMIC_TRAINER_LIMIT))
 			{
 				u8 openWorldAmount = GetOpenWorldTrainerMonAmount();
@@ -843,8 +844,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon* const party, const u16 trainerId
 		else
 		{
 			#ifdef OPEN_WORLD_TRAINERS
-			u8 class = trainer->trainerClass;
-			if (gTrainerBattleOpponent_A < DYNAMIC_TRAINER_LIMIT && class != CLASS_RIVAL && class != CLASS_RIVAL_2)
+			if (gTrainerBattleOpponent_A < DYNAMIC_TRAINER_LIMIT && trainerClass != CLASS_RIVAL && trainerClass != CLASS_RIVAL_2)
 			{
 				monsCount = GetOpenWorldTrainerMonAmount();
 

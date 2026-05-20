@@ -2009,46 +2009,80 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 				break;
 
 			case ABILITY_EFFECTSPORE:
-				if (MOVE_HAD_EFFECT
-				&& TOOK_DAMAGE(bank)
-				&& BATTLER_ALIVE(gBankAttacker)
-				&& gBankAttacker != bank
-				&& CheckContact(move, gBankAttacker, bank)
-				&& IsAffectedByPowder(gBankAttacker)
-				&& Random() % 10 == 0)
-				{
-					do
-					{
-						gBattleCommunication[MOVE_EFFECT_BYTE] = Random() & 3;
-					} while (gBattleCommunication[MOVE_EFFECT_BYTE] == 0);
-
-					switch (gBattleCommunication[MOVE_EFFECT_BYTE]) {
-						case MOVE_EFFECT_SLEEP:
-							if (CanBePutToSleep(gBankAttacker, bank, TRUE))
-								++effect;
-							break;
-						case MOVE_EFFECT_POISON:
-							if (CanBePoisoned(gBankAttacker, bank, TRUE))
-								++effect;
-							break;
-						case MOVE_EFFECT_BURN: //Gets changed to Paralysis
-							gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
-							if (CanBeParalyzed(gBankAttacker, bank, TRUE))
-								++effect;
-							break;
-					}
-
-					if (effect)
-					{
-						gBattleCommunication[MOVE_EFFECT_BYTE] |= MOVE_EFFECT_AFFECTS_USER;
-						BattleScriptPushCursor();
-						gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-						gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
-					}
-					else
-						gBattleCommunication[MOVE_EFFECT_BYTE] = 0;
-				}
-				break;
+                if (MOVE_HAD_EFFECT
+                && TOOK_DAMAGE(bank)
+                && BATTLER_ALIVE(gBankAttacker)
+                && gBankAttacker != bank
+                && CheckContact(move, gBankAttacker, bank)
+                && IsAffectedByPowder(gBankAttacker)
+                && Random() % 10 == 0)
+                {
+                    do
+                    {
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = Random() & 3;
+                    } while (gBattleCommunication[MOVE_EFFECT_BYTE] == 0);
+                    switch (gBattleCommunication[MOVE_EFFECT_BYTE]) {
+                        case MOVE_EFFECT_SLEEP:
+                            if (CanBePutToSleep(gBankAttacker, bank, TRUE))
+                                ++effect;
+                            break;
+                        case MOVE_EFFECT_POISON:
+                            if (CanBePoisoned(gBankAttacker, bank, TRUE))
+                                ++effect;
+                            break;
+                        case MOVE_EFFECT_BURN:
+                            gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
+                            if (CanBeParalyzed(gBankAttacker, bank, TRUE))
+                                ++effect;
+                            break;
+                    }
+                    if (effect)
+                    {
+                        gBattleCommunication[MOVE_EFFECT_BYTE] |= MOVE_EFFECT_AFFECTS_USER;
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
+                        gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
+                    }
+                    else
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = 0;
+                }
+                // Offensive - spread spore when YOU make contact with opponent
+                if (MOVE_HAD_EFFECT
+                && BATTLER_ALIVE(gBankAttacker)
+                && gBankAttacker == bank
+                && CheckContact(move, gBankAttacker, bank)
+                && IsAffectedByPowder(gBankTarget)
+                && Random() % 10 == 0)
+                {
+                    do
+                    {
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = Random() & 3;
+                    } while (gBattleCommunication[MOVE_EFFECT_BYTE] == 0);
+                    switch (gBattleCommunication[MOVE_EFFECT_BYTE]) {
+                        case MOVE_EFFECT_SLEEP:
+                            if (CanBePutToSleep(gBankTarget, gBankAttacker, TRUE))
+                                ++effect;
+                            break;
+                        case MOVE_EFFECT_POISON:
+                            if (CanBePoisoned(gBankTarget, gBankAttacker, TRUE))
+                                ++effect;
+                            break;
+                        case MOVE_EFFECT_BURN:
+                            gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
+                            if (CanBeParalyzed(gBankTarget, gBankAttacker, TRUE))
+                                ++effect;
+                            break;
+                    }
+                    if (effect)
+                    {
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
+                        gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
+                    }
+                    else
+                        gBattleCommunication[MOVE_EFFECT_BYTE] = 0;
+                }
+                break;
 
 			case ABILITY_POISONPOINT:
 				if (MOVE_HAD_EFFECT
@@ -2056,18 +2090,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 				&& BATTLER_ALIVE(gBankAttacker)
 				&& gBankAttacker != bank)
 				{
-					// Check Toxic Debris
 					if (SpeciesHasToxicDebris(SPECIES(bank)) && SPLIT(move) == SPLIT_PHYSICAL)
 					{
 						if (gSideTimers[gBankAttacker].tspikesAmount >= 2)
 						{
-							// Failure message (maximum Toxic Spikes already present)
 							BattleScriptPushCursor();
 							gBattlescriptCurrInstr = BattleScript_ToxicDebrisFailure;
 						}
 						else
 						{
-							// Add a layer of Toxic Spikes
 							gSideStatuses[gBankAttacker] |= SIDE_STATUS_SPIKES;
 							gSideTimers[gBankAttacker].tspikesAmount++;
 							BattleScriptPushCursor();
@@ -2075,7 +2106,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 						}
 						effect++;
 					}
-					// Check Poison Point
 					else if (CheckContact(move, gBankAttacker, bank)
 						&& CanBePoisoned(gBankAttacker, bank, TRUE)
 						&& umodsi(Random(), 3) == 0)
@@ -2083,68 +2113,128 @@ u8 AbilityBattleEffects(u8 caseID, u8 bank, u8 ability, u8 special, u16 moveArg)
 						gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_POISON;
 						BattleScriptPushCursor();
 						gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-						gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; // Safeguard checked earlier
+						gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
 						effect++;
 					}
+				}
+				// Offensive
+				if (MOVE_HAD_EFFECT
+				&& BATTLER_ALIVE(gBankAttacker)
+				&& gBankAttacker == bank
+				&& CheckContact(move, gBankAttacker, bank)
+				&& CanBePoisoned(gBankTarget, gBankAttacker, TRUE)
+				&& umodsi(Random(), 3) == 0)
+				{
+					gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_POISON;
+					BattleScriptPushCursor();
+					gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
+					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+					effect++;
 				}
 				break;
 
 			case ABILITY_STATIC:
-				if (MOVE_HAD_EFFECT
-				&& TOOK_DAMAGE(bank)
-				&& BATTLER_ALIVE(gBankAttacker)
-				&& gBankAttacker != bank
-				&& CheckContact(move, gBankAttacker, bank)
-				&& CanBeParalyzed(gBankAttacker, bank, TRUE)
-				&& umodsi(Random(), 3) == 0)
-				{
-					gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_PARALYSIS;
-					BattleScriptPushCursor();
-					gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
-					effect++;
-				}
-				break;
+                if (MOVE_HAD_EFFECT
+                && TOOK_DAMAGE(bank)
+                && BATTLER_ALIVE(gBankAttacker)
+                && gBankAttacker != bank
+                && CheckContact(move, gBankAttacker, bank)
+                && CanBeParalyzed(gBankAttacker, bank, TRUE)
+                && umodsi(Random(), 3) == 0)
+                {
+                    gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_PARALYSIS;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
+                    gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                    effect++;
+                }
+                if (MOVE_HAD_EFFECT
+                && BATTLER_ALIVE(gBankAttacker)
+                && gBankAttacker == bank
+                && CheckContact(move, gBankAttacker, bank)
+                && CanBeParalyzed(gBankTarget, gBankAttacker, TRUE)
+                && umodsi(Random(), 3) == 0)
+                {
+                    gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_PARALYSIS;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
+                    gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                    effect++;
+                }
+                break;
 
 			case ABILITY_FLAMEBODY:
-				if (MOVE_HAD_EFFECT
-				&& TOOK_DAMAGE(bank)
-				&& BATTLER_ALIVE(gBankAttacker)
-				&& gBankAttacker != bank
-				&& CheckContact(move, gBankAttacker, bank)
-				&& CanBeBurned(gBankAttacker, bank, TRUE)
-				&& umodsi(Random(), 3) == 0)
-				{
-					gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_BURN;
-					BattleScriptPushCursor();
-					gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
-					gHitMarker |= HITMARKER_IGNORE_SAFEGUARD; //Safeguard checked earlier
-					effect++;
-				}
-				break;
+                if (MOVE_HAD_EFFECT
+                && TOOK_DAMAGE(bank)
+                && BATTLER_ALIVE(gBankAttacker)
+                && gBankAttacker != bank
+                && CheckContact(move, gBankAttacker, bank)
+                && CanBeBurned(gBankAttacker, bank, TRUE)
+                && umodsi(Random(), 3) == 0)
+                {
+                    gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_BURN;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
+                    gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                    effect++;
+                }
+                if (MOVE_HAD_EFFECT
+                && BATTLER_ALIVE(gBankAttacker)
+                && gBankAttacker == bank
+                && CheckContact(move, gBankAttacker, bank)
+                && CanBeBurned(gBankTarget, gBankAttacker, TRUE)
+                && umodsi(Random(), 3) == 0)
+                {
+                    gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_BURN;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_AbilityApplySecondaryEffect;
+                    gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                    effect++;
+                }
+                break;
 
 			case ABILITY_CUTECHARM:
-				if (MOVE_HAD_EFFECT
-				&& TOOK_DAMAGE(bank)
-				&& BATTLER_ALIVE(gBankAttacker)
-				&& BATTLER_ALIVE(bank)
-				&& gBankAttacker != bank
-				&& CheckContact(move, gBankAttacker, bank)
-				&& umodsi(Random(), 3) == 0
-				&& ABILITY(gBankAttacker) != ABILITY_OBLIVIOUS
-				&& ABILITY(gBankAttacker) != ABILITY_AROMAVEIL
-				&& !(IS_DOUBLE_BATTLE && ABILITY(PARTNER(gBankAttacker)) == ABILITY_AROMAVEIL)
-				&& GetGenderFromSpeciesAndPersonality(speciesAtk, pidAtk) != GetGenderFromSpeciesAndPersonality(speciesDef, pidDef)
-				&& !(gBattleMons[gBankAttacker].status2 & STATUS2_INFATUATION)
-				&& GetGenderFromSpeciesAndPersonality(speciesAtk, pidAtk) != MON_GENDERLESS
-				&& GetGenderFromSpeciesAndPersonality(speciesDef, pidDef) != MON_GENDERLESS)
-				{
-					gBattleMons[gBankAttacker].status2 |= STATUS2_INFATUATED_WITH(gBankTarget);
-					BattleScriptPushCursor();
-					gBattlescriptCurrInstr = BattleScript_CuteCharmActivates;
-					effect++;
-				}
-				break;
+                if (MOVE_HAD_EFFECT
+                && TOOK_DAMAGE(bank)
+                && BATTLER_ALIVE(gBankAttacker)
+                && BATTLER_ALIVE(bank)
+                && gBankAttacker != bank
+                && CheckContact(move, gBankAttacker, bank)
+                && umodsi(Random(), 3) == 0
+                && ABILITY(gBankAttacker) != ABILITY_OBLIVIOUS
+                && ABILITY(gBankAttacker) != ABILITY_AROMAVEIL
+                && !(IS_DOUBLE_BATTLE && ABILITY(PARTNER(gBankAttacker)) == ABILITY_AROMAVEIL)
+                && GetGenderFromSpeciesAndPersonality(speciesAtk, pidAtk) != GetGenderFromSpeciesAndPersonality(speciesDef, pidDef)
+                && !(gBattleMons[gBankAttacker].status2 & STATUS2_INFATUATION)
+                && GetGenderFromSpeciesAndPersonality(speciesAtk, pidAtk) != MON_GENDERLESS
+                && GetGenderFromSpeciesAndPersonality(speciesDef, pidDef) != MON_GENDERLESS)
+                {
+                    gBattleMons[gBankAttacker].status2 |= STATUS2_INFATUATED_WITH(gBankTarget);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_CuteCharmActivates;
+                    effect++;
+                }
+                // Offensive
+                if (MOVE_HAD_EFFECT
+                && BATTLER_ALIVE(gBankAttacker)
+                && BATTLER_ALIVE(bank)
+                && gBankAttacker == bank
+                && CheckContact(move, gBankAttacker, bank)
+                && umodsi(Random(), 3) == 0
+                && ABILITY(gBankTarget) != ABILITY_OBLIVIOUS
+                && ABILITY(gBankTarget) != ABILITY_AROMAVEIL
+                && !(IS_DOUBLE_BATTLE && ABILITY(PARTNER(gBankTarget)) == ABILITY_AROMAVEIL)
+                && GetGenderFromSpeciesAndPersonality(speciesAtk, pidAtk) != GetGenderFromSpeciesAndPersonality(speciesDef, pidDef)
+                && !(gBattleMons[gBankTarget].status2 & STATUS2_INFATUATION)
+                && GetGenderFromSpeciesAndPersonality(speciesAtk, pidAtk) != MON_GENDERLESS
+                && GetGenderFromSpeciesAndPersonality(speciesDef, pidDef) != MON_GENDERLESS)
+                {
+                    gBattleMons[gBankTarget].status2 |= STATUS2_INFATUATED_WITH(gBankAttacker);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_CuteCharmActivates;
+                    effect++;
+                }
+                break;
 
 			case ABILITY_JUSTIFIED:
 				if (MOVE_HAD_EFFECT
@@ -2846,6 +2936,8 @@ static u8 CalcMovePowerForForewarn(u16 move)
 			case MOVE_NIGHTSHADE:
 			case MOVE_PSYWAVE:
 			case MOVE_RETURN:
+			case MOVE_VEEVEEVOLLEY:
+			case MOVE_PIKAPAPOW:
 			case MOVE_REVERSAL:
 			case MOVE_SEISMICTOSS:
 			case MOVE_SONICBOOM:

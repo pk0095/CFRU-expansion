@@ -6,12 +6,18 @@
 #org @DESC_NO_MOVE
 No move information.
 
+#org @DESC_DOUBLESLAP
+Slaps the foe with a\nhand imbued with the\nmystic power of the\nfairy realm itself.
+
 #org @DESC_ICEPUNCH
 #ifdef FROSTBITE
 The foe is punched\nwith an icy fist.\nIt may leave the\nfoe with frostbite.
 #else
 The foe is punched\nwith an icy fist.\nIt may leave the\nfoe frozen.
 #endif
+
+#org @DESC_FURYATTACK
+Pecks and tears with\na beak and talons in\na fierce flurry of\nwild relentless hits.
 
 #org @DESC_ICEBEAM
 #ifdef FROSTBITE
@@ -29,6 +35,9 @@ A blizzard strikes\nthe opposing team.\nIt may also freeze\nthem solid.
 
 #org @DESC_GROWTH
 The user's body is\nforced to grow,\nraising the Attack\nand Sp. Atk stats.
+
+#org @DESC_SPIKECANNON
+Launches sharp metal\nspikes forged from the\nhardest steel straight\nat the foe in bursts.
 
 #org @DESC_TRIATTACK
 #ifdef FROSTBITE
@@ -1670,17 +1679,8 @@ User electrifies\nits body and drops\nonto the target.\nTake damage if fail.
 #org @DESC_PSYCHICNOISE
 Foe is prevented\nfrom recovering HP\nfor two turns.
 
-#org @DESC_MAELSTROM
-The foe is hit\nwith a fast, vicious\nwhirlpool. May cause\nconfusion.
-
 #org @DESC_AQUAFANG
-The user bites the\nfoe with aquatic\nfangs. May Flinch.
-
-#org @DESC_SKYDASH
-The user smashes into\nthe target at high\nspeed. This move\nalways goes first.
-
-#org @DESC_MOURNFULGAZE
-A scary stare that\nlowers the foe's\nSp. Atk stat. It\nalways goes first.
+The user bites the\nfoe with aquatic\nfangs. May cause\nthe target to flinch.
 
 #org @DESC_SAPPYSEED
 The user scatters\nseeds to attack,\ndraining the target's\nHP every turn.
@@ -1716,19 +1716,31 @@ The user acts bad \nand attacks the \ntarget. A wall of light \nis put up that w
 The user charges\na wave with electricity\nand hits the target\nwith the wave. This\nmay also leave the\ntarget with paralysis.
 
 #org @DESC_SHADOWSTORM
-A shadowy aura\nis used to whip\nup a vicious tornado.
+A shadowy aura is\nused to whip up a\nvicious tornado. May\nconfuse the target.
 
 #org @DESC_OVERCHARGE
-Causes an electrical\ndischarge. It is\nalso super effective \non ground type.
+Causes a powerful\nelectrical discharge.\nAlso super effective\nagainst Ground-type\ntargets.
 
 #org @DESC_ACIDRUST
-A powerful acid\nsubstance. It is\nalso super effective \non steel type.
-
-#org @DESC_SOULBURN
-A cursed flame that\nburns the foe's soul.\nDeals extra damage to\nstatused targets.
-
-#org @DESC_STATICWING
-The user slams the\nfoe. It may leave\nthe foe paralyzed.
+A powerful corrosive\nacid attack. Also\nsuper effective against\nSteel-type targets.\nMay poison the foe.
 
 #org @DESC_PHANTOMVOID
-Inflicts damage and\nhas a 10[5B] chance of\nput target to sleep.
+Dusknoir drags the\nfoe into a ghostly\nvoid. Always strikes\nfirst and puts the\ntarget to sleep.
+
+#org @DESC_NIHILLIGHT
+A light defying all \nnature's laws strikes \nfoes. Ignores boosts \nand hits even \nFairy-type targets.
+
+#org @DESC_VEEVEEVOLLEY
+The user strikes with\nthe power of its bond.\nThe stronger the friendship,\nthe greater the move's\npower. Never misses.
+
+#org @DESC_PIKAPAPOW
+An electric strike\nfueled by friendship.\nThe stronger the bond,\nthe greater the move's\npower. Never misses.
+
+#org @DESC_STATICWING
+Strikes the foe with\ncharged wings crackling\nwith electricity.\nMay paralyze the\ntarget.
+
+#org @DESC_SPIRITLEECH
+Drains the target's\nlife force using\nghost energy. The\nuser recovers half\nthe damage dealt.
+
+#org @DESC_MOURNFULGAZE
+The user fixes the\ntarget with a haunting\nstare that saps its\nwill. Lowers the\ntarget's Sp. Atk.

@@ -1499,6 +1499,18 @@ static void ModulateDmgByType(u8 multiplier, const u16 move, const u8 moveType, 
 
 		if (moveType == TYPE_PSYCHIC && defType == TYPE_DARK && (gStatuses3[bankDef] & STATUS3_MIRACLE_EYED))
 			return; //Miracle Eye causes normal damage hits
+
+		if (move == MOVE_OVERCHARGE && defType == TYPE_GROUND && moveType == TYPE_ELECTRIC)
+            return; //Overcharge bypasses Ground immunity
+
+		if (move == MOVE_ACIDRUST && defType == TYPE_STEEL && moveType == TYPE_POISON)
+            return; //Acid Rust bypasses Steel immunity
+
+		if (move == MOVE_NIHILLIGHT && defType == TYPE_FAIRY && moveType == TYPE_DRAGON)
+            return; //Nihil Light bypasses Fairy immunity to Dragon
+
+		if (atkAbility == ABILITY_CORROSION && defType == TYPE_STEEL && moveType == TYPE_POISON)
+            return; //Corrosion bypasses Steel immunity to Poison
 	}
 	else if (checkMonDef)
 	{
@@ -1515,6 +1527,9 @@ static void ModulateDmgByType(u8 multiplier, const u16 move, const u8 moveType, 
 	
 	if (move == MOVE_ACIDRUST && defType == TYPE_STEEL)
 		multiplier = TYPE_MUL_SUPER_EFFECTIVE;
+
+	if (move == MOVE_NIHILLIGHT && defType == TYPE_FAIRY && moveType == TYPE_DRAGON)
+		multiplier = TYPE_MUL_NORMAL; //Nihil Light treats Fairy as neutral, not immune
 
 	if (moveType == TYPE_FIRE && gNewBS->tarShotBits & gBitTable[bankDef]) //Fire always Super-Effective if covered in tar
 		multiplier = TYPE_MUL_SUPER_EFFECTIVE;
@@ -3094,6 +3109,7 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 
 //Stat Buffs - Attacker
 	if (data->defAbility != ABILITY_UNAWARE
+	&& !gSpecialMoveFlags[move].gIgnoreStatChangesMoves
 	&& (data->atkBuff != 6 || data->spAtkBuff != 6)) //No point in wasting time with these calcs if mon has regular stats
 	{
 		if (gCritMultiplier > BASE_CRIT_MULTIPLIER)
@@ -3664,7 +3680,6 @@ static u16 GetBasePower(struct DamageCalc* data)
 			break;
 
 		case MOVE_WHIRLPOOL:
-		case MOVE_MAELSTROM:
 			if (!(data->specialFlags & FLAG_IGNORE_TARGET)
 			&& data->defStatus3 & STATUS3_UNDERWATER)
 				power *= 2;
@@ -3820,7 +3835,7 @@ static u16 GetBasePower(struct DamageCalc* data)
 		#ifdef SPECIES_ASHGRENINJA
 		case MOVE_WATERSHURIKEN:
 			if (data->atkSpecies == SPECIES_ASHGRENINJA && data->atkAbility == ABILITY_BATTLEBOND)
-				power = 20;
+				power = 30;
 			break;
 		#endif
 
@@ -3910,6 +3925,8 @@ static u16 GetBasePower(struct DamageCalc* data)
 			break;
 
 		case MOVE_RETURN:
+		case MOVE_PIKAPAPOW:
+        case MOVE_VEEVEEVOLLEY:
 			if ((gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER_TOWER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_EREADER_TRAINER))
 			|| IsFrontierRaidBattle()
 			#ifdef FLAG_SANDBOX_MODE

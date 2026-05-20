@@ -2978,17 +2978,8 @@ S-cell Slam
 #org @NAME_PSYCHICNOISE
 PsychicNoise
 
-#org @NAME_MAELSTROM
-Maelstrom
-
 #org @NAME_AQUAFANG
 Aqua Fang
-
-#org @NAME_SKYDASH
-Sky Dash
-
-#org @NAME_MOURNFULGAZE
-MournfulGaze
 
 #org @NAME_SAPPYSEED
 Sappy Seed
@@ -3032,11 +3023,23 @@ Overcharge
 #org @NAME_ACIDRUST
 Acid Rust
 
-#org @NAME_SOULBURN
-Soulburn
+#org @NAME_PHANTOMVOID
+Phantom Void
+
+#org @NAME_NIHILLIGHT
+Nihil Light
+
+#org @NAME_VEEVEEVOLLEY
+VeeveeVolley
+
+#org @NAME_PIKAPAPOW
+Pika Papow
 
 #org @NAME_STATICWING
 Static Wing
 
-#org @NAME_PHANTOMVOID
-Phantom Void
+#org @NAME_SPIRITLEECH
+Spirit Leech
+
+#org @NAME_MOURNFULGAZE
+MournfulGaze
