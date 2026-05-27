@@ -1061,6 +1061,8 @@ gMoveAnimations:
 .word ANIM_STATICWING
 .word ANIM_SPIRITLEECH
 .word ANIM_MOURNFULGAZE
+.word ANIM_HYDROBLAST
+.word ANIM_MAELSTROM
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 .pool
@@ -31218,6 +31220,18 @@ ANIM_SPIRITLEECH:
 .pool
 ANIM_MOURNFULGAZE:
     goto 0x81d1ba0
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_HYDROBLAST:
+    goto ANIM_HYDROPUMP
+    endanimation
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+.pool
+ANIM_MAELSTROM:
+    goto 0x81cfb3a
     endanimation
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

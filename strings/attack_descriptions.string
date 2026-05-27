@@ -1744,3 +1744,9 @@ Drains the target's\nlife force using\nghost energy. The\nuser recovers half\nth
 
 #org @DESC_MOURNFULGAZE
 The user fixes the\ntarget with a haunting\nstare that saps its\nwill. Lowers the\ntarget's Sp. Atk.
+
+#org @DESC_HYDROBLAST
+The target is blasted\nby a huge volume of\nwater launched under\ngreat physical force.
+
+#org @DESC_MAELSTROM
+The user engulfs the\ntarget in a raging\nmaelstrom of water.\nMay also leave the\ntarget confused.
