@@ -9,3 +9,21 @@ Battle ends if:\n4 Pok\emon faint\n10 turns pass
 
 #org @gText_RaidBattleChoosePartner
 Available Partners
+
+#org @gText_StartRaidBattle
+The den emits mysterious energy[.] Want to look inside?
+
+#org @gText_DenEmpty
+The den is empty.
+
+#org @gText_JoinedYouTake
+[BUFFER][09] [BUFFER][07] joined you to take on [BUFFER][08]!
+
+#org @gText_Choose3
+Choose 3 Pok\emon to bring into battle.
+
+#org @gText_UseWishingPiece
+The den is empty.\pThrow in a Wishing Piece?
+
+#org @gText_WishingPieceUsed
+You threw a Wishing Piece into the den!\pA powerful Pok\emon appeared!

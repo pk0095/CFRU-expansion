@@ -1,0 +1,17 @@
+#org @gText_MoveReminderHi
+Do you want me to teach a move\nto a POKéMON of yours?
+
+#org @gText_MoveReminderChooseMon
+Which POKéMON needs tutoring?
+
+#org @gText_MoveReminderWhichMove
+Which move should I teach?
+
+#org @gText_MoveReminderIsEgg
+Hunh? There isn't a single move\nthat I can teach an EGG.
+
+#org @gText_MoveReminderNoMoves
+Sorry[.]\pIt doesn't appear as if I have a\nmove I can teach that POKéMON.
+
+#org @gText_MoveReminderNo
+Well then[.]
