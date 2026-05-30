@@ -6,18 +6,12 @@
 #org @DESC_NO_MOVE
 No move information.
 
-#org @DESC_DOUBLESLAP
-Slaps the foe with a\nhand imbued with the\nmystic power of the\nfairy realm itself.
-
 #org @DESC_ICEPUNCH
 #ifdef FROSTBITE
 The foe is punched\nwith an icy fist.\nIt may leave the\nfoe with frostbite.
 #else
 The foe is punched\nwith an icy fist.\nIt may leave the\nfoe frozen.
 #endif
-
-#org @DESC_FURYATTACK
-Pecks and tears with\na beak and talons in\na fierce flurry of\nwild relentless hits.
 
 #org @DESC_ICEBEAM
 #ifdef FROSTBITE
@@ -35,9 +29,6 @@ A blizzard strikes\nthe opposing team.\nIt may also freeze\nthem solid.
 
 #org @DESC_GROWTH
 The user's body is\nforced to grow,\nraising the Attack\nand Sp. Atk stats.
-
-#org @DESC_SPIKECANNON
-Launches sharp metal\nspikes forged from the\nhardest steel straight\nat the foe in bursts.
 
 #org @DESC_TRIATTACK
 #ifdef FROSTBITE

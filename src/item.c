@@ -2302,3 +2302,4 @@ void ResetPokeVialUses(void)
 {
     VarSet(VAR_POKEVIAL_USES, 0);  // Reset PokéVial usage counter
 }
+

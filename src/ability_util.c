@@ -52,7 +52,6 @@ extern const u8 gText_AbilityName_CrabbyTactics[];
 extern const u8 gText_AbilityName_HoneyArmor[];
 extern const u8 gText_AbilityName_FaceShield[];
 extern const u8 gText_AbilityName_RoyalRoar[];
-extern const u8 gText_AbilityName_HundredLegs[];
 
 extern const u8 gText_AbilityDescription_Evaporate[];
 extern const u8 gText_AbilityDescription_GrassDash[];
@@ -180,8 +179,7 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 				case NATIONAL_DEX_PERSIAN:
 					return gText_AbilityName_NineLives;
 				#endif
-				#if (defined NATIONAL_DEX_MACHOP && defined NATIONAL_DEX_MACHOKE && defined NATIONAL_DEX_MACHAMP)
-				case NATIONAL_DEX_MACHOP:
+				#if (defined NATIONAL_DEX_MACHOKE && defined NATIONAL_DEX_MACHAMP)
 				case NATIONAL_DEX_MACHOKE:
 				case NATIONAL_DEX_MACHAMP:
 					return gText_AbilityName_FocusBelt;
@@ -191,20 +189,14 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 		case ABILITY_FILTER:
 			switch (dexNum)
 			{
-				#if (defined NATIONAL_DEX_GEODUDE && defined NATIONAL_DEX_GRAVELER && defined NATIONAL_DEX_GOLEM && defined NATIONAL_DEX_STEELIX && defined NATIONAL_DEX_CAMERUPT && defined NATIONAL_DEX_REGIROCK && defined NATIONAL_DEX_RHYPERIOR && defined NATIONAL_DEX_PROBOPASS && defined NATIONAL_DEX_TIRTOUGA && defined NATIONAL_DEX_CARRACOSTA && defined NATIONAL_DEX_CARBINK)
-				case NATIONAL_DEX_GEODUDE:
-				case NATIONAL_DEX_GRAVELER:
-				case NATIONAL_DEX_GOLEM:
-				case NATIONAL_DEX_STEELIX:
+				#if (defined NATIONAL_DEX_CAMERUPT && defined NATIONAL_DEX_RHYPERIOR && defined NATIONAL_DEX_TIRTOUGA && defined NATIONAL_DEX_CARRACOSTA)
 				case NATIONAL_DEX_CAMERUPT:
-				case NATIONAL_DEX_REGIROCK:
 				case NATIONAL_DEX_RHYPERIOR:
-				case NATIONAL_DEX_PROBOPASS:
 				case NATIONAL_DEX_TIRTOUGA:
 				case NATIONAL_DEX_CARRACOSTA:
-				case NATIONAL_DEX_CARBINK:
+				#ifdef NATIONAL_DEX_STONJOURNER
 				case NATIONAL_DEX_STONJOURNER:
-				case NATIONAL_DEX_AVALUGG:
+				#endif
 					return gText_AbilityName_SolidRock;
 				#endif
 			}
@@ -277,11 +269,6 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 				case NATIONAL_DEX_DUGTRIO:
 					return gText_AbilityName_TanglingHair;
 				#endif
-				#if (defined NATIONAL_DEX_SMOOCHUM && defined NATIONAL_DEX_JYNX)
-				case NATIONAL_DEX_SMOOCHUM:
-				case NATIONAL_DEX_JYNX:
-					return gText_AbilityName_TanglingHair;
-				#endif
 				#if (defined NATIONAL_DEX_MAREEP && defined NATIONAL_DEX_FLAAFFY && defined NATIONAL_DEX_AMPHAROS)
 				case NATIONAL_DEX_MAREEP:
 				case NATIONAL_DEX_FLAAFFY:
@@ -295,19 +282,10 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 			{
 				default:
 					break;
-				#if (defined NATIONAL_DEX_GIRAFARIG && defined NATIONAL_DEX_FARIGIRAF)
+				#ifdef NATIONAL_DEX_GIRAFARIG
 				case NATIONAL_DEX_GIRAFARIG:
-				case NATIONAL_DEX_FARIGIRAF:
-				    return gText_AbilityName_BrainBond;
 				#endif
-				#ifdef NATIONAL_DEX_SCOLIPEDE
-				case NATIONAL_DEX_SCOLIPEDE:
-				#endif
-				#if (defined NATIONAL_DEX_SIZZLIPEDE && defined NATIONAL_DEX_CENTISKORCH)
-				case NATIONAL_DEX_SIZZLIPEDE:
-				case NATIONAL_DEX_CENTISKORCH:
-					return gText_AbilityName_HundredLegs;
-				#endif
+					return gText_AbilityName_BrainBond;
 			}
 			break;
 		case ABILITY_GALEWINGS:
@@ -421,12 +399,7 @@ const u8* GetAbilityNameOverride(const u8 ability, const u16 species) //Bypasses
 		case ABILITY_GORILLATACTICS:
 			switch (dexNum)
 			{
-				#if (defined NATIONAL_DEX_KRABBY && defined NATIONAL_DEX_KINGLER)
-				case NATIONAL_DEX_KRABBY:
-				case NATIONAL_DEX_KINGLER:
-				#endif
-				#if (defined NATIONAL_DEX_CRABRAWLER && defined NATIONAL_DEX_CRABOMINABLE)
-				case NATIONAL_DEX_CRABRAWLER:
+				#ifdef NATIONAL_DEX_CRABOMINABLE
 				case NATIONAL_DEX_CRABOMINABLE:
 					return gText_AbilityName_CrabbyTactics;
 				#endif
@@ -828,8 +801,8 @@ bool8 SpeciesHasTeravolt(unusedArg u16 species)
 
 bool8 SpeciesHasDrillBeak(unusedArg u16 species) //Custom Unbound Ability
 {
-	#if (defined SPECIES_SPEAROW && defined SPECIES_FEAROW && defined SPECIES_DODUO && defined SPECIES_DODRIO)
-	return species == SPECIES_SPEAROW || species == SPECIES_FEAROW || species == SPECIES_DODUO || species == SPECIES_DODRIO;
+	#if (defined SPECIES_SPEAROW && defined SPECIES_FEAROW)
+	return species == SPECIES_SPEAROW || species == SPECIES_FEAROW;
 	#else
 	return FALSE;
 	#endif
@@ -837,8 +810,8 @@ bool8 SpeciesHasDrillBeak(unusedArg u16 species) //Custom Unbound Ability
 
 bool8 SpeciesHasGrassDash(unusedArg u16 species) //Custom Unbound Ability
 {
-	#if (defined SPECIES_SUNKERN && defined SPECIES_SUNFLORA && defined SPECIES_WORMADAM)
-	return species == SPECIES_SUNKERN || species == SPECIES_SUNFLORA || species == SPECIES_WORMADAM;
+	#ifdef SPECIES_SUNFLORA
+	return species == SPECIES_SUNFLORA;
 	#else
 	return FALSE;
 	#endif
@@ -846,8 +819,8 @@ bool8 SpeciesHasGrassDash(unusedArg u16 species) //Custom Unbound Ability
 
 bool8 SpeciesHasEvaporate(unusedArg u16 species) //Custom Unbound Ability
 {
-	#if (defined SPECIES_SLUGMA && defined SPECIES_MAGCARGO)
-	return species == SPECIES_SLUGMA || SPECIES_MAGCARGO;
+	#ifdef SPECIES_MAGCARGO
+	return species == SPECIES_MAGCARGO;
 	#else
 	return FALSE;
 	#endif
@@ -855,8 +828,8 @@ bool8 SpeciesHasEvaporate(unusedArg u16 species) //Custom Unbound Ability
 
 bool8 SpeciesHasSlipperyTail(unusedArg u16 species) //Custom Unbound Ability
 {
-	#if (defined SPECIES_EKANS && defined SPECIES_ARBOK && defined SPECIES_ONIX && defined SPECIES_STEELIX && defined SPECIES_SEVIPER && defined SPECIES_SERPERIOR)
-	return species == SPECIES_EKANS || species == SPECIES_ARBOK || species == SPECIES_ONIX || species == SPECIES_STEELIX || species == SPECIES_SEVIPER || species == SPECIES_SERPERIOR;
+	#ifdef SPECIES_SEVIPER
+	return species == SPECIES_SEVIPER;
 	#else
 	return FALSE;
 	#endif
@@ -1153,7 +1126,7 @@ bool8 IsVitalSpiritAbility(u8 ability, u16 species)
 		#ifdef NATIONAL_DEX_ELECTABUZZ
 		case NATIONAL_DEX_ELECTABUZZ:
 		#endif
-		#ifdef NATIONAL_DEX_MAGMAR
+		#ifdef NATIONAL_DEX_ELECTABUZZ
 		case NATIONAL_DEX_MAGMAR:
 		#endif
 		#ifdef NATIONAL_DEX_DELIBIRD
@@ -1355,8 +1328,8 @@ bool8 SpeciesHasMyceliumMight(unusedArg u16 species)
 
 bool8 SpeciesHasOportunist(unusedArg u16 species)
 {
-	#if (defined SPECIES_FLITTLE && SPECIES_ESPATHRA)
-	return species == SPECIES_FLITTLE || species == SPECIES_ESPATHRA;
+	#ifdef SPECIES_ESPATHRA
+	return species == SPECIES_ESPATHRA;
 	#else
 	return FALSE;
 	#endif
@@ -1430,8 +1403,8 @@ bool8 SpeciesHasSeedSower(unusedArg u16 species)
 
 bool8 SpeciesHasSharpness(unusedArg u16 species)
 {
-	#if (defined SPECIES_GALLADE && SPECIES_SAMUROTT && SPECIES_SAMUROTT_H && SPECIES_LEAVANNY && SPECIES_PAWNIARD && SPECIES_BISHARP && SPECIES_KLEAVOR && SPECIES_CERULEDGE && SPECIES_VELUZA && SPECIES_KINGAMBIT)
-	return species == SPECIES_GALLADE || species == SPECIES_SAMUROTT || species == SPECIES_SAMUROTT_H || species == SPECIES_LEAVANNY || species == SPECIES_PAWNIARD || species == SPECIES_BISHARP || species == SPECIES_KLEAVOR || species == SPECIES_CERULEDGE || species == SPECIES_VELUZA || species == SPECIES_KINGAMBIT;
+	#if (defined SPECIES_GALLADE && SPECIES_SAMUROTT_H && SPECIES_KLEAVOR && SPECIES_VELUZA)
+	return species == SPECIES_GALLADE || species == SPECIES_SAMUROTT_H || species == SPECIES_KLEAVOR || species == SPECIES_VELUZA;
 	#else
 	return FALSE;
 	#endif

@@ -3109,7 +3109,6 @@ static s32 CalculateBaseDamage(struct DamageCalc* data)
 
 //Stat Buffs - Attacker
 	if (data->defAbility != ABILITY_UNAWARE
-	&& !gSpecialMoveFlags[move].gIgnoreStatChangesMoves
 	&& (data->atkBuff != 6 || data->spAtkBuff != 6)) //No point in wasting time with these calcs if mon has regular stats
 	{
 		if (gCritMultiplier > BASE_CRIT_MULTIPLIER)
@@ -3835,7 +3834,7 @@ static u16 GetBasePower(struct DamageCalc* data)
 		#ifdef SPECIES_ASHGRENINJA
 		case MOVE_WATERSHURIKEN:
 			if (data->atkSpecies == SPECIES_ASHGRENINJA && data->atkAbility == ABILITY_BATTLEBOND)
-				power = 30;
+				power = 20;
 			break;
 		#endif
 
